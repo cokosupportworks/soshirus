@@ -502,7 +502,7 @@
       </div>
 
       <!-- RIGHT SIDEBAR: NEXT PREVIEW + KARMA QUEUE + SPECIAL SKILLS -->
-      <aside class="w-[104px] sm:w-[136px] shrink-0 flex flex-col gap-1.5 sm:gap-2 min-h-0">
+      <aside class="w-[122px] sm:w-[154px] shrink-0 flex flex-col gap-1.5 sm:gap-2 min-h-0">
 
         <!-- NEXT BLOCK PREVIEW -->
         <div class="retro-panel p-1.5 flex flex-col items-center shrink-0">
@@ -530,62 +530,62 @@
         </div>
 
         <!-- SPECIAL SKILLS (Available in BOTH Sabotage & Karma phases!) -->
-        <div id="skillsPanel" class="retro-panel p-1 flex flex-col gap-1 flex-1 min-h-0 justify-center overflow-y-auto">
+        <div id="skillsPanel" class="retro-panel p-1 sm:p-1.5 flex flex-col gap-1 flex-1 min-h-0 justify-center overflow-y-auto">
           <div class="text-[8px] text-center text-slate-400 tracking-widest leading-none shrink-0">必殺技</div>
 
           <!-- 1. ボリショイ -->
-          <button id="btnDevil" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-fuchsia-600 to-purple-800 border border-fuchsia-400 text-white flex flex-col items-center justify-center shrink-0">
-            <div class="w-full flex items-center justify-between gap-0.5 text-[9.5px] sm:text-[10.5px] font-bold leading-none">
-              <span class="flex items-center gap-0.5 truncate">
+          <button id="btnDevil" class="arcade-btn w-full py-1 px-1.5 rounded-lg bg-gradient-to-b from-fuchsia-600 to-purple-800 border border-fuchsia-400 text-white flex flex-col gap-0.5 shrink-0">
+            <div class="w-full flex items-center justify-between gap-1">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold leading-none whitespace-nowrap">
                 <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M1 3h2v4H1zm4-2h2v6H5zm4 2h2v4H9z"></path><path fill="#f59e0b" d="M1 7h10v3H1z"></path><path fill="#ef4444" d="M5 8h2v1H5z"></path></svg><span>ボリショイ</span>
               </span>
-              <span class="text-[8px] text-amber-300 shrink-0">×<span id="countDevil">1</span></span>
+              <span id="countDevil" class="shrink-0 min-w-[22px] sm:min-w-[26px] text-center px-1 py-0.5 rounded bg-slate-950/85 border border-amber-300/80 font-pixel text-[11px] sm:text-xs font-extrabold text-amber-300 leading-none">1</span>
             </div>
-            <div id="descDevil" class="text-[7.5px] sm:text-[8.5px] text-fuchsia-100 mt-0.5 leading-none truncate w-full text-center">3×4拡大・時間停止</div>
+            <div id="descDevil" class="w-full text-left text-[8.5px] sm:text-[9.5px] text-fuchsia-100 leading-tight whitespace-nowrap">3×4拡大・時間停止</div>
           </button>
 
           <!-- 2. ペレストロイカ -->
-          <button id="btnRevolution" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-red-600 to-rose-900 border border-amber-400 text-white flex flex-col items-center justify-center shrink-0">
-            <div class="w-full flex items-center justify-between gap-0.5 text-[8.5px] sm:text-[9.5px] font-bold leading-none tracking-tighter">
-              <span class="flex items-center gap-0.5 truncate">
+          <button id="btnRevolution" class="arcade-btn w-full py-1 px-1.5 rounded-lg bg-gradient-to-b from-red-600 to-rose-900 border border-amber-400 text-white flex flex-col gap-0.5 shrink-0">
+            <div class="w-full flex items-center justify-between gap-1">
+              <span class="flex items-center gap-0.5 text-[9.5px] sm:text-[10.5px] font-bold leading-none tracking-tighter whitespace-nowrap">
                 <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M3 2h2v3H3zm2 0h2v3H5zm2 0h2v3H7z"></path><path fill="#f59e0b" d="M2 4h8v5H2z"></path><path fill="#fef08a" d="M2 5h3v2H2z"></path><path fill="#b45309" d="M3 9h6v2H3z"></path></svg><span>ペレストロイカ</span>
               </span>
-              <span class="text-[8px] text-amber-300 shrink-0">×<span id="countRev">1</span></span>
+              <span id="countRev" class="shrink-0 min-w-[22px] sm:min-w-[26px] text-center px-1 py-0.5 rounded bg-slate-950/85 border border-amber-300/80 font-pixel text-[11px] sm:text-xs font-extrabold text-amber-300 leading-none">1</span>
             </div>
-            <div id="descRev" class="text-[7.5px] sm:text-[8.5px] text-amber-100 mt-0.5 leading-none truncate w-full text-center">CPUから手動奪取</div>
+            <div id="descRev" class="w-full text-left text-[8.5px] sm:text-[9.5px] text-amber-100 leading-tight whitespace-nowrap">CPUから手動奪取</div>
           </button>
 
           <!-- 3. スペツナズ -->
-          <button id="btnDefuse" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-sky-600 to-blue-900 border border-cyan-300 text-white flex flex-col items-center justify-center shrink-0">
-            <div class="w-full flex items-center justify-between gap-0.5 text-[9.5px] sm:text-[10.5px] font-bold leading-none">
-              <span class="flex items-center gap-0.5 truncate">
+          <button id="btnDefuse" class="arcade-btn w-full py-1 px-1.5 rounded-lg bg-gradient-to-b from-sky-600 to-blue-900 border border-cyan-300 text-white flex flex-col gap-0.5 shrink-0">
+            <div class="w-full flex items-center justify-between gap-1">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold leading-none whitespace-nowrap">
                 <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><path fill="#334155" d="M2 2h8v7H2z"></path><path fill="#0f172a" d="M3 4h6v3H3z"></path><path fill="#22d3ee" d="M3 5h2v1H3zm4 0h2v1H7z"></path><path fill="#ef4444" d="M5 1h2v1H5z"></path></svg><span>スペツナズ</span>
               </span>
-              <span class="text-[8px] text-amber-300 shrink-0">×<span id="countDefuse">1</span></span>
+              <span id="countDefuse" class="shrink-0 min-w-[22px] sm:min-w-[26px] text-center px-1 py-0.5 rounded bg-slate-950/85 border border-amber-300/80 font-pixel text-[11px] sm:text-xs font-extrabold text-amber-300 leading-none">3</span>
             </div>
-            <div id="descDefuse" class="text-[7.5px] sm:text-[8.5px] text-cyan-100 mt-0.5 leading-none truncate w-full text-center">爆弾を1個へ除去</div>
+            <div id="descDefuse" class="w-full text-left text-[8.5px] sm:text-[9.5px] text-cyan-100 leading-tight whitespace-nowrap">爆弾を1個へ除去</div>
           </button>
 
           <!-- 4. パーミャトニク (Indestructible Silver 1x1 Monument Block) -->
-          <button id="btnMonument" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-slate-300 via-slate-400 to-slate-600 border border-white text-slate-950 flex flex-col items-center justify-center shrink-0">
-            <div class="w-full flex items-center justify-between gap-0.5 text-[8.5px] sm:text-[9.5px] font-bold leading-none tracking-tighter">
-              <span class="flex items-center gap-0.5 truncate">
+          <button id="btnMonument" class="arcade-btn w-full py-1 px-1.5 rounded-lg bg-gradient-to-b from-slate-300 via-slate-400 to-slate-600 border border-white text-slate-950 flex flex-col gap-0.5 shrink-0">
+            <div class="w-full flex items-center justify-between gap-1">
+              <span class="flex items-center gap-0.5 text-[9.5px] sm:text-[10.5px] font-bold leading-none tracking-tighter whitespace-nowrap">
                 <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" fill="#e2e8f0" stroke="#334155" stroke-width="1"/><rect x="3" y="3" width="3" height="2" fill="#ffffff"/><rect x="7" y="7" width="2" height="2" fill="#64748b"/></svg><span>パーミャトニク</span>
               </span>
-              <span class="text-[8px] text-slate-900 font-extrabold shrink-0">×<span id="countMonument">1</span></span>
+              <span id="countMonument" class="shrink-0 min-w-[22px] sm:min-w-[26px] text-center px-1 py-0.5 rounded bg-slate-950/90 border border-white font-pixel text-[11px] sm:text-xs font-extrabold text-white leading-none">1</span>
             </div>
-            <div class="text-[7.5px] sm:text-[8.5px] text-slate-900 font-bold mt-0.5 leading-none truncate w-full text-center">不滅の銀1マス設置</div>
+            <div class="w-full text-left text-[8.5px] sm:text-[9.5px] text-slate-900 font-bold leading-tight whitespace-nowrap">不滅の銀1マス設置</div>
           </button>
 
           <!-- 5. スネスチー (Demolish all Monument blocks) -->
-          <button id="btnDemolish" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-amber-500 to-orange-800 border border-amber-200 text-white flex flex-col items-center justify-center shrink-0">
-            <div class="w-full flex items-center justify-between gap-0.5 text-[9.5px] sm:text-[10.5px] font-bold leading-none">
-              <span class="flex items-center gap-0.5 truncate">
+          <button id="btnDemolish" class="arcade-btn w-full py-1 px-1.5 rounded-lg bg-gradient-to-b from-amber-500 to-orange-800 border border-amber-200 text-white flex flex-col gap-0.5 shrink-0">
+            <div class="w-full flex items-center justify-between gap-1">
+              <span class="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold leading-none whitespace-nowrap">
                 <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><path fill="#fef08a" d="M2 2h8v3H2z"/><path fill="#78350f" d="M5 5h2v6H5z"/><path fill="#ef4444" d="M1 3h2v2H1zm8 0h2v2H9z"/></svg><span>スネスチー</span>
               </span>
-              <span class="text-[8px] text-amber-200 shrink-0">×<span id="countDemolish">0</span></span>
+              <span id="countDemolish" class="shrink-0 min-w-[22px] sm:min-w-[26px] text-center px-1 py-0.5 rounded bg-slate-950/85 border border-amber-300/80 font-pixel text-[11px] sm:text-xs font-extrabold text-amber-300 leading-none">0</span>
             </div>
-            <div class="text-[7.5px] sm:text-[8.5px] text-amber-100 mt-0.5 leading-none truncate w-full text-center">記念碑を全て撤去</div>
+            <div class="w-full text-left text-[8.5px] sm:text-[9.5px] text-amber-100 leading-tight whitespace-nowrap">記念碑を全て撤去</div>
           </button>
         </div>
 
@@ -1384,12 +1384,13 @@
         constructor() {
           this.ctx = null;
           this.masterGain = null;
+          this.compressor = null;
           this.muted = false;
           this.unlocked = false;
           this.bgmTimer = null;
           this.bgmRunning = false;
           this.bgmTrack = 'main'; // 'main' (Korobeiniki) | 'troika' (Game Over)
-          this._tickFn = null;
+          this.nextNoteTime = 0;
           this.needsHardAudioReset = false;
           this.currentStep = 0;
           this.normalStepMs = 100; // 150 BPM at 16th-note resolution
@@ -1419,8 +1420,22 @@
           }
           this.ctx = new AudioCtx();
           this.masterGain = this.ctx.createGain();
-          this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime);
-          this.masterGain.connect(this.ctx.destination);
+          this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.72, this.ctx.currentTime);
+
+          // Soft limiter/compressor prevents digital clipping & crackles when BGM + SE overlap
+          if (this.ctx.createDynamicsCompressor) {
+            this.compressor = this.ctx.createDynamicsCompressor();
+            this.compressor.threshold.setValueAtTime(-14, this.ctx.currentTime);
+            this.compressor.knee.setValueAtTime(18, this.ctx.currentTime);
+            this.compressor.ratio.setValueAtTime(6, this.ctx.currentTime);
+            this.compressor.attack.setValueAtTime(0.005, this.ctx.currentTime);
+            this.compressor.release.setValueAtTime(0.12, this.ctx.currentTime);
+            this.masterGain.connect(this.compressor);
+            this.compressor.connect(this.ctx.destination);
+          } else {
+            this.compressor = null;
+            this.masterGain.connect(this.ctx.destination);
+          }
 
           // White noise buffer for retro percussion & explosions
           const bufLen = Math.floor(this.ctx.sampleRate * 0.5);
@@ -1432,27 +1447,29 @@
 
           this.ctx.onstatechange = () => {
             if (this.ctx && this.ctx.state === 'running' && this.masterGain) {
-              this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime);
+              this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.72, this.ctx.currentTime);
             }
           };
           this.unlocked = false;
+          this.nextNoteTime = this.ctx.currentTime + 0.05;
           return this.ctx;
         }
 
         // Synchronous iOS / iPadOS Safari unlock & rock-solid background recovery
+        // IMPORTANT: NEVER disturb BGM timing during normal clicks/SE!
         unlock(forceRecover = false) {
           const AudioCtx = window.AudioContext || window.webkitAudioContext;
           if (!AudioCtx) return null;
 
-          // On iPadOS/iOS Safari, returning from background can leave AudioContext in a silent zombie/interrupted state.
-          // Recreating the AudioContext on the first user gesture after backgrounding guarantees audio resumes cleanly!
           const mustRecreate = !this.ctx
             || this.ctx.state === 'closed'
             || (forceRecover && (this.needsHardAudioReset || this.ctx.state === 'interrupted'));
 
+          let didRecreate = false;
           if (mustRecreate) {
             this._createContext();
             this.needsHardAudioReset = false;
+            didRecreate = true;
           }
 
           if (this.ctx && this.ctx.state !== 'running') {
@@ -1466,7 +1483,7 @@
             });
           }
 
-          if (this.ctx && (!this.unlocked || forceRecover)) {
+          if (this.ctx && (!this.unlocked || didRecreate)) {
             try {
               const silentBuf = this.ctx.createBuffer(1, 1, 22050);
               const src = this.ctx.createBufferSource();
@@ -1477,23 +1494,21 @@
             } catch (e) {}
           }
 
-          // Kick BGM sequencer timer if it was throttled/stopped by iPadOS while in background
-          if (this.bgmRunning && this._tickFn) {
-            if (this.bgmTimer) clearTimeout(this.bgmTimer);
-            this.bgmTimer = setTimeout(this._tickFn, 20);
+          // Re-sync lookahead clock ONLY if context was recreated after backgrounding
+          if (didRecreate && this.bgmRunning && this.ctx) {
+            this.nextNoteTime = this.ctx.currentTime + 0.06;
+            this._ensureLookaheadLoop();
           }
           return this.ctx;
         }
 
         recoverFromBackground() {
-          // Keep needsHardAudioReset = true until an actual user gesture re-initializes iPad Safari audio cleanly
           this.needsHardAudioReset = true;
           if (this.ctx && this.ctx.state !== 'closed' && this.ctx.state !== 'running') {
             this.ctx.resume().catch(() => {});
           }
-          if (this.bgmRunning && this._tickFn) {
-            if (this.bgmTimer) clearTimeout(this.bgmTimer);
-            this.bgmTimer = setTimeout(this._tickFn, this.stepMs);
+          if (this.bgmRunning) {
+            this._ensureLookaheadLoop();
           }
         }
 
@@ -1509,14 +1524,21 @@
             osc.type = type;
             osc.frequency.setValueAtTime(freq, startTime);
 
-            gain.gain.setValueAtTime(0.0001, startTime);
-            gain.gain.linearRampToValueAtTime(volume, startTime + 0.008);
-            gain.gain.exponentialRampToValueAtTime(0.0001, startTime + Math.max(0.035, duration));
+            const dur = Math.max(0.04, duration);
+            const attackEnd = startTime + Math.min(0.009, dur * 0.2);
+            const releaseStart = Math.max(attackEnd + 0.008, startTime + dur - 0.015);
+            const endTime = startTime + dur;
+
+            // Crisp retro percussive decay + smooth zero-click fade-out!
+            gain.gain.setValueAtTime(0.0, startTime);
+            gain.gain.linearRampToValueAtTime(volume, attackEnd);
+            gain.gain.exponentialRampToValueAtTime(Math.max(0.001, volume * 0.14), releaseStart);
+            gain.gain.linearRampToValueAtTime(0.0, endTime);
 
             osc.connect(gain);
             gain.connect(this.masterGain);
             osc.start(startTime);
-            osc.stop(startTime + Math.max(0.04, duration) + 0.02);
+            osc.stop(endTime + 0.02);
           } catch (e) {}
         }
 
@@ -1529,18 +1551,20 @@
             filter.type = filterType;
             filter.frequency.setValueAtTime(filterFreq, startTime);
             if (filterType === 'lowpass') {
-              filter.frequency.exponentialRampToValueAtTime(160, startTime + duration);
+              filter.frequency.exponentialRampToValueAtTime(160, startTime + Math.max(0.03, duration));
             }
 
+            const dur = Math.max(0.03, duration);
             const gain = this.ctx.createGain();
-            gain.gain.setValueAtTime(volume, startTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+            gain.gain.setValueAtTime(0.0, startTime);
+            gain.gain.linearRampToValueAtTime(volume, startTime + 0.004);
+            gain.gain.linearRampToValueAtTime(0.0, startTime + dur);
 
             src.connect(filter);
             filter.connect(gain);
             gain.connect(this.masterGain);
             src.start(startTime);
-            src.stop(startTime + duration + 0.02);
+            src.stop(startTime + dur + 0.02);
           } catch (e) {}
         }
 
@@ -1554,7 +1578,63 @@
           }
         }
 
-        // Drift-proof direct-scheduled step sequencer with dynamic tempo & Troika Game Over BGM!
+        _scheduleStep(step, noteTime) {
+          if (this.muted) return;
+          if (this.bgmTrack === 'troika') {
+            const mel = this.troikaMelodyMap.get(step);
+            if (mel) {
+              this.playTone(NOTE_FREQ[mel.note], 'triangle', noteTime, this.stepSec * mel.len * 0.86, 0.105);
+              this.playTone(NOTE_FREQ[mel.note], 'square', noteTime, this.stepSec * mel.len * 0.58, 0.028);
+            }
+            const bass = this.troikaBassMap.get(step);
+            if (bass) {
+              this.playTone(NOTE_FREQ[bass], 'triangle', noteTime, this.stepSec * 1.55, 0.095);
+            }
+            if (step % 6 === 2 || step % 6 === 4) {
+              this.playNoise(noteTime, 0.032, 0.02, 6800, 'highpass');
+            }
+          } else {
+            const mel = this.melodyMap.get(step);
+            if (mel) {
+              this.playTone(NOTE_FREQ[mel.note], 'square', noteTime, this.stepSec * mel.len * 0.72, 0.048);
+            }
+            const bass = this.bassMap.get(step);
+            if (bass) {
+              this.playTone(NOTE_FREQ[bass], 'triangle', noteTime, this.stepSec * 2.4, 0.105);
+            }
+            if (step % 4 === 2) {
+              this.playNoise(noteTime, 0.028, 0.032, 5200, 'highpass');
+            } else if (step % 8 === 4) {
+              this.playNoise(noteTime, 0.045, 0.042, 2200, 'bandpass');
+            }
+          }
+        }
+
+        _ensureLookaheadLoop() {
+          if (this.bgmTimer) clearInterval(this.bgmTimer);
+          const LOOKAHEAD_SEC = 0.12;
+          this.bgmTimer = setInterval(() => {
+            if (!this.bgmRunning || !this.ctx) return;
+            if (this.ctx.state !== 'running') {
+              this.ctx.resume().catch(() => {});
+              return;
+            }
+            const now = this.ctx.currentTime;
+            // If returning from long pause/background, snap clock smoothly without burst-playing missed notes!
+            if (this.nextNoteTime < now - 0.25) {
+              this.nextNoteTime = now + 0.04;
+            }
+            const totalSteps = this.bgmTrack === 'troika' ? 96 : 128;
+            while (this.nextNoteTime < now + LOOKAHEAD_SEC) {
+              const step = this.currentStep % totalSteps;
+              this._scheduleStep(step, this.nextNoteTime);
+              this.nextNoteTime += this.stepSec;
+              this.currentStep = (this.currentStep + 1) % totalSteps;
+            }
+          }, 25);
+        }
+
+        // Rock-steady AudioContext-clock lookahead sequencer (100% immune to UI/SE tempo jitter!)
         startBGM(track = 'main') {
           this.unlock();
           if (this.bgmRunning && this.bgmTrack === track) return;
@@ -1567,106 +1647,17 @@
             ? this.troikaStepMs
             : (this.isUrgent ? this.urgentStepMs : this.normalStepMs);
           this.stepSec = this.stepMs / 1000;
-
-          const tickStep = () => {
-            if (!this.bgmRunning) return;
-            const ctx = this.ctx;
-            if (!ctx) {
-              this.bgmTimer = setTimeout(tickStep, this.stepMs);
-              return;
-            }
-            if (ctx.state !== 'running') {
-              ctx.resume().catch(() => {});
-              this.bgmTimer = setTimeout(tickStep, this.stepMs);
-              return;
-            }
-
-            const totalSteps = this.bgmTrack === 'troika' ? 96 : 128;
-            if (this.muted) {
-              this.currentStep = (this.currentStep + 1) % totalSteps;
-              this.bgmTimer = setTimeout(tickStep, this.stepMs);
-              return;
-            }
-
-            const now = ctx.currentTime + 0.02;
-            const step = this.currentStep % totalSteps;
-
-            if (this.bgmTrack === 'troika') {
-              const mel = this.troikaMelodyMap.get(step);
-              if (mel) {
-                this.playTone(
-                  NOTE_FREQ[mel.note],
-                  'triangle',
-                  now,
-                  this.stepSec * mel.len * 0.92,
-                  0.14
-                );
-                // Delicate 8-bit balalaika/square overtone
-                this.playTone(
-                  NOTE_FREQ[mel.note],
-                  'square',
-                  now,
-                  this.stepSec * mel.len * 0.65,
-                  0.045
-                );
-              }
-              const bass = this.troikaBassMap.get(step);
-              if (bass) {
-                this.playTone(
-                  NOTE_FREQ[bass],
-                  'triangle',
-                  now,
-                  this.stepSec * 1.8,
-                  0.13
-                );
-              }
-              // Gentle Troika sleigh-bell shimmer on waltz off-beats
-              if (step % 6 === 2 || step % 6 === 4) {
-                this.playNoise(now, 0.04, 0.028, 6800, 'highpass');
-              }
-            } else {
-              const mel = this.melodyMap.get(step);
-              if (mel) {
-                this.playTone(
-                  NOTE_FREQ[mel.note],
-                  'square',
-                  now,
-                  this.stepSec * mel.len * 0.85,
-                  0.085
-                );
-              }
-              const bass = this.bassMap.get(step);
-              if (bass) {
-                this.playTone(
-                  NOTE_FREQ[bass],
-                  'triangle',
-                  now,
-                  this.stepSec * 3.1,
-                  0.15
-                );
-              }
-              // Crisp 8-bit chiptune hi-hat / snare percussion
-              if (step % 4 === 2) {
-                this.playNoise(now, 0.032, 0.045, 5200, 'highpass');
-              } else if (step % 8 === 4) {
-                this.playNoise(now, 0.055, 0.06, 2200, 'bandpass');
-              }
-            }
-
-            this.currentStep = (this.currentStep + 1) % totalSteps;
-            this.bgmTimer = setTimeout(tickStep, this.stepMs);
-          };
-
-          this._tickFn = tickStep;
-          tickStep();
+          if (this.ctx) {
+            this.nextNoteTime = this.ctx.currentTime + 0.05;
+          }
+          this._ensureLookaheadLoop();
         }
 
         stopBGM() {
           this.bgmRunning = false;
-          this._tickFn = null;
           this.setUrgent(false);
           if (this.bgmTimer) {
-            clearTimeout(this.bgmTimer);
+            clearInterval(this.bgmTimer);
             this.bgmTimer = null;
           }
         }
@@ -1889,6 +1880,12 @@
             [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
               this.playTone(f, 'square', t + 0.32 + i * 0.06, 0.14, 0.12);
             });
+          } else if (type === 'thief') {
+            // Sneaky mysterious thief riff + comical stolen-away whistle!
+            [329.63, 311.13, 329.63, 246.94, 293.66, 261.63, 220.0].forEach((f, i) => {
+              this.playTone(f, 'square', t + i * 0.075, 0.09, 0.1);
+            });
+            this.playNoise(t + 0.55, 0.16, 0.14, 2600, 'highpass');
           }
         }
 
@@ -2138,18 +2135,67 @@
         );
       }
 
+      function simulateSlideDrop(board, totalRows, matrix, startX, slideOffset) {
+        let y = 0;
+        if (checkCollision(board, totalRows, matrix, startX, y)) return null;
+        while (!checkCollision(board, totalRows, matrix, startX, y + 1)) {
+          y++;
+        }
+        // Slide horizontally right before locking (tuck under overhangs!)
+        let x = startX;
+        const dir = slideOffset > 0 ? 1 : -1;
+        const steps = Math.abs(slideOffset);
+        for (let s = 0; s < steps; s++) {
+          if (checkCollision(board, totalRows, matrix, x + dir, y)) return null;
+          x += dir;
+        }
+        // Drop further if sliding opened empty space underneath
+        while (!checkCollision(board, totalRows, matrix, x, y + 1)) {
+          y++;
+        }
+        const sim = board.map(r => [...r]);
+        for (let r = 0; r < matrix.length; r++) {
+          for (let c = 0; c < matrix[0].length; c++) {
+            if (matrix[r][c]) {
+              sim[y + r][x + c] = 1;
+            }
+          }
+        }
+        let cleared = 0;
+        for (let r = totalRows - 1; r >= 0; r--) {
+          if (sim[r].every(cell => cell !== 0) && !sim[r].includes(MONUMENT_CELL_VAL)) {
+            sim.splice(r, 1);
+            sim.unshift(Array(COLS).fill(0));
+            cleared++;
+            r++;
+          }
+        }
+        return { board: sim, cleared, landY: y, finalX: x };
+      }
+
       function computeGeniusMove(board, totalRows, limitRow, pieceMatrix, nextMatrix) {
         const rots = getUniqueRotations(pieceMatrix);
-        let bestMove = { x: Math.floor((COLS - pieceMatrix[0].length) / 2), rotIndex: 0, score: -Infinity };
+        let bestMove = { x: Math.floor((COLS - pieceMatrix[0].length) / 2), slideX: Math.floor((COLS - pieceMatrix[0].length) / 2), rotIndex: 0, score: -Infinity };
 
         const candidates = [];
+        const seenPlacements = new Set();
+        const slideOffsets = [0, -1, 1, -2, 2];
+
         for (const rot of rots) {
           const width = rot.matrix[0].length;
           for (let x = 0; x <= COLS - width; x++) {
-            const res = simulateDrop(board, totalRows, rot.matrix, x);
-            if (!res) continue;
-            const s = evaluateBoardForGenius(res.board, totalRows, limitRow, res.cleared);
-            candidates.push({ x, rotIndex: rot.rotIndex, score: s, simBoard: res.board });
+            for (const slideOff of slideOffsets) {
+              const res = slideOff === 0
+                ? simulateDrop(board, totalRows, rot.matrix, x)
+                : simulateSlideDrop(board, totalRows, rot.matrix, x, slideOff);
+              if (!res) continue;
+              const finalX = slideOff === 0 ? x : res.finalX;
+              const pKey = `${rot.rotIndex}:${finalX}:${res.landY}`;
+              if (seenPlacements.has(pKey)) continue;
+              seenPlacements.add(pKey);
+              const s = evaluateBoardForGenius(res.board, totalRows, limitRow, res.cleared);
+              candidates.push({ x, slideX: finalX, rotIndex: rot.rotIndex, score: s, simBoard: res.board });
+            }
           }
         }
 
@@ -2173,7 +2219,7 @@
             }
             const combined = cand.score * 0.35 + (bestNext === -Infinity ? -1000 : bestNext) * 0.65;
             if (combined > bestMove.score) {
-              bestMove = { x: cand.x, rotIndex: cand.rotIndex, score: combined };
+              bestMove = { x: cand.x, slideX: cand.slideX, rotIndex: cand.rotIndex, score: combined };
             }
           }
           return bestMove;
@@ -2261,10 +2307,11 @@
           linesTowardBomb: 0,
           devilCount: 1,
           revCount: 1,
-          defuseCount: 1,
+          defuseCount: 3,
           monumentCount: 1,
           demolishCount: 0,
-          monuments: []
+          monuments: [],
+          carryOverRows: []
         },
         score: 0,
         lastStageScore: 0,
@@ -2276,10 +2323,12 @@
         },
         devilCount: 1,
         revCount: 1,
-        defuseCount: 1,
+        defuseCount: 3,
         monumentCount: 1,
         demolishCount: 0,
-        monuments: [], // Persistent indestructible silver 1x1 blocks: [{ col, rowFromBottom }]
+        monuments: [], // Persistent indestructible silver 1x1 blocks (記念碑): [{ col, rowFromBottom, placedStage }]
+        pendingCarryOverRows: [], // Rows carried over from previous stage's end board (bottom-up order)
+        thiefAnim: null, // Active 4th-stage monument thief heist animation
         monumentDropActive: false,
         interruptedBeforeMonument: null,
         karmaBuilderMode: null, // null | 'bolshoi' | 'perestroika'
@@ -2643,6 +2692,22 @@
           <rect x="11" y="2" width="2" height="2" fill="#ef4444"/>
           <rect x="19" y="10" width="3" height="2" fill="#fde047"/>
           <rect x="2" y="11" width="3" height="2" fill="#fde047"/>
+        </svg>`,
+        thief: `<svg class="pixel-svg w-full h-full" viewBox="0 0 24 24">
+          <!-- Stolen Gleaming Silver Monument Held Overhead -->
+          <rect x="8" y="1" width="8" height="7" fill="#e2e8f0" stroke="#475569" stroke-width="1"/>
+          <rect x="9" y="2" width="3" height="2" fill="#ffffff"/>
+          <!-- Black Balaclava Thief Head -->
+          <rect x="7" y="8" width="10" height="7" fill="#0f172a"/>
+          <rect x="8" y="10" width="8" height="2" fill="#fde68a"/>
+          <rect x="9" y="10" width="2" height="2" fill="#0f172a"/>
+          <rect x="13" y="10" width="2" height="2" fill="#0f172a"/>
+          <!-- Striped Bandit Shirt & Running Legs -->
+          <rect x="6" y="15" width="12" height="5" fill="#1e293b"/>
+          <rect x="6" y="16" width="12" height="1" fill="#f8fafc"/>
+          <rect x="6" y="18" width="12" height="1" fill="#f8fafc"/>
+          <rect x="5" y="20" width="4" height="3" fill="#0f172a"/>
+          <rect x="15" y="20" width="4" height="3" fill="#0f172a"/>
         </svg>`
       };
 
@@ -2700,6 +2765,14 @@
             en: 'SNESTI!!',
             ja: 'スネスチー発動！！',
             sub: '盤面のパーミャトニクを全て撤去する！'
+          },
+          thief: {
+            boxCls: 'bg-gradient-to-r from-slate-950/95 via-indigo-900/95 to-slate-950/95 border-slate-300',
+            enCls: 'text-amber-300',
+            subCls: 'text-slate-200',
+            en: 'THIEF!!',
+            ja: '何者かがパーミャトニクを盗んだ！',
+            sub: '4ステージ目の開始に記念碑が持ち去られた…！'
           }
         };
         const cfg = configs[type] || configs.perestroika;
@@ -3175,10 +3248,11 @@
         state.turnSide = 'sabotage';
         state.devilCount = 1;
         state.revCount = 1;
-        state.defuseCount = 1;
+        state.defuseCount = 3;
         state.monumentCount = 1;
         state.demolishCount = 0;
         state.monuments = [];
+        state.pendingCarryOverRows = [];
         state.monumentDropActive = false;
         state.interruptedBeforeMonument = null;
         state.karmaBuilderMode = null;
@@ -3394,11 +3468,49 @@
       }
 
       function applyMonumentsToBoard() {
-        // Place persistent indestructible silver monuments at their exact fixed coordinates!
+        // Place persistent indestructible silver monuments (永久凍土) at their exact fixed coordinates!
         for (const m of state.monuments) {
           const r = state.totalRows - 1 - m.rowFromBottom;
           if (r >= 0 && r < state.totalRows && m.col >= 0 && m.col < COLS) {
             state.board[r][m.col] = MONUMENT_CELL_VAL;
+          }
+        }
+      }
+
+      /**
+       * Capture carry-over rows at the end of a cleared stage for `nextStage`:
+       * x = nextStage - 2. Take all rows from (limitRow + x - 1) upward to row 0 (unlimited rows).
+       * Any cell that was a persistent monument (MONUMENT_CELL_VAL) becomes empty (0) in the carried-over rows
+       * (while the monument itself stays fixed at its original coordinate via `state.monuments`).
+       */
+      function captureCarryOverRows(nextStage) {
+        const x = nextStage - 2;
+        if (x < 0) return [];
+        const bottomSourceRow = Math.min(state.totalRows - 1, state.limitRow + x - 1);
+        if (bottomSourceRow < 0) return [];
+
+        const rowsBottomUp = [];
+        for (let r = bottomSourceRow; r >= 0; r--) {
+          const rowCopy = state.board[r].map(cell => (cell === MONUMENT_CELL_VAL ? 0 : cell));
+          rowsBottomUp.push(rowCopy);
+        }
+        // Trim completely empty rows at the top of the carried-over stack
+        while (rowsBottomUp.length > 0 && rowsBottomUp[rowsBottomUp.length - 1].every(c => c === 0)) {
+          rowsBottomUp.pop();
+        }
+        return rowsBottomUp;
+      }
+
+      function applyCarryOverRowsToBoard(rowsBottomUp) {
+        if (!Array.isArray(rowsBottomUp) || rowsBottomUp.length === 0) return;
+        for (let i = 0; i < rowsBottomUp.length; i++) {
+          const targetRow = state.totalRows - 1 - i;
+          if (targetRow < 0) break;
+          for (let c = 0; c < COLS; c++) {
+            const val = rowsBottomUp[i][c];
+            if (val && val !== MONUMENT_CELL_VAL) {
+              state.board[targetRow][c] = val;
+            }
           }
         }
       }
@@ -3411,7 +3523,14 @@
         state.totalRows = state.playRows + SPAWN_ROWS;
         state.limitRow = state.totalRows - state.stageHeight;
         state.board = Array.from({ length: state.totalRows }, () => Array(COLS).fill(0));
-        // Restore persistent Pamyatnik monuments across stages & phases!
+
+        // Apply carried-over blocks from previous stage starting from the very bottom row!
+        const carryRows = (turnSide === 'sabotage')
+          ? state.pendingCarryOverRows
+          : (state.stageStartSnapshot.carryOverRows || []);
+        applyCarryOverRowsToBoard(carryRows);
+
+        // Restore persistent Pamyatnik monuments (永久凍土) at their exact fixed coordinates!
         applyMonumentsToBoard();
         positionCpuAvatarPanel();
         state.turnsThisStage = 0;
@@ -3427,7 +3546,8 @@
             defuseCount: state.defuseCount,
             monumentCount: state.monumentCount,
             demolishCount: state.demolishCount,
-            monuments: state.monuments.map(m => ({ ...m }))
+            monuments: state.monuments.map(m => ({ ...m })),
+            carryOverRows: carryRows.map(row => [...row])
           };
         } else {
           state.playerLinesThisStage = 0;
@@ -3458,10 +3578,28 @@
 
         state.recordedTurns = [];
         state.firstTurnRev = false;
+        state.thiefAnim = null;
 
         const first = createRandomClassicPiece();
         spawnStandbyPiece(first);
         state.nextPiece = null;
+
+        // Check if any Pamyatnik monument has reached its 4th stage (stageNum - placedStage >= 3) -> Thief Heist!
+        const stolenList = state.monuments.filter(m => (stageNum - (m.placedStage || 1)) >= 3);
+        if (stolenList.length > 0) {
+          const target = stolenList[0];
+          state.thiefAnim = {
+            elapsed: 0,
+            stolen: false,
+            cutinShown: false,
+            targetCol: target.col,
+            targetRow: Math.max(SPAWN_ROWS, state.totalRows - 1 - target.rowFromBottom),
+            stolenMonuments: stolenList
+          };
+          state.phase = 'THIEF_EVENT';
+          updateHUD();
+          return;
+        }
 
         const topLabel = state.gameMode === 'karma'
           ? `⚔️ STAGE ${state.stage}【阻止るフェーズ】上限 ${state.stageHeight}段`
@@ -3497,6 +3635,7 @@
           state.cpuRevActiveNow = true;
           const move = computeSabotageMove(state.board, state.totalRows, state.limitRow, state.activePiece.matrix);
           state.activePiece.targetX = move.x;
+          state.activePiece.slideX = move.slideX !== undefined ? move.slideX : move.x;
           state.activePiece.targetRot = move.rotIndex;
           state.activePiece.currentRot = 0;
           audio.playRevolution();
@@ -3643,6 +3782,7 @@
             state.nextPiece ? state.nextPiece.matrix : null
           );
           state.activePiece.targetX = move.x;
+          state.activePiece.slideX = move.slideX !== undefined ? move.slideX : move.x;
           state.activePiece.targetRot = move.rotIndex;
           state.activePiece.currentRot = 0;
         }
@@ -3661,7 +3801,7 @@
             state.board[by][bx] = MONUMENT_CELL_VAL;
             const rowFromBottom = state.totalRows - 1 - by;
             if (!state.monuments.some(m => m.col === bx && m.rowFromBottom === rowFromBottom)) {
-              state.monuments.push({ col: bx, rowFromBottom });
+              state.monuments.push({ col: bx, rowFromBottom, placedStage: state.stage });
             }
           }
           audio.playLand();
@@ -3830,7 +3970,9 @@
         addScore(stageEarned);
         updateHUD();
 
-        const isEven = state.stage % 2 === 0;
+        // Capture carry-over blocks from current board for the upcoming next stage!
+        state.pendingCarryOverRows = captureCarryOverRows(state.stage + 1);
+
         document.getElementById('clearTitle').textContent =
           state.gameMode === 'karma'
             ? `STAGE ${state.stage} 因果応報 突破！`
@@ -3840,12 +3982,10 @@
         document.getElementById('clearStageScore').textContent = `+${stageEarned.toLocaleString()}`;
         document.getElementById('clearTotalScore').textContent = state.score.toLocaleString();
 
-        document.getElementById('clearSubtitle').textContent = isEven
-          ? `${karmaClearReason ? karmaClearReason + ' ' : ''}偶数ステージクリアにつき「ロシアクイズ」へ挑戦！`
-          : (karmaClearReason || `天才CPUを上限ライン(${state.stageHeight}段)超えに追い込んだ！`);
-        document.getElementById('btnNextStage').textContent = isEven
-          ? '🇷🇺 ロシアクイズへ進む ▶'
-          : `STAGE ${state.stage + 1} へ ▶`;
+        // Russia Quiz now occurs after EVERY cleared stage!
+        document.getElementById('clearSubtitle').textContent =
+          `${karmaClearReason ? karmaClearReason + ' ' : ''}ステージクリア！ボーナス「ロシアクイズ」へ挑戦！`;
+        document.getElementById('btnNextStage').textContent = '🇷🇺 ロシアクイズへ進む ▶';
 
         setTimeout(() => {
           stageClearModal.classList.remove('hidden');
@@ -3864,15 +4004,24 @@
         triggerShake();
         updateHUD();
 
-        // Switch Game Over artwork: Karma player-clearing turn -> non-looping gameover2.mp4, otherwise gameover1.jpg
+        // Switch Game Over artwork: Karma player-clearing turn -> non-looping gameover2.mp4 (WITH AUDIO mixed alongside Troika BGM!)
         const isKarmaPlayerTurn = state.gameMode === 'karma' && state.turnSide === 'karma';
         if (isKarmaPlayerTurn && gameOverVideo) {
           if (gameOverImg) gameOverImg.classList.add('hidden');
           gameOverVideo.classList.remove('hidden');
           gameOverVideo.loop = false;
+          gameOverVideo.muted = audio.muted;
+          gameOverVideo.volume = 0.85;
           try {
             gameOverVideo.currentTime = 0;
-            gameOverVideo.play().catch(() => {});
+            const playPromise = gameOverVideo.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+              playPromise.catch(() => {
+                // Fallback to muted playback only if browser autoplay policy blocks unmuted video
+                gameOverVideo.muted = true;
+                gameOverVideo.play().catch(() => {});
+              });
+            }
           } catch (e) {}
         } else {
           if (gameOverVideo) {
@@ -3994,8 +4143,14 @@
 
         if (state.revArmedForDrop || state.revActiveNow) return;
         if (state.phase === 'BUILDING') {
+          // Activate IMMEDIATELY! Take over the currently waiting piece right now,
+          // then after landing, reset timer and resume building fresh!
           state.revCount--;
-          state.revArmedForDrop = true;
+          state.revActiveNow = true;
+          state.softDropHeld = false;
+          state.phase = 'DROPPING';
+          state.dropAccumulator = 0;
+          state.turnsThisStage++;
           if (state.gameMode === 'karma') {
             if (state.recordedTurns.length === 0) {
               state.firstTurnRev = true;
@@ -4003,8 +4158,8 @@
               state.recordedTurns[state.recordedTurns.length - 1].wasRev = true;
             }
           }
-          audio.playRevolution();
-          showBoardBanner('✊ ペレストロイカ予約！次の落下を手動操作！', 1200);
+          showSkillCutin('perestroika');
+          showBoardBanner('✊ ペレストロイカ発動！今すぐ手動で落とせ！', 1300);
           updateHUD();
         } else if (state.phase === 'DROPPING') {
           state.revCount--;
@@ -4017,7 +4172,6 @@
               state.recordedTurns[state.recordedTurns.length - 2].wasRev = true;
             }
           }
-          audio.playRevolution();
           showSkillCutin('perestroika');
           showBoardBanner('✊ ペレストロイカ発動！操作権を奪った！', 1200);
           updateHUD();
@@ -4331,11 +4485,8 @@
           startStage(state.stage, 'karma');
           return;
         }
-        if (state.stage % 2 === 0) {
-          openRussiaQuiz();
-        } else {
-          startStage(state.stage + 1, 'sabotage');
-        }
+        // Always open Russia Quiz after every cleared stage!
+        openRussiaQuiz();
       });
 
       document.getElementById('rewardDevil').addEventListener('click', () => {
@@ -4548,6 +4699,7 @@
       document.getElementById('btnMute').addEventListener('click', () => {
         const isMuted = audio.toggleMute();
         document.getElementById('btnMute').textContent = isMuted ? '🔇' : '🔊';
+        if (gameOverVideo) gameOverVideo.muted = isMuted;
         if (!isMuted && state.phase !== 'TITLE') {
           audio.startBGM(state.phase === 'GAME_OVER' ? 'troika' : 'main');
         }
@@ -4593,6 +4745,7 @@
         state.monumentCount = snap.monumentCount ?? 1;
         state.demolishCount = snap.demolishCount ?? 0;
         state.monuments = Array.isArray(snap.monuments) ? snap.monuments.map(m => ({ ...m })) : [];
+        state.pendingCarryOverRows = Array.isArray(snap.carryOverRows) ? snap.carryOverRows.map(row => [...row]) : [];
         // Reset score and total cleared lines to 0
         state.score = 0;
         state.lastStageScore = 0;
@@ -5424,6 +5577,64 @@
         gameCtx.fillText(ceilingText, ox + boardW - 3, limitLineY - 4);
         gameCtx.restore();
 
+        // Render Thief Heist Animation (4th-stage Pamyatnik theft!)
+        if (state.thiefAnim) {
+          const ta = state.thiefAnim;
+          const targetX = ox + (ta.targetCol + 0.5) * cell;
+          const targetY = oy + (ta.targetRow + 0.5) * cell;
+          let tx = -24;
+          if (ta.elapsed < 850) {
+            // Running in from left edge to the monument
+            const p = Math.min(1, ta.elapsed / 850);
+            tx = -24 + (targetX + 24) * p;
+          } else if (ta.elapsed < 1150) {
+            // Grabbing the silver monument!
+            tx = targetX;
+          } else {
+            // Sprinting away to the right edge with the stolen monument!
+            const p = Math.min(1, (ta.elapsed - 1150) / 1000);
+            tx = targetX + (w + 36 - targetX) * p;
+          }
+
+          const stepBounce = Math.abs(Math.sin(nowMs * 0.025)) * 4;
+          const legSwing = Math.sin(nowMs * 0.03) > 0;
+          const drawSize = Math.max(20, Math.floor(cell * 1.15));
+          const u = Math.max(2, Math.floor(drawSize / 10));
+          const gx = Math.floor(tx - u * 4);
+          const gy = Math.floor(targetY - u * 5 - stepBounce);
+
+          gameCtx.save();
+          // If already stolen, draw the gleaming silver Pamyatnik held overhead!
+          if (ta.stolen) {
+            drawRetroBlock(gameCtx, gx + u, gy - cell * 0.85, Math.max(12, cell * 0.85), MONUMENT_COLOR_INDEX, 1, nowMs);
+          }
+          // Black balaclava head
+          gameCtx.fillStyle = '#0f172a';
+          gameCtx.fillRect(gx + u, gy, u * 6, u * 4);
+          // Eye slit
+          gameCtx.fillStyle = '#fde68a';
+          gameCtx.fillRect(gx + u * 2, gy + u, u * 4, u);
+          gameCtx.fillStyle = '#0f172a';
+          gameCtx.fillRect(gx + u * 2 + 1, gy + u, u, u);
+          gameCtx.fillRect(gx + u * 5 - 1, gy + u, u, u);
+          // Striped bandit torso
+          gameCtx.fillStyle = '#1e293b';
+          gameCtx.fillRect(gx + u, gy + u * 4, u * 6, u * 4);
+          gameCtx.fillStyle = '#f8fafc';
+          gameCtx.fillRect(gx + u, gy + u * 5, u * 6, Math.max(1, Math.floor(u * 0.6)));
+          gameCtx.fillRect(gx + u, gy + u * 7, u * 6, Math.max(1, Math.floor(u * 0.6)));
+          // Animated running legs
+          gameCtx.fillStyle = '#0f172a';
+          if (legSwing) {
+            gameCtx.fillRect(gx, gy + u * 8, u * 3, u * 2);
+            gameCtx.fillRect(gx + u * 5, gy + u * 7, u * 3, u * 2);
+          } else {
+            gameCtx.fillRect(gx + u, gy + u * 7, u * 3, u * 2);
+            gameCtx.fillRect(gx + u * 5, gy + u * 8, u * 3, u * 2);
+          }
+          gameCtx.restore();
+        }
+
         // Render particles
         for (let i = state.particles.length - 1; i >= 0; i--) {
           const pt = state.particles[i];
@@ -5449,6 +5660,40 @@
       let lastFrameTime = performance.now();
 
       function update(dtMs) {
+        // 4th-stage Pamyatnik Thief Heist Event (runs even while cut-in shows so thief sprints away!)
+        if (state.phase === 'THIEF_EVENT' && state.thiefAnim) {
+          const ta = state.thiefAnim;
+          ta.elapsed += dtMs;
+          if (!ta.stolen && ta.elapsed >= 850) {
+            ta.stolen = true;
+            // Remove all stolen monuments from board (leaving empty cells) & from state.monuments
+            const stolenSet = new Set(ta.stolenMonuments);
+            for (const m of ta.stolenMonuments) {
+              const r = state.totalRows - 1 - m.rowFromBottom;
+              if (r >= 0 && r < state.totalRows && m.col >= 0 && m.col < COLS) {
+                if (state.board[r][m.col] === MONUMENT_CELL_VAL) {
+                  state.board[r][m.col] = 0;
+                }
+              }
+            }
+            state.monuments = state.monuments.filter(m => !stolenSet.has(m));
+            state.stageStartSnapshot.monuments = state.monuments.map(m => ({ ...m }));
+            triggerShake();
+            if (!ta.cutinShown) {
+              ta.cutinShown = true;
+              showSkillCutin('thief', () => {
+                state.thiefAnim = null;
+                const topLabel = state.gameMode === 'karma'
+                  ? `⚔️ STAGE ${state.stage}【阻止るフェーズ】上限 ${state.stageHeight}段`
+                  : `STAGE ${state.stage} 開始！上限 ${state.stageHeight}段`;
+                showBoardBanner(topLabel, 1500);
+                beginBuildingPhase();
+              });
+            }
+          }
+          return;
+        }
+
         // Freeze time completely during special skill cut-in animation!
         if (state.cutinFreezeTimer > 0) {
           state.cutinFreezeTimer = Math.max(0, state.cutinFreezeTimer - dtMs);
@@ -5534,6 +5779,17 @@
             state.dropAccumulator = 0;
             if (!checkCollision(state.board, state.totalRows, p.matrix, p.x, p.y + 1)) {
               p.y++;
+            } else if (aiControlled && p.slideX !== undefined && p.x !== p.slideX) {
+              // Last-second horizontal tuck / slide right before locking!
+              const stepDir = p.slideX > p.x ? 1 : -1;
+              if (!checkCollision(state.board, state.totalRows, p.matrix, p.x + stepDir, p.y)) {
+                p.x += stepDir;
+                p.targetX = p.x;
+                audio.playMove();
+              } else {
+                p.slideX = p.x;
+                lockActivePiece();
+              }
             } else {
               lockActivePiece();
             }
