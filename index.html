@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>ソシルス (Soshirusu)</title>
+<!doctype html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>ソシルス (Soshirus)</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: DotGothic16 & Press Start 2P for Retro Home Console Tetris Homage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&amp;family=Press+Start+2P&amp;display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -290,12 +289,19 @@
       box-shadow: inset 0 2px 4px rgba(255,255,255,0.85), inset 0 -3px 6px rgba(15,23,42,0.35), 0 4px 10px rgba(0,0,0,0.5);
     }
     .ds-dpad-btn {
+      position: relative;
       background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
       border: 1px solid #0f172a;
       box-shadow: inset 0 1px 1px rgba(255,255,255,0.25), 0 2px 2px rgba(0,0,0,0.45);
       color: #cbd5e1;
       transition: transform 0.05s ease, background-color 0.05s ease;
+      touch-action: manipulation;
     }
+    /* Expand invisible touch hit area outward on iPhone without overlapping sibling keys */
+    #revUp::after    { content: ''; position: absolute; top: -10px; left: -6px; right: -6px; bottom: 0; }
+    #revDown::after  { content: ''; position: absolute; top: 0; left: -6px; right: -6px; bottom: -10px; }
+    #revLeft::after  { content: ''; position: absolute; top: -6px; left: -10px; right: 0; bottom: -6px; }
+    #revRight::after { content: ''; position: absolute; top: -6px; left: 0; right: -10px; bottom: -6px; }
     .ds-dpad-btn:active, .ds-dpad-btn.pressed {
       background: #0f172a;
       transform: scale(0.94);
@@ -318,7 +324,7 @@
       display: block;
     }
   </style>
-</head>
+<script id="vb-svg-edits" type="application/json">[{"ref":"body:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)","before":"\n          \u003c!-- Kremlin Red Star -->\n          \u003crect x=\"43\" y=\"0\" width=\"2\" height=\"2\" fill=\"#ef4444\">\u003c/rect>\n          \u003crect x=\"42\" y=\"1\" width=\"4\" height=\"1\" fill=\"#fbbf24\">\u003c/rect>\n          \u003c!-- Central Spire -->\n          \u003crect x=\"43\" y=\"2\" width=\"2\" height=\"4\" fill=\"#fbbf24\">\u003c/rect>\n          \u003crect x=\"41\" y=\"6\" width=\"6\" height=\"3\" fill=\"#dc2626\">\u003c/rect>\n          \u003crect x=\"39\" y=\"9\" width=\"10\" height=\"4\" fill=\"#f59e0b\">\u003c/rect>\n          \u003crect x=\"38\" y=\"13\" width=\"12\" height=\"11\" fill=\"#1e293b\">\u003c/rect>\n          \u003crect x=\"41\" y=\"15\" width=\"2\" height=\"3\" fill=\"#38bdf8\">\u003c/rect>\n          \u003crect x=\"45\" y=\"15\" width=\"2\" height=\"3\" fill=\"#38bdf8\">\u003c/rect>\n          \u003c!-- Left Onion Dome -->\n          \u003crect x=\"25\" y=\"5\" width=\"2\" height=\"2\" fill=\"#fbbf24\">\u003c/rect>\n          \u003crect x=\"23\" y=\"7\" width=\"6\" height=\"2\" fill=\"#06b6d4\">\u003c/rect>\n          \u003crect x=\"21\" y=\"9\" width=\"10\" height=\"4\" fill=\"#0284c7\">\u003c/rect>\n          \u003crect x=\"23\" y=\"13\" width=\"6\" height=\"11\" fill=\"#334155\">\u003c/rect>\n          \u003crect x=\"25\" y=\"16\" width=\"2\" height=\"3\" fill=\"#fde047\">\u003c/rect>\n          \u003c!-- Right Onion Dome -->\n          \u003crect x=\"61\" y=\"5\" width=\"2\" height=\"2\" fill=\"#fbbf24\">\u003c/rect>\n          \u003crect x=\"59\" y=\"7\" width=\"6\" height=\"2\" fill=\"#a855f7\">\u003c/rect>\n          \u003crect x=\"57\" y=\"9\" width=\"10\" height=\"4\" fill=\"#7e22ce\">\u003c/rect>\n          \u003crect x=\"59\" y=\"13\" width=\"6\" height=\"11\" fill=\"#334155\">\u003c/rect>\n          \u003crect x=\"61\" y=\"16\" width=\"2\" height=\"3\" fill=\"#fde047\">\u003c/rect>\n          \u003c!-- Far Left Tower -->\n          \u003crect x=\"11\" y=\"10\" width=\"2\" height=\"2\" fill=\"#fbbf24\">\u003c/rect>\n          \u003crect x=\"9\" y=\"12\" width=\"6\" height=\"3\" fill=\"#10b981\">\u003c/rect>\n          \u003crect x=\"10\" y=\"15\" width=\"4\" height=\"9\" fill=\"#1e293b\">\u003c/rect>\n          \u003c!-- Far Right Tower -->\n          \u003crect x=\"75\" y=\"10\" width=\"2\" height=\"2\" fill=\"#fbbf24\">\u003c/rect>\n          \u003crect x=\"73\" y=\"12\" width=\"6\" height=\"3\" fill=\"#f97316\">\u003c/rect>\n          \u003crect x=\"74\" y=\"15\" width=\"4\" height=\"9\" fill=\"#1e293b\">\u003c/rect>\n          \u003c!-- Kremlin Wall Base -->\n          \u003crect x=\"2\" y=\"21\" width=\"84\" height=\"3\" fill=\"#475569\">\u003c/rect>\n          \u003crect x=\"4\" y=\"19\" width=\"3\" height=\"2\" fill=\"#64748b\">\u003c/rect>\n          \u003crect x=\"17\" y=\"19\" width=\"3\" height=\"2\" fill=\"#64748b\">\u003c/rect>\n          \u003crect x=\"32\" y=\"19\" width=\"3\" height=\"2\" fill=\"#64748b\">\u003c/rect>\n          \u003crect x=\"53\" y=\"19\" width=\"3\" height=\"2\" fill=\"#64748b\">\u003c/rect>\n          \u003crect x=\"68\" y=\"19\" width=\"3\" height=\"2\" fill=\"#64748b\">\u003c/rect>\n          \u003crect x=\"81\" y=\"19\" width=\"3\" height=\"2\" fill=\"#64748b\">\u003c/rect>\n        ","operations":[{"kind":"attribute","path":[16],"name":"fill","value":"#7d91af"},{"kind":"attribute","path":[16],"name":"fill","value":"#7d91af"},{"kind":"attribute","path":[16],"name":"fill","value":"#7d91af"},{"kind":"attribute","path":[16],"name":"fill","value":"#8ba1c0"},{"kind":"attribute","path":[16],"name":"fill","value":"#8ba1c0"},{"kind":"attribute","path":[5],"name":"fill","value":"#a5b3ca"},{"kind":"attribute","path":[5],"name":"fill","value":"#a5b3ca"},{"kind":"attribute","path":[5],"name":"fill","value":"#a5b3ca"},{"kind":"attribute","path":[23],"name":"transform","value":"matrix(1,0,0,1,0,-0.043103)"},{"kind":"attribute","path":[23],"name":"fill","value":"#808fa9"},{"kind":"attribute","path":[23],"name":"fill","value":"#808fa9"},{"kind":"attribute","path":[23],"name":"fill","value":"#808fa9"},{"kind":"attribute","path":[11],"name":"fill","value":"#8a9cb6"},{"kind":"attribute","path":[11],"name":"fill","value":"#8a9cb6"},{"kind":"attribute","path":[20],"name":"transform","value":"matrix(1,0,0,1,0.01778,0)"},{"kind":"attribute","path":[20],"name":"fill","value":"#7792bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#7792bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#a6bf77"},{"kind":"attribute","path":[20],"name":"fill","value":"#a6bf77"},{"kind":"attribute","path":[20],"name":"fill","value":"#9777bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#9b77bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#9f77bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#a177bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#a377bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#a577bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#a677bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#a777bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#a877bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#a977bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#ac77bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#ad77bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#ae77bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#af77bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#b177bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#b277bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#b377bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#b477bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#b577bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#b777bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#b977bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#bb77bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#be77bf"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77bd"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77ba"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77b7"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77b3"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77af"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77ac"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77a9"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77a7"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77a5"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77a3"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77a2"},{"kind":"attribute","path":[20],"name":"fill","value":"#bf77a2"},{"kind":"attribute","path":[20],"name":"fill","value":"#db2893"},{"kind":"attribute","path":[20],"name":"fill","value":"#db2893"},{"kind":"attribute","path":[20],"name":"fill","value":"#db2893"},{"kind":"attribute","path":[20],"name":"fill","value":"#db284c"},{"kind":"attribute","path":[20],"name":"fill","value":"#db284c"},{"kind":"attribute","path":[5],"name":"fill","value":"#caa5b5"},{"kind":"attribute","path":[5],"name":"fill","value":"#caa5b5"},{"kind":"attribute","path":[5],"name":"fill","value":"#a00e4d"},{"kind":"attribute","path":[5],"name":"fill","value":"#a00e4d"},{"kind":"attribute","path":[5],"name":"fill","value":"#be155e"},{"kind":"attribute","path":[5],"name":"fill","value":"#be155e"},{"kind":"attribute","path":[23],"name":"fill","value":"#a98092"},{"kind":"attribute","path":[23],"name":"fill","value":"#a98091"},{"kind":"attribute","path":[23],"name":"fill","value":"#a98091"},{"kind":"attribute","path":[23],"name":"fill","value":"#94194d"},{"kind":"attribute","path":[23],"name":"fill","value":"#94194d"}]}]</script></head>
 <body class="crt-bg flex flex-col items-center justify-center w-full h-[100dvh] overflow-hidden">
 
   <!-- MAIN GAME SHELL -->
@@ -327,93 +333,117 @@
     <!-- TOP HEADER BAR -->
     <header class="retro-panel px-2.5 py-1.5 flex items-center justify-between shrink-0">
       <div class="flex items-center gap-2 min-w-0">
-        <!-- Soshirusu 8-bit Tetromino Emblem Logo -->
-        <div class="w-9 h-9 rounded-lg bg-slate-950 border-2 border-amber-400 flex items-center justify-center shadow-md shrink-0 overflow-hidden" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 0 8px rgba(251,191,36,0.35);" aria-label="ソシルス ロゴ">
-          <svg class="pixel-svg w-full h-full" viewBox="0 0 24 24">
-            <!-- Dark Emblem Background -->
-            <rect width="24" height="24" fill="#0b1120"/>
-            <!-- Subtle Grid -->
-            <path d="M6 0v24M12 0v24M18 0v24M0 6h24M0 12h24M0 18h24" stroke="#1e293b" stroke-width="1"/>
-
-            <!-- Top Row of S-Tetromino (Cyan Blocks: [1,0], [2,0], [3,0]) -->
-            <g>
-              <!-- (6,2) -->
-              <rect x="6" y="2" width="5" height="5" fill="#06b6d4"/>
-              <rect x="6" y="2" width="5" height="1" fill="#67e8f9"/>
-              <rect x="6" y="2" width="1" height="5" fill="#67e8f9"/>
-              <rect x="6" y="6" width="5" height="1" fill="#0e7490"/>
-              <rect x="10" y="2" width="1" height="5" fill="#0e7490"/>
-              <!-- (11,2) -->
-              <rect x="11" y="2" width="5" height="5" fill="#06b6d4"/>
-              <rect x="11" y="2" width="5" height="1" fill="#67e8f9"/>
-              <rect x="11" y="2" width="1" height="5" fill="#67e8f9"/>
-              <rect x="11" y="6" width="5" height="1" fill="#0e7490"/>
-              <rect x="15" y="2" width="1" height="5" fill="#0e7490"/>
-              <!-- (16,2) -->
-              <rect x="16" y="2" width="5" height="5" fill="#06b6d4"/>
-              <rect x="16" y="2" width="5" height="1" fill="#67e8f9"/>
-              <rect x="16" y="2" width="1" height="5" fill="#67e8f9"/>
-              <rect x="16" y="6" width="5" height="1" fill="#0e7490"/>
-              <rect x="20" y="2" width="1" height="5" fill="#0e7490"/>
+        <!-- Soshirus Official Starry-Block Emblem Logo (matching Title Art) -->
+        <div class="w-9 h-9 rounded-lg border-2 border-amber-400 flex items-center justify-center shadow-md shrink-0 overflow-hidden" style="background: linear-gradient(180deg, #061336 0%, #0f2966 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 0 8px rgba(251,191,36,0.4);" aria-label="ソシルス ロゴ">
+          <svg class="w-full h-full" viewBox="0 0 36 36">
+            <!-- Snow & Star Dots -->
+            <circle cx="5" cy="6" r="1" fill="#ffffff" opacity="0.8"/>
+            <circle cx="31" cy="7" r="1.1" fill="#fef08a" opacity="0.9"/>
+            <circle cx="4" cy="29" r="0.9" fill="#ffffff" opacity="0.65"/>
+            <circle cx="32" cy="28" r="1" fill="#ffffff" opacity="0.7"/>
+            <!-- Iconic Red Star with Gold Border -->
+            <polygon points="18,1.5 19.6,5.3 23.8,5.5 20.5,8.1 21.6,12 18,9.7 14.4,12 15.5,8.1 12.2,5.5 16.4,5.3" fill="#dc2626" stroke="#fbbf24" stroke-width="1"/>
+            <!-- Colorful Block "S" Crest (Red / Yellow / Cyan / Green / Purple with Gold Outer Frame) -->
+            <g stroke="#fbbf24" stroke-width="2.6" stroke-linejoin="round" fill="none">
+              <path d="M9 13h18v5h-12v2h12v12H9v-5h12v-2H9z"/>
             </g>
-
-            <!-- Middle Row of S-Tetromino (Gold/Amber Blocks: [0,1], [1,1], [2,1]) -->
-            <g>
-              <!-- (3,7) -->
-              <rect x="3" y="7" width="5" height="5" fill="#eab308"/>
-              <rect x="3" y="7" width="5" height="1" fill="#fef08a"/>
-              <rect x="3" y="7" width="1" height="5" fill="#fef08a"/>
-              <rect x="3" y="11" width="5" height="1" fill="#a16207"/>
-              <rect x="7" y="7" width="1" height="5" fill="#a16207"/>
-              <!-- (8,10) center bar -->
-              <rect x="8" y="9" width="5" height="5" fill="#f59e0b"/>
-              <rect x="8" y="9" width="5" height="1" fill="#fde047"/>
-              <rect x="8" y="9" width="1" height="5" fill="#fde047"/>
-              <rect x="8" y="13" width="5" height="1" fill="#b45309"/>
-              <rect x="12" y="9" width="1" height="5" fill="#b45309"/>
-              <!-- (13,10) -->
-              <rect x="13" y="9" width="5" height="5" fill="#f59e0b"/>
-              <rect x="13" y="9" width="5" height="1" fill="#fde047"/>
-              <rect x="13" y="9" width="1" height="5" fill="#fde047"/>
-              <rect x="13" y="13" width="5" height="1" fill="#b45309"/>
-              <rect x="17" y="9" width="1" height="5" fill="#b45309"/>
+            <!-- Top Row: Red + Yellow + Orange -->
+            <rect x="9" y="13" width="6" height="5" fill="#ef4444" stroke="#450a0a" stroke-width="0.9"/>
+            <rect x="15" y="13" width="6" height="5" fill="#facc15" stroke="#450a0a" stroke-width="0.9"/>
+            <rect x="21" y="13" width="6" height="5" fill="#f97316" stroke="#450a0a" stroke-width="0.9"/>
+            <!-- Middle Bar: Cyan + Blue + Green -->
+            <rect x="9" y="18" width="6" height="5" fill="#38bdf8" stroke="#082f49" stroke-width="0.9"/>
+            <rect x="15" y="20" width="6" height="5" fill="#2563eb" stroke="#082f49" stroke-width="0.9"/>
+            <rect x="21" y="20" width="6" height="5" fill="#22c55e" stroke="#052e16" stroke-width="0.9"/>
+            <!-- Bottom Row: Blue + Green + Purple -->
+            <rect x="9" y="27" width="6" height="5" fill="#2563eb" stroke="#1e1b4b" stroke-width="0.9"/>
+            <rect x="15" y="27" width="6" height="5" fill="#22c55e" stroke="#1e1b4b" stroke-width="0.9"/>
+            <rect x="21" y="25" width="6" height="7" fill="#a855f7" stroke="#3b0764" stroke-width="0.9"/>
+            <!-- Crisp Bevel Highlights -->
+            <g fill="#ffffff" opacity="0.45">
+              <rect x="10" y="14" width="4" height="1.2"/><rect x="16" y="14" width="4" height="1.2"/><rect x="22" y="14" width="4" height="1.2"/>
+              <rect x="10" y="19" width="4" height="1.2"/><rect x="16" y="21" width="4" height="1.2"/><rect x="22" y="21" width="4" height="1.2"/>
+              <rect x="10" y="28" width="4" height="1.2"/><rect x="16" y="28" width="4" height="1.2"/><rect x="22" y="26" width="4" height="1.2"/>
             </g>
-
-            <!-- Bottom Row of S-Tetromino (Crimson Red Blocks) -->
-            <g>
-              <!-- (16,12) -->
-              <rect x="16" y="12" width="5" height="5" fill="#ef4444"/>
-              <rect x="16" y="12" width="5" height="1" fill="#fca5a5"/>
-              <rect x="16" y="12" width="1" height="5" fill="#fca5a5"/>
-              <rect x="16" y="16" width="5" height="1" fill="#991b1b"/>
-              <rect x="20" y="12" width="1" height="5" fill="#991b1b"/>
-              <!-- (13,17) -->
-              <rect x="13" y="17" width="5" height="5" fill="#ef4444"/>
-              <rect x="13" y="17" width="5" height="1" fill="#fca5a5"/>
-              <rect x="13" y="17" width="1" height="5" fill="#fca5a5"/>
-              <rect x="13" y="21" width="5" height="1" fill="#991b1b"/>
-              <rect x="17" y="17" width="1" height="5" fill="#991b1b"/>
-              <!-- (8,17) -->
-              <rect x="8" y="17" width="5" height="5" fill="#ef4444"/>
-              <rect x="8" y="17" width="5" height="1" fill="#fca5a5"/>
-              <rect x="8" y="17" width="1" height="5" fill="#fca5a5"/>
-              <rect x="8" y="21" width="5" height="1" fill="#991b1b"/>
-              <rect x="12" y="17" width="1" height="5" fill="#991b1b"/>
-              <!-- (3,17) -->
-              <rect x="3" y="17" width="5" height="5" fill="#ef4444"/>
-              <rect x="3" y="17" width="5" height="1" fill="#fca5a5"/>
-              <rect x="3" y="17" width="1" height="5" fill="#fca5a5"/>
-              <rect x="3" y="21" width="5" height="1" fill="#991b1b"/>
-              <rect x="7" y="17" width="1" height="5" fill="#991b1b"/>
-            </g>
-
-            <!-- Crisp Red/Gold Sparkle Accent (Top-Left) -->
-            <rect x="2" y="2" width="2" height="2" fill="#fde047"/>
           </svg>
         </div>
         <div class="min-w-0">
           <div class="flex items-center gap-1.5 flex-wrap">
-            <h1 class="text-sm sm:text-base font-bold tracking-wider text-amber-300 leading-none">ソシルス</h1>
+            <!-- Header SVG Title Logo: ソシルス (Faithful to Official Colorful Block Title Art!) -->
+            <h1 class="leading-none flex items-center" aria-label="ソシルス">
+              <svg class="h-6 sm:h-7 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]" viewBox="0 0 184 44" role="img" aria-label="ソシルス">
+                <defs>
+                  <!-- Block Tile Grid Overlay Pattern -->
+                  <pattern id="blockTilePat" width="6" height="6" patternUnits="userSpaceOnUse">
+                    <path d="M6 0H0v6" fill="none" stroke="rgba(255,255,255,0.34)" stroke-width="0.9"/>
+                    <path d="M0 6h6V0" fill="none" stroke="rgba(0,0,0,0.34)" stroke-width="0.9"/>
+                  </pattern>
+                  <linearGradient id="shiCurveGrad" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#f97316"/>
+                    <stop offset="46%" stop-color="#f97316"/>
+                    <stop offset="50%" stop-color="#38bdf8"/>
+                    <stop offset="100%" stop-color="#38bdf8"/>
+                  </linearGradient>
+                  <linearGradient id="suGrad" x1="0" y1="1" x2="0.7" y2="0.4">
+                    <stop offset="0%" stop-color="#2563eb"/>
+                    <stop offset="44%" stop-color="#2563eb"/>
+                    <stop offset="48%" stop-color="#a855f7"/>
+                    <stop offset="100%" stop-color="#a855f7"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Red Star Emblem between シ and ル -->
+                <polygon points="89,1 90.8,5 95,5.2 91.8,7.9 92.8,12 89,9.6 85.2,12 86.2,7.9 83,5.2 87.2,5" fill="#dc2626" stroke="#fde047" stroke-width="1"/>
+
+                <!-- Layer 1: Outer Dark Red/Black Outline -->
+                <g fill="none" stroke="#2b0709" stroke-width="7.5" stroke-linejoin="round" stroke-linecap="round">
+                  <!-- ソ -->
+                  <path d="M6 10h11l5 12h-10zM32 10h11c-2 15-11 24-27 28H9v-8c11-2 19-9 23-20z"/>
+                  <!-- シ -->
+                  <path d="M51 10h16v7H51zM51 20h16v7H51zM75 13h11c-2 14-10 23-25 25H51v-8h11c8-2 12-8 13-17z"/>
+                  <!-- ル -->
+                  <path d="M98 10h10v16c0 6-3 10-8 12h-8v-7c4-1 6-3 6-6V10z"/>
+                  <path d="M113 10h10v19h6l5-9h9c-2 11-8 18-19 18h-11V10z"/>
+                  <!-- ス -->
+                  <path d="M148 10h30v8l-11 10 12 10h-12l-8-7-10 7h-9v-7l21-14h-13v-7z"/>
+                </g>
+
+                <!-- Layer 2: Gold Metallic Rim -->
+                <g fill="none" stroke="#fbbf24" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round">
+                  <!-- ソ -->
+                  <path d="M6 10h11l5 12h-10zM32 10h11c-2 15-11 24-27 28H9v-8c11-2 19-9 23-20z"/>
+                  <!-- シ -->
+                  <path d="M51 10h16v7H51zM51 20h16v7H51zM75 13h11c-2 14-10 23-25 25H51v-8h11c8-2 12-8 13-17z"/>
+                  <!-- ル -->
+                  <path d="M98 10h10v16c0 6-3 10-8 12h-8v-7c4-1 6-3 6-6V10z"/>
+                  <path d="M113 10h10v19h6l5-9h9c-2 11-8 18-19 18h-11V10z"/>
+                  <!-- ス -->
+                  <path d="M148 10h30v8l-11 10 12 10h-12l-8-7-10 7h-9v-7l21-14h-13v-7z"/>
+                </g>
+
+                <!-- Layer 3: Official Vivid Multi-Color Block Fills -->
+                <g stroke="#1e090c" stroke-width="1" stroke-linejoin="round">
+                  <!-- ソ = Red -->
+                  <path d="M6 10h11l5 12h-10zM32 10h11c-2 15-11 24-27 28H9v-8c11-2 19-9 23-20z" fill="#ef4444"/>
+                  <!-- シ = Yellow Dots + Orange/Cyan Curve -->
+                  <path d="M51 10h16v7H51zM51 20h16v7H51z" fill="#facc15"/>
+                  <path d="M75 13h11c-2 14-10 23-25 25H51v-8h11c8-2 12-8 13-17z" fill="url(#shiCurveGrad)"/>
+                  <!-- ル = Blue Left + Green Right -->
+                  <path d="M98 10h10v16c0 6-3 10-8 12h-8v-7c4-1 6-3 6-6V10z" fill="#2563eb"/>
+                  <path d="M113 10h10v19h6l5-9h9c-2 11-8 18-19 18h-11V10z" fill="#22c55e"/>
+                  <!-- ス = Blue Lower-Left + Purple Body -->
+                  <path d="M148 10h30v8l-11 10 12 10h-12l-8-7-10 7h-9v-7l21-14h-13v-7z" fill="url(#suGrad)"/>
+                </g>
+
+                <!-- Layer 4: Tetromino Tile Grid Bevel Overlay -->
+                <g fill="url(#blockTilePat)" pointer-events="none">
+                  <path d="M6 10h11l5 12h-10zM32 10h11c-2 15-11 24-27 28H9v-8c11-2 19-9 23-20z"/>
+                  <path d="M51 10h16v7H51zM51 20h16v7H51zM75 13h11c-2 14-10 23-25 25H51v-8h11c8-2 12-8 13-17z"/>
+                  <path d="M98 10h10v16c0 6-3 10-8 12h-8v-7c4-1 6-3 6-6V10zM113 10h10v19h6l5-9h9c-2 11-8 18-19 18h-11V10z"/>
+                  <path d="M148 10h30v8l-11 10 12 10h-12l-8-7-10 7h-9v-7l21-14h-13v-7z"/>
+                </g>
+              </svg>
+            </h1>
             <span id="hudPhaseBadge" class="hidden text-[10px] px-1.5 py-0.5 rounded bg-cyan-950 border border-cyan-400 text-cyan-200 font-bold leading-none">😈 阻止る</span>
             <span id="hudDiffBadge" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 border border-slate-600 text-cyan-300 leading-none">5秒</span>
             <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-950/90 border border-amber-500/70 text-amber-200 leading-none">
@@ -506,7 +536,7 @@
           <!-- ボリショイ (3x4 Grid, 0 Bombs, Time Freeze) -->
           <button id="btnDevil" class="arcade-btn w-full py-1 px-1 rounded-lg bg-gradient-to-b from-fuchsia-600 to-purple-800 border border-fuchsia-400 text-white flex flex-col items-center justify-center">
             <div class="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold leading-none">
-              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M1 3h2v4H1zm4-2h2v6H5zm4 2h2v4H9z"/><path fill="#f59e0b" d="M1 7h10v3H1z"/><path fill="#ef4444" d="M5 8h2v1H5z"/></svg><span>ボリショイ</span>
+              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M1 3h2v4H1zm4-2h2v6H5zm4 2h2v4H9z"></path><path fill="#f59e0b" d="M1 7h10v3H1z"></path><path fill="#ef4444" d="M5 8h2v1H5z"></path></svg><span>ボリショイ</span>
             </div>
             <div class="text-[8px] sm:text-[9px] text-fuchsia-100 mt-0.5 leading-tight">3×4拡大・時間停止</div>
             <div class="text-[8px] text-fuchsia-200 leading-none">(残<span id="countDevil" class="text-amber-300 font-bold">1</span>)</div>
@@ -515,7 +545,7 @@
           <!-- ペレストロイカ (Manual Control Takeover) -->
           <button id="btnRevolution" class="arcade-btn w-full py-1 px-1 rounded-lg bg-gradient-to-b from-red-600 to-rose-900 border border-amber-400 text-white flex flex-col items-center justify-center">
             <div class="flex items-center gap-1 text-[9.5px] sm:text-[10.5px] font-bold leading-none tracking-tighter">
-              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M3 2h2v3H3zm2 0h2v3H5zm2 0h2v3H7z"/><path fill="#f59e0b" d="M2 4h8v5H2z"/><path fill="#fef08a" d="M2 5h3v2H2z"/><path fill="#b45309" d="M3 9h6v2H3z"/></svg><span>ペレストロイカ</span>
+              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M3 2h2v3H3zm2 0h2v3H5zm2 0h2v3H7z"></path><path fill="#f59e0b" d="M2 4h8v5H2z"></path><path fill="#fef08a" d="M2 5h3v2H2z"></path><path fill="#b45309" d="M3 9h6v2H3z"></path></svg><span>ペレストロイカ</span>
             </div>
             <div class="text-[8px] sm:text-[9px] text-amber-100 mt-0.5 leading-tight">CPUから手動奪取</div>
             <div class="text-[8px] text-amber-200 leading-none">(残<span id="countRev" class="text-amber-300 font-bold">1</span>)</div>
@@ -524,10 +554,10 @@
           <!-- スペツナズ (Special Forces Bomb Defusal) -->
           <button id="btnDefuse" class="arcade-btn w-full py-1 px-1 rounded-lg bg-gradient-to-b from-sky-600 to-blue-900 border border-cyan-300 text-white flex flex-col items-center justify-center">
             <div class="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold leading-none">
-              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#334155" d="M2 2h8v7H2z"/><path fill="#0f172a" d="M3 4h6v3H3z"/><path fill="#22d3ee" d="M3 5h2v1H3zm4 0h2v1H7z"/><path fill="#ef4444" d="M5 1h2v1H5z"/></svg><span>スペツナズ</span>
+              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#334155" d="M2 2h8v7H2z"></path><path fill="#0f172a" d="M3 4h6v3H3z"></path><path fill="#22d3ee" d="M3 5h2v1H3zm4 0h2v1H7z"></path><path fill="#ef4444" d="M5 1h2v1H5z"></path></svg><span>スペツナズ</span>
             </div>
             <div class="text-[8px] sm:text-[9px] text-cyan-100 mt-0.5 leading-tight">爆弾を1個へ除去</div>
-            <div class="text-[8px] text-cyan-200 leading-none">(残<span id="countDefuse" class="text-amber-300 font-bold">0</span>)</div>
+            <div class="text-[8px] text-cyan-200 leading-none">(残<span id="countDefuse" class="text-amber-300 font-bold">1</span>)</div>
           </button>
         </div>
 
@@ -576,61 +606,61 @@
       </div>
 
       <!-- MODE B: NINTENDO DS STYLE CONTROLLER (Revolution & Karma Phase) -->
-      <div id="revolutionPanel" class="hidden flex-col gap-1">
-        <div class="ds-shell rounded-xl px-3 py-2 flex items-center justify-between gap-2 touch-none">
-          <!-- Left: Cross D-Pad -->
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0 flex items-center justify-center">
+      <div id="revolutionPanel" class="hidden flex-col gap-0.5">
+        <div class="ds-shell rounded-xl px-2 py-1 sm:px-3 sm:py-1.5 flex items-center justify-between gap-1 sm:gap-2 touch-none">
+          <!-- Left: Enlarged Cross D-Pad (Large touch area while keeping compact panel height!) -->
+          <div class="relative w-36 h-[120px] sm:w-40 sm:h-[132px] shrink-0 flex items-center justify-center">
             <div class="grid grid-cols-3 grid-rows-3 w-full h-full">
               <div></div>
-              <button id="revUp" class="ds-dpad-btn rounded-t-md flex flex-col items-center justify-center text-xs font-bold leading-none" title="一気に落とす (↑)">
-                <span>▲</span><span class="text-[8px] text-amber-300">即落</span>
+              <button id="revUp" class="ds-dpad-btn rounded-t-lg flex flex-col items-center justify-center text-sm font-bold leading-none" title="一気に落とす (↑)">
+                <span>▲</span><span class="text-[9px] text-amber-300 mt-0.5">即落</span>
               </button>
               <div></div>
 
-              <button id="revLeft" class="ds-dpad-btn rounded-l-md flex items-center justify-center text-base font-bold" title="左移動 (←)">◀</button>
+              <button id="revLeft" class="ds-dpad-btn rounded-l-lg flex items-center justify-center text-xl font-bold" title="左移動 (←)">◀</button>
               <div class="bg-[#1e293b] flex items-center justify-center">
-                <div class="w-3.5 h-3.5 rounded-full bg-slate-800 border border-slate-600"></div>
+                <div class="w-4 h-4 rounded-full bg-slate-800 border border-slate-600"></div>
               </div>
-              <button id="revRight" class="ds-dpad-btn rounded-r-md flex items-center justify-center text-base font-bold" title="右移動 (→)">▶</button>
+              <button id="revRight" class="ds-dpad-btn rounded-r-lg flex items-center justify-center text-xl font-bold" title="右移動 (→)">▶</button>
 
               <div></div>
-              <button id="revDown" class="ds-dpad-btn rounded-b-md flex flex-col items-center justify-center text-xs font-bold leading-none" title="長押しで加速 (↓)">
-                <span class="text-[8px] text-cyan-300">加速</span><span>▼</span>
+              <button id="revDown" class="ds-dpad-btn rounded-b-lg flex flex-col items-center justify-center text-sm font-bold leading-none" title="長押しで加速 (↓)">
+                <span class="text-[9px] text-cyan-300 mb-0.5">加速</span><span>▼</span>
               </button>
               <div></div>
             </div>
           </div>
 
           <!-- Center: DS Emblem & Key Guide -->
-          <div class="flex flex-col items-center justify-center text-center px-1 select-none">
-            <div class="px-2 py-0.5 rounded bg-slate-800 text-amber-300 font-pixel text-[9px] tracking-wider border border-slate-600 shadow-inner">
-              SOSHIRUSU DS
+          <div class="flex flex-col items-center justify-center text-center px-0.5 select-none min-w-0">
+            <div class="px-1.5 py-0.5 rounded bg-slate-800 text-amber-300 font-pixel text-[8px] sm:text-[9px] tracking-wider border border-slate-600 shadow-inner">
+              SOSHIRUS
             </div>
-            <div id="dsModeTitle" class="text-[11px] font-bold text-slate-800 mt-1">✊ ペレストロイカ</div>
+            <div id="dsModeTitle" class="text-[10px] sm:text-[11px] font-bold text-slate-800 mt-1 leading-tight">✊ ペレストロイカ</div>
             <div class="text-[9px] text-slate-600 leading-tight mt-0.5 hidden sm:block">
               PC: 矢印キー<br>A: Z/Space・B: X
             </div>
-            <div class="flex items-center gap-1.5 mt-1.5">
+            <div class="flex items-center gap-1.5 mt-1">
               <span class="w-2 h-2 rounded-full bg-emerald-500 border border-emerald-700"></span>
               <span class="w-2 h-2 rounded-full bg-slate-400 border border-slate-500"></span>
             </div>
           </div>
 
           <!-- Right: DS Diamond A/B Buttons -->
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0">
-            <div class="absolute top-0.5 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-slate-300/60 border border-slate-400/70 flex items-center justify-center text-[10px] font-bold text-slate-400 pointer-events-none">X</div>
+          <div class="relative w-[114px] h-[116px] sm:w-32 sm:h-[128px] shrink-0">
+            <div class="absolute top-1 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-slate-300/60 border border-slate-400/70 flex items-center justify-center text-[10px] font-bold text-slate-400 pointer-events-none">X</div>
             <div class="absolute left-0.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-300/60 border border-slate-400/70 flex items-center justify-center text-[10px] font-bold text-slate-400 pointer-events-none">Y</div>
 
             <!-- A Button (Right Rotate / CW) -->
-            <button id="revBtnA" class="ds-ab-btn absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex flex-col items-center justify-center leading-none" title="右回転 (Z / Space)">
-              <span class="text-sm sm:text-base font-extrabold text-rose-700">A</span>
-              <span class="text-[8px] font-bold text-slate-700">右↻</span>
+            <button id="revBtnA" class="ds-ab-btn absolute right-0 top-1/2 -translate-y-1/2 w-[52px] h-[52px] sm:w-14 sm:h-14 rounded-full flex flex-col items-center justify-center leading-none" title="右回転 (Z / Space)">
+              <span class="text-base font-extrabold text-rose-700">A</span>
+              <span class="text-[9px] font-bold text-slate-700">右↻</span>
             </button>
 
             <!-- B Button (Left Rotate / CCW) -->
-            <button id="revBtnB" class="ds-ab-btn absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex flex-col items-center justify-center leading-none" title="左回転 (X)">
-              <span class="text-sm sm:text-base font-extrabold text-amber-700">B</span>
-              <span class="text-[8px] font-bold text-slate-700">左↺</span>
+            <button id="revBtnB" class="ds-ab-btn absolute bottom-0 left-1/2 -translate-x-1/2 w-[52px] h-[52px] sm:w-14 sm:h-14 rounded-full flex flex-col items-center justify-center leading-none" title="左回転 (X)">
+              <span class="text-base font-extrabold text-amber-700">B</span>
+              <span class="text-[9px] font-bold text-slate-700">左↺</span>
             </button>
           </div>
         </div>
@@ -653,52 +683,45 @@
   <div id="titleModal" class="fixed inset-0 z-50 bg-slate-950/92 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="retro-panel w-full max-w-md p-4 sm:p-6 flex flex-col items-center text-center gap-3.5 max-h-[94dvh] overflow-y-auto">
       <div class="flex flex-col items-center w-full">
-        <!-- 8-bit St. Basil's Cathedral Silhouette Banner -->
-        <svg class="pixel-svg w-44 h-12 mb-1 opacity-90" viewBox="0 0 88 24" aria-hidden="true">
-          <!-- Kremlin Red Star -->
-          <rect x="43" y="0" width="2" height="2" fill="#ef4444"/>
-          <rect x="42" y="1" width="4" height="1" fill="#fbbf24"/>
-          <!-- Central Spire -->
-          <rect x="43" y="2" width="2" height="4" fill="#fbbf24"/>
-          <rect x="41" y="6" width="6" height="3" fill="#dc2626"/>
-          <rect x="39" y="9" width="10" height="4" fill="#f59e0b"/>
-          <rect x="38" y="13" width="12" height="11" fill="#1e293b"/>
-          <rect x="41" y="15" width="2" height="3" fill="#38bdf8"/>
-          <rect x="45" y="15" width="2" height="3" fill="#38bdf8"/>
-          <!-- Left Onion Dome -->
-          <rect x="25" y="5" width="2" height="2" fill="#fbbf24"/>
-          <rect x="23" y="7" width="6" height="2" fill="#06b6d4"/>
-          <rect x="21" y="9" width="10" height="4" fill="#0284c7"/>
-          <rect x="23" y="13" width="6" height="11" fill="#334155"/>
-          <rect x="25" y="16" width="2" height="3" fill="#fde047"/>
-          <!-- Right Onion Dome -->
-          <rect x="61" y="5" width="2" height="2" fill="#fbbf24"/>
-          <rect x="59" y="7" width="6" height="2" fill="#a855f7"/>
-          <rect x="57" y="9" width="10" height="4" fill="#7e22ce"/>
-          <rect x="59" y="13" width="6" height="11" fill="#334155"/>
-          <rect x="61" y="16" width="2" height="3" fill="#fde047"/>
-          <!-- Far Left Tower -->
-          <rect x="11" y="10" width="2" height="2" fill="#fbbf24"/>
-          <rect x="9" y="12" width="6" height="3" fill="#10b981"/>
-          <rect x="10" y="15" width="4" height="9" fill="#1e293b"/>
-          <!-- Far Right Tower -->
-          <rect x="75" y="10" width="2" height="2" fill="#fbbf24"/>
-          <rect x="73" y="12" width="6" height="3" fill="#f97316"/>
-          <rect x="74" y="15" width="4" height="9" fill="#1e293b"/>
-          <!-- Kremlin Wall Base -->
-          <rect x="2" y="21" width="84" height="3" fill="#475569"/>
-          <rect x="4" y="19" width="3" height="2" fill="#64748b"/>
-          <rect x="17" y="19" width="3" height="2" fill="#64748b"/>
-          <rect x="32" y="19" width="3" height="2" fill="#64748b"/>
-          <rect x="53" y="19" width="3" height="2" fill="#64748b"/>
-          <rect x="68" y="19" width="3" height="2" fill="#64748b"/>
-          <rect x="81" y="19" width="3" height="2" fill="#64748b"/>
-        </svg>
-        <div class="text-[11px] font-pixel text-rose-400 tracking-widest mb-1">REVERSE TETRIS BATTLE</div>
-        <h2 class="text-4xl sm:text-5xl font-bold tracking-widest bg-gradient-to-b from-yellow-200 via-amber-400 to-red-500 bg-clip-text text-transparent drop-shadow">
-          ソシルス
-        </h2>
-        <div class="text-xs text-slate-300 mt-1">〜 天才CPUを積み上げさせろ！ 〜</div>
+        <!-- Animated Title Banner GIF (Infinite Loop) -->
+        <div id="titleBannerWrap" class="w-full rounded-xl overflow-hidden border-2 border-amber-400/80 bg-slate-950 shadow-[0_6px_18px_rgba(0,0,0,0.65)] mb-1">
+          <img
+            id="titleGifImg"
+            src="./title.gif"
+            alt="ソシルス SOSHIRUS"
+            class="w-full h-auto block object-cover"
+            onerror="this.parentElement.classList.add('hidden'); document.getElementById('titleFallbackSvg').classList.remove('hidden');"
+          />
+        </div>
+        <div class="text-[11px] font-pixel text-rose-400 tracking-widest mt-0.5">Block the Block!!!</div>
+
+        <!-- Fallback SVG Logo (shown only if title.gif is missing) -->
+        <div id="titleFallbackSvg" class="hidden flex-col items-center w-full mt-1">
+          <h2 class="w-full max-w-[300px] sm:max-w-[330px] flex justify-center my-0.5" aria-label="ソシルス">
+            <svg class="w-full h-auto drop-shadow-[0_6px_14px_rgba(239,68,68,0.45)]" viewBox="0 0 320 78" role="img" aria-label="ソシルス">
+              <defs>
+                <linearGradient id="titleLogoGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#fef9c3"></stop>
+                  <stop offset="32%" stop-color="#fbbf24"></stop>
+                  <stop offset="68%" stop-color="#f97316"></stop>
+                  <stop offset="100%" stop-color="#dc2626"></stop>
+                </linearGradient>
+                <linearGradient id="titleBarGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#06b6d4"></stop>
+                  <stop offset="50%" stop-color="#fbbf24"></stop>
+                  <stop offset="100%" stop-color="#ef4444"></stop>
+                </linearGradient>
+              </defs>
+              <path d="M12 10 L308 10 L316 20 L316 62 L308 72 L12 72 L4 62 L4 20 Z" fill="#0f172a" stroke="url(#titleBarGrad)" stroke-width="2.5"></path>
+              <g fill="url(#titleLogoGrad)" stroke="#1e1b4b" stroke-width="3" stroke-linejoin="miter">
+                <path d="M26 16h14v18H26zM60 16h16v22L52 62H28V50h17l15-14V16z"></path>
+                <path d="M96 16h19v10H96zM92 31h19v10H92zM134 17h16v23L122 62H96V50h21l17-13V17z"></path>
+                <path d="M170 16h15v28l-12 18h-14V51l11-12V16zM196 16h15v33h14l9-13h12v26h-50V16z"></path>
+                <path d="M254 16h44v12l-15 15 17 19h-17l-12-14-14 14h-15V51l27-23h-15V16z"></path>
+              </g>
+            </svg>
+          </h2>
+        </div>
       </div>
 
       <!-- Mode Selection -->
@@ -706,12 +729,12 @@
         <div class="text-xs text-cyan-300 font-bold tracking-wider">▼ ゲームモードを選択 ▼</div>
         <div class="grid grid-cols-2 gap-2">
           <button id="modeEndlessBtn" data-mode="endless" class="mode-select-btn arcade-btn py-2.5 px-2 rounded-xl bg-gradient-to-b from-cyan-600 to-blue-800 border-2 border-amber-300 text-white flex flex-col items-center">
-            <span class="text-xs sm:text-sm font-bold">😈 ひたすら阻止る</span>
+            <span class="text-xs sm:text-sm font-bold">😈 ひたすらソシる</span>
             <span class="text-[10px] text-cyan-100 mt-0.5">ずっと妨害に専念！</span>
           </button>
           <button id="modeKarmaBtn" data-mode="karma" class="mode-select-btn arcade-btn py-2.5 px-2 rounded-xl bg-slate-800 border border-slate-600 text-slate-200 flex flex-col items-center">
-            <span class="text-xs sm:text-sm font-bold">⚔️ 阻止り阻止られ</span>
-            <span class="text-[10px] text-slate-300 mt-0.5">妨害＆因果応報の2部構成</span>
+            <span class="text-xs sm:text-sm font-bold">⚔️ ソシりソシられ</span>
+            <span class="text-[10px] text-slate-300 mt-0.5">敵はCPUか、さっきの自分か!?</span>
           </button>
         </div>
       </div>
@@ -720,7 +743,7 @@
       <div id="titleRuleBox" class="bg-slate-900/80 border border-slate-700 rounded-lg p-2.5 text-left text-xs text-slate-200 space-y-1 leading-relaxed w-full">
         <p>🧠 <strong class="text-cyan-300">天才CPU</strong>が最上部から落ちるブロックを完璧に捌く！</p>
         <p>😈 <strong class="text-rose-400">2×4マス</strong>で辺を繋げて意地悪なブロックを作り、CPUを<strong class="text-amber-300">赤い点線（上限）超え</strong>に追い込め！</p>
-        <p>⚠️ CPUが<strong class="text-rose-400">10ライン消去</strong>または<strong class="text-rose-400">テトリス(4段同時消し)</strong>でCPUの勝利！4段消すたびに爆弾も増加！</p>
+        <p>⚠️ CPUが<strong class="text-rose-400">10ライン消去</strong>または<strong class="text-rose-400">テ◯リス(4段同時消し)</strong>でCPUの勝利！4段消すたびに爆弾も増加！</p>
       </div>
 
       <!-- Difficulty Selection -->
@@ -729,15 +752,15 @@
         <div class="grid grid-cols-3 gap-2">
           <button data-diff="unlimited" class="diff-start-btn arcade-btn py-3 px-2 rounded-xl bg-gradient-to-b from-emerald-500 to-teal-700 border border-emerald-300 text-white flex flex-col items-center">
             <span class="text-sm sm:text-base font-bold">制限なし</span>
-            <span class="text-[10px] text-emerald-100 mt-0.5">倍率 ×1.0</span>
+            <span class="text-[10px] text-emerald-100 mt-0.5">得点倍率 ×1.0</span>
           </button>
           <button data-diff="5" class="diff-start-btn arcade-btn py-3 px-2 rounded-xl bg-gradient-to-b from-amber-400 to-orange-600 border border-amber-200 text-slate-950 flex flex-col items-center">
             <span class="text-sm sm:text-base font-bold">5秒</span>
-            <span class="text-[10px] text-slate-900 mt-0.5">倍率 ×1.5</span>
+            <span class="text-[10px] text-slate-900 mt-0.5">得点倍率 ×1.5</span>
           </button>
           <button data-diff="2.5" class="diff-start-btn arcade-btn py-3 px-2 rounded-xl bg-gradient-to-b from-rose-500 to-red-800 border border-rose-300 text-white flex flex-col items-center">
             <span class="text-sm sm:text-base font-bold">2.5秒</span>
-            <span class="text-[10px] text-rose-100 mt-0.5">倍率 ×2.5</span>
+            <span class="text-[10px] text-rose-100 mt-0.5">得点倍率 ×2.5</span>
           </button>
         </div>
         <button id="btnTitleRanking" class="arcade-btn w-full py-2 rounded-xl bg-slate-800 border border-amber-400/70 text-amber-300 text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5">
@@ -746,7 +769,7 @@
       </div>
 
       <div class="text-[10px] text-slate-400">
-        ※ スタートと同時にWeb Audio APIによる8bitロシア民謡風BGMが流れます（右上🔊で消音可）
+        ※ スタートと同時にロシア民謡風BGMが流れます（右上🔊で消音可）
       </div>
     </div>
   </div>
@@ -857,12 +880,19 @@
 
   <!-- 5. GAME OVER MODAL -->
   <div id="gameOverModal" class="hidden fixed inset-0 z-50 bg-slate-950/92 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="retro-panel w-full max-w-sm p-5 flex flex-col items-center text-center gap-3.5 max-h-[92dvh] overflow-y-auto" style="border-color:#ef4444; box-shadow: 0 0 24px rgba(239,68,68,0.4);">
-      <div class="text-4xl">💀</div>
-      <div>
-        <div class="text-xs font-pixel text-rose-400 tracking-widest">GAME OVER...</div>
-        <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1">敗北…！</h3>
+    <div class="retro-panel w-full max-w-sm p-0 overflow-hidden flex flex-col items-center text-center max-h-[92dvh]" style="border-color:#ef4444; box-shadow: 0 0 24px rgba(239,68,68,0.4);">
+      <!-- Full-bleed edge-to-edge Game Over artwork -->
+      <div class="w-full shrink-0 bg-slate-950">
+        <img
+          id="gameOverImg"
+          src="./gameover1.jpg"
+          alt="GAME OVER"
+          class="w-full h-auto block object-cover"
+          onerror="if(!this.dataset.fallback){this.dataset.fallback='1'; this.src='./gameover1.jpg';}"
+        />
       </div>
+      <!-- Scrollable body below full-bleed banner -->
+      <div class="w-full flex-1 overflow-y-auto p-4 sm:p-5 flex flex-col items-center text-center gap-3">
       <p id="gameOverReason" class="text-xs sm:text-sm text-amber-300 font-bold leading-relaxed bg-red-950/60 border border-red-500/50 rounded-lg px-3 py-2 w-full">
         CPUが10ライン消去を達成した！
       </p>
@@ -885,7 +915,7 @@
       <div id="goRegisterBox" class="w-full bg-slate-900/80 border border-amber-500/40 rounded-lg p-2.5 flex flex-col gap-2">
         <div class="text-[11px] text-amber-300 font-bold">🏆 ランキングにスコアを登録</div>
         <div class="flex gap-1.5">
-          <input id="goNameInput" type="text" maxlength="10" placeholder="名前 (最大10文字)" class="flex-1 min-w-0 px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-600 text-white text-xs focus:outline-none focus:border-amber-400" />
+          <input id="goNameInput" type="text" maxlength="10" placeholder="名前 (最大10文字)" class="flex-1 min-w-0 px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-600 text-white text-xs focus:outline-none focus:border-amber-400">
           <button id="btnRegisterScore" class="arcade-btn px-3 py-1.5 rounded-lg bg-emerald-600 border border-emerald-300 text-white text-xs font-bold shrink-0">
             登録
           </button>
@@ -898,11 +928,12 @@
           🏆 ランキングを見る
         </button>
         <button id="btnGoRetry" class="arcade-btn w-full py-2.5 rounded-xl bg-gradient-to-b from-amber-400 to-orange-600 text-slate-950 font-bold text-sm sm:text-base border border-amber-200">
-          このステージを再挑戦 ↻
+          このステージを再挑戦
         </button>
         <button id="btnGoTitle" class="arcade-btn w-full py-2 rounded-xl bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-500">
           タイトルへ戻る
         </button>
+      </div>
       </div>
     </div>
   </div>
@@ -977,8 +1008,8 @@
       const AI_STEP_INTERVAL = 48;        // ms per AI move/rotate animation step
 
       const RANKING_KEYS = {
-        endless: 'soshirusu_rankings_endless_v3',
-        karma: 'soshirusu_rankings_karma_v3'
+        endless: 'soshirus_rankings_endless_v3',
+        karma: 'soshirus_rankings_karma_v3'
       };
 
       const DEFAULT_RANKINGS = {
@@ -1256,6 +1287,45 @@
         [112, 'A2'], [116, 'C3'], [120, 'B2'], [124, 'E2']
       ];
 
+      // Melancholic Russian Folk "Troika" (Game Over BGM: 16 bars in 3/4 waltz, 96 steps)
+      const TROIKA_MELODY_STEPS = [
+        [0, 'E4', 2], [2, 'A4', 2], [4, 'C5', 2],
+        [6, 'B4', 2], [8, 'A4', 2], [10, 'E5', 2],
+        [12, 'D5', 4], [16, 'C5', 2],
+        [18, 'B4', 5],
+        [24, 'E4', 2], [26, 'G#4', 2], [28, 'B4', 2],
+        [30, 'D5', 2], [32, 'C5', 2], [34, 'B4', 2],
+        [36, 'A4', 6],
+        [42, 'A4', 4],
+        [48, 'C5', 2], [50, 'C5', 2], [52, 'D5', 2],
+        [54, 'E5', 4], [58, 'G5', 2],
+        [60, 'F5', 2], [62, 'E5', 2], [64, 'D5', 2],
+        [66, 'E5', 5],
+        [72, 'E5', 2], [74, 'D5', 2], [76, 'C5', 2],
+        [78, 'B4', 4], [82, 'A4', 2],
+        [84, 'B4', 2], [86, 'G#4', 2], [88, 'B4', 2],
+        [90, 'A4', 5]
+      ];
+
+      const TROIKA_BASS_STEPS = [
+        [0, 'A2'], [2, 'E3'], [4, 'E3'],
+        [6, 'A2'], [8, 'E3'], [10, 'E3'],
+        [12, 'D2'], [14, 'A2'], [16, 'A2'],
+        [18, 'E2'], [20, 'B2'], [22, 'B2'],
+        [24, 'E2'], [26, 'B2'], [28, 'B2'],
+        [30, 'E2'], [32, 'G#2'], [34, 'B2'],
+        [36, 'A2'], [38, 'E3'], [40, 'E3'],
+        [42, 'A2'], [44, 'E3'], [46, 'E2'],
+        [48, 'C2'], [50, 'G2'], [52, 'G2'],
+        [54, 'C2'], [56, 'G2'], [58, 'G2'],
+        [60, 'D2'], [62, 'A2'], [64, 'A2'],
+        [66, 'E2'], [68, 'B2'], [70, 'B2'],
+        [72, 'A2'], [74, 'E3'], [76, 'E3'],
+        [78, 'D2'], [80, 'A2'], [82, 'A2'],
+        [84, 'E2'], [86, 'G#2'], [88, 'B2'],
+        [90, 'A2'], [92, 'E3'], [94, 'A2']
+      ];
+
       class RetroAudioEngine {
         constructor() {
           this.ctx = null;
@@ -1264,9 +1334,11 @@
           this.unlocked = false;
           this.bgmTimer = null;
           this.bgmRunning = false;
+          this.bgmTrack = 'main'; // 'main' (Korobeiniki) | 'troika' (Game Over)
           this.currentStep = 0;
           this.normalStepMs = 100; // 150 BPM at 16th-note resolution
           this.urgentStepMs = 78;  // ~192 BPM climax / pinch tempo!
+          this.troikaStepMs = 155; // Gentle nostalgic Russian waltz tempo
           this.isUrgent = false;
           this.stepMs = this.normalStepMs;
           this.stepSec = this.stepMs / 1000;
@@ -1276,30 +1348,64 @@
           MELODY_STEPS.forEach(([step, note, len]) => this.melodyMap.set(step, { note, len }));
           this.bassMap = new Map();
           BASS_STEPS.forEach(([step, note]) => this.bassMap.set(step, note));
+
+          this.troikaMelodyMap = new Map();
+          TROIKA_MELODY_STEPS.forEach(([step, note, len]) => this.troikaMelodyMap.set(step, { note, len }));
+          this.troikaBassMap = new Map();
+          TROIKA_BASS_STEPS.forEach(([step, note]) => this.troikaBassMap.set(step, note));
         }
 
-        // Synchronous iOS Safari / iframe unlock: create/resume AudioContext + play 1-sample silent buffer
-        unlock() {
+        _createContext() {
           const AudioCtx = window.AudioContext || window.webkitAudioContext;
           if (!AudioCtx) return null;
-          if (!this.ctx) {
-            this.ctx = new AudioCtx();
-            this.masterGain = this.ctx.createGain();
-            this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime);
-            this.masterGain.connect(this.ctx.destination);
+          if (this.ctx && this.ctx.state !== 'closed') {
+            try { this.ctx.close(); } catch (e) {}
+          }
+          this.ctx = new AudioCtx();
+          this.masterGain = this.ctx.createGain();
+          this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime);
+          this.masterGain.connect(this.ctx.destination);
 
-            // White noise buffer for retro percussion & explosions
-            const bufLen = Math.floor(this.ctx.sampleRate * 0.5);
-            this.noiseBuffer = this.ctx.createBuffer(1, bufLen, this.ctx.sampleRate);
-            const data = this.noiseBuffer.getChannelData(0);
-            for (let i = 0; i < bufLen; i++) {
-              data[i] = Math.random() * 2 - 1;
+          // White noise buffer for retro percussion & explosions
+          const bufLen = Math.floor(this.ctx.sampleRate * 0.5);
+          this.noiseBuffer = this.ctx.createBuffer(1, bufLen, this.ctx.sampleRate);
+          const data = this.noiseBuffer.getChannelData(0);
+          for (let i = 0; i < bufLen; i++) {
+            data[i] = Math.random() * 2 - 1;
+          }
+
+          this.ctx.onstatechange = () => {
+            if (this.ctx && this.ctx.state === 'running' && this.masterGain) {
+              this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime);
             }
+          };
+          this.unlocked = false;
+          return this.ctx;
+        }
+
+        // Synchronous iOS Safari / iframe unlock & background-interruption recovery
+        unlock(forceRecover = false) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) return null;
+
+          // iOS Safari can leave AudioContext in 'interrupted' or 'closed' after switching apps
+          if (!this.ctx || this.ctx.state === 'closed' || (forceRecover && this.ctx.state === 'interrupted')) {
+            this._createContext();
           }
-          if (this.ctx.state === 'suspended') {
-            this.ctx.resume().catch(() => {});
+
+          if (this.ctx && this.ctx.state !== 'running') {
+            this.ctx.resume().catch(() => {
+              // If resume fails after iOS interruption, recreate context on next user gesture
+              if (forceRecover) {
+                this._createContext();
+                if (this.ctx && this.ctx.state !== 'running') {
+                  this.ctx.resume().catch(() => {});
+                }
+              }
+            });
           }
-          if (!this.unlocked) {
+
+          if (this.ctx && (!this.unlocked || forceRecover)) {
             try {
               const silentBuf = this.ctx.createBuffer(1, 1, 22050);
               const src = this.ctx.createBufferSource();
@@ -1310,6 +1416,18 @@
             } catch (e) {}
           }
           return this.ctx;
+        }
+
+        recoverFromBackground() {
+          this.needsBackgroundRecovery = true;
+          if (!this.ctx) return;
+          if (this.ctx.state === 'closed') {
+            this._createContext();
+          } else if (this.ctx.state !== 'running') {
+            this.ctx.resume().then(() => {
+              this.needsBackgroundRecovery = false;
+            }).catch(() => {});
+          }
         }
 
         ensureContext() {
@@ -1363,16 +1481,25 @@
           const nextUrgent = !!urgent;
           if (this.isUrgent === nextUrgent) return;
           this.isUrgent = nextUrgent;
-          this.stepMs = this.isUrgent ? this.urgentStepMs : this.normalStepMs;
-          this.stepSec = this.stepMs / 1000;
+          if (this.bgmTrack === 'main') {
+            this.stepMs = this.isUrgent ? this.urgentStepMs : this.normalStepMs;
+            this.stepSec = this.stepMs / 1000;
+          }
         }
 
-        // Drift-proof direct-scheduled step sequencer with dynamic tempo!
-        startBGM() {
+        // Drift-proof direct-scheduled step sequencer with dynamic tempo & Troika Game Over BGM!
+        startBGM(track = 'main') {
           this.unlock();
-          if (this.bgmRunning) return;
+          if (this.bgmRunning && this.bgmTrack === track) return;
+          if (this.bgmRunning) this.stopBGM();
+
+          this.bgmTrack = track;
           this.bgmRunning = true;
           this.currentStep = 0;
+          this.stepMs = track === 'troika'
+            ? this.troikaStepMs
+            : (this.isUrgent ? this.urgentStepMs : this.normalStepMs);
+          this.stepSec = this.stepMs / 1000;
 
           const tickStep = () => {
             if (!this.bgmRunning) return;
@@ -1381,48 +1508,85 @@
               this.bgmTimer = setTimeout(tickStep, this.stepMs);
               return;
             }
-            if (ctx.state === 'suspended') {
+            if (ctx.state !== 'running') {
               ctx.resume().catch(() => {});
               this.bgmTimer = setTimeout(tickStep, this.stepMs);
               return;
             }
+
+            const totalSteps = this.bgmTrack === 'troika' ? 96 : 128;
             if (this.muted) {
-              this.currentStep = (this.currentStep + 1) % 128;
+              this.currentStep = (this.currentStep + 1) % totalSteps;
               this.bgmTimer = setTimeout(tickStep, this.stepMs);
               return;
             }
 
             const now = ctx.currentTime + 0.02;
-            const step = this.currentStep % 128;
+            const step = this.currentStep % totalSteps;
 
-            const mel = this.melodyMap.get(step);
-            if (mel) {
-              this.playTone(
-                NOTE_FREQ[mel.note],
-                'square',
-                now,
-                this.stepSec * mel.len * 0.85,
-                0.085
-              );
-            }
-            const bass = this.bassMap.get(step);
-            if (bass) {
-              this.playTone(
-                NOTE_FREQ[bass],
-                'triangle',
-                now,
-                this.stepSec * 3.1,
-                0.15
-              );
-            }
-            // Crisp 8-bit chiptune hi-hat / snare percussion
-            if (step % 4 === 2) {
-              this.playNoise(now, 0.032, 0.045, 5200, 'highpass');
-            } else if (step % 8 === 4) {
-              this.playNoise(now, 0.055, 0.06, 2200, 'bandpass');
+            if (this.bgmTrack === 'troika') {
+              const mel = this.troikaMelodyMap.get(step);
+              if (mel) {
+                this.playTone(
+                  NOTE_FREQ[mel.note],
+                  'triangle',
+                  now,
+                  this.stepSec * mel.len * 0.92,
+                  0.14
+                );
+                // Delicate 8-bit balalaika/square overtone
+                this.playTone(
+                  NOTE_FREQ[mel.note],
+                  'square',
+                  now,
+                  this.stepSec * mel.len * 0.65,
+                  0.045
+                );
+              }
+              const bass = this.troikaBassMap.get(step);
+              if (bass) {
+                this.playTone(
+                  NOTE_FREQ[bass],
+                  'triangle',
+                  now,
+                  this.stepSec * 1.8,
+                  0.13
+                );
+              }
+              // Gentle Troika sleigh-bell shimmer on waltz off-beats
+              if (step % 6 === 2 || step % 6 === 4) {
+                this.playNoise(now, 0.04, 0.028, 6800, 'highpass');
+              }
+            } else {
+              const mel = this.melodyMap.get(step);
+              if (mel) {
+                this.playTone(
+                  NOTE_FREQ[mel.note],
+                  'square',
+                  now,
+                  this.stepSec * mel.len * 0.85,
+                  0.085
+                );
+              }
+              const bass = this.bassMap.get(step);
+              if (bass) {
+                this.playTone(
+                  NOTE_FREQ[bass],
+                  'triangle',
+                  now,
+                  this.stepSec * 3.1,
+                  0.15
+                );
+              }
+              // Crisp 8-bit chiptune hi-hat / snare percussion
+              if (step % 4 === 2) {
+                this.playNoise(now, 0.032, 0.045, 5200, 'highpass');
+              } else if (step % 8 === 4) {
+                this.playNoise(now, 0.055, 0.06, 2200, 'bandpass');
+              }
             }
 
-            this.currentStep = (this.currentStep + 1) % 128;
+            this.currentStep = (this.currentStep + 1) % totalSteps;
             this.bgmTimer = setTimeout(tickStep, this.stepMs);
           };
 
@@ -1573,6 +1737,76 @@
           });
         }
 
+        playCutin(type) {
+          const ctx = this.unlock();
+          if (!ctx || this.muted || !this.masterGain) return;
+          const t = ctx.currentTime + 0.01;
+
+          if (type === 'bolshoi') {
+            // Grand Imperial Fanfare + Sparkling Rainbow Arpeggio
+            this.playNoise(t, 0.16, 0.18, 1200, 'lowpass');
+            this.playTone(130.81, 'triangle', t, 0.35, 0.24);
+            // Fanfare brass chord steps
+            [[523.25, 0], [659.25, 0.08], [783.99, 0.16], [1046.5, 0.24]].forEach(([f, dt]) => {
+              this.playTone(f, 'square', t + dt, 0.22, 0.13);
+              this.playTone(f * 0.5, 'sawtooth', t + dt, 0.24, 0.08);
+            });
+            // Shimmering high arpeggio tail
+            [1046.5, 1318.51, 1567.98, 2093.0, 1567.98, 2093.0].forEach((f, i) => {
+              this.playTone(f, 'square', t + 0.34 + i * 0.055, 0.09, 0.09);
+            });
+          } else if (type === 'perestroika') {
+            // Chain-shattering impact + Heroic Rising Revolution Chords!
+            this.playNoise(t, 0.24, 0.26, 2200, 'bandpass');
+            this.playTone(98.0, 'sawtooth', t, 0.28, 0.22);
+            // Rising synth sweep
+            try {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'sawtooth';
+              osc.frequency.setValueAtTime(196, t + 0.04);
+              osc.frequency.exponentialRampToValueAtTime(880, t + 0.34);
+              gain.gain.setValueAtTime(0.14, t + 0.04);
+              gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.4);
+              osc.connect(gain);
+              gain.connect(this.masterGain);
+              osc.start(t + 0.04);
+              osc.stop(t + 0.42);
+            } catch (e) {}
+            // Power chord stabs
+            [[440, 0.26], [554.37, 0.26], [659.25, 0.26], [880, 0.42], [1108.73, 0.42], [1318.51, 0.42]].forEach(([f, dt]) => {
+              this.playTone(f, 'square', t + dt, 0.26, 0.1);
+            });
+          } else if (type === 'counter_perestroika') {
+            // Ominous thunder crash + Wicked descending diminished riff!
+            this.playNoise(t, 0.3, 0.28, 1100, 'lowpass');
+            this.playTone(82.41, 'sawtooth', t, 0.45, 0.22);
+            [622.25, 587.33, 523.25, 466.16, 415.30, 311.13].forEach((f, i) => {
+              this.playTone(f, 'sawtooth', t + 0.06 + i * 0.065, 0.14, 0.13);
+            });
+          } else if (type === 'spetsnaz') {
+            // Tactical radio chirp + Night-Vision Goggles high-pitch power-up whine + breach thud!
+            this.playTone(1760, 'square', t, 0.045, 0.1);
+            this.playTone(2349.32, 'square', t + 0.06, 0.045, 0.1);
+            try {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(520, t + 0.12);
+              osc.frequency.exponentialRampToValueAtTime(3400, t + 0.56);
+              gain.gain.setValueAtTime(0.0001, t + 0.12);
+              gain.gain.linearRampToValueAtTime(0.14, t + 0.22);
+              gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.65);
+              osc.connect(gain);
+              gain.connect(this.masterGain);
+              osc.start(t + 0.12);
+              osc.stop(t + 0.68);
+            } catch (e) {}
+            this.playNoise(t + 0.48, 0.18, 0.22, 900, 'lowpass');
+            this.playTone(110, 'triangle', t + 0.48, 0.22, 0.24);
+          }
+        }
+
         playGameOver() {
           const ctx = this.unlock();
           if (!ctx) return;
@@ -1585,14 +1819,28 @@
 
       const audio = new RetroAudioEngine();
 
-      // Unlock Web Audio synchronously on ANY user gesture (iOS Safari / iPad / iframe safety)
+      // Unlock Web Audio synchronously on ANY user gesture + recover after iOS Safari app switch!
       const globalAudioUnlock = () => {
-        audio.unlock();
+        const force = !!audio.needsBackgroundRecovery || (audio.ctx && audio.ctx.state !== 'running');
+        audio.unlock(force);
+        if (audio.ctx && audio.ctx.state === 'running') {
+          audio.needsBackgroundRecovery = false;
+        }
       };
       document.addEventListener('pointerdown', globalAudioUnlock, { passive: true });
       document.addEventListener('touchstart', globalAudioUnlock, { passive: true });
       document.addEventListener('click', globalAudioUnlock, { passive: true });
       document.addEventListener('keydown', globalAudioUnlock, { passive: true });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          audio.recoverFromBackground();
+        } else {
+          audio.needsBackgroundRecovery = true;
+        }
+      });
+      window.addEventListener('pageshow', () => audio.recoverFromBackground());
+      window.addEventListener('focus', () => audio.recoverFromBackground());
 
       /* =========================================================
        * 4. MATRIX & BLOCK HELPERS (Connected-Edge Penalty Included)
@@ -1930,7 +2178,7 @@
           linesTowardBomb: 0,
           devilCount: 1,
           revCount: 1,
-          defuseCount: 0
+          defuseCount: 1
         },
         score: 0,
         lastStageScore: 0,
@@ -1942,7 +2190,7 @@
         },
         devilCount: 1,
         revCount: 1,
-        defuseCount: 0,
+        defuseCount: 1,
         devilActiveThisTurn: false,
         revArmedForDrop: false,
         revActiveNow: false,
@@ -2113,6 +2361,7 @@
       const countDefuse = document.getElementById('countDefuse');
       const hudBombCount = document.getElementById('hudBombCount');
 
+      const bottomControlPanel = document.getElementById('bottomControlPanel');
       const builderPanel = document.getElementById('builderPanel');
       const revolutionPanel = document.getElementById('revolutionPanel');
       const builderLockOverlay = document.getElementById('builderLockOverlay');
@@ -2315,6 +2564,9 @@
         skillCutinOverlay.classList.add('cutin-bg-flash');
         skillCutinBox.classList.add('skill-cutin-anim');
 
+        // Play dramatic custom 8-bit cut-in sound effect!
+        audio.playCutin(type);
+
         // Freeze game timer & falling for 2 seconds during cut-in!
         state.cutinFreezeTimer = 2000;
 
@@ -2434,6 +2686,7 @@
 
         // Toggle between Builder Mode and Nintendo DS Controller Mode
         if (state.turnSide === 'karma') {
+          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative';
           builderPanel.classList.add('hidden');
           revolutionPanel.classList.remove('hidden');
           revolutionPanel.classList.add('flex');
@@ -2445,12 +2698,14 @@
             builderLockOverlay.classList.add('hidden');
           }
         } else if (state.revActiveNow && state.phase === 'DROPPING') {
+          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative';
           builderPanel.classList.add('hidden');
           revolutionPanel.classList.remove('hidden');
           revolutionPanel.classList.add('flex');
           dsModeTitle.textContent = '✊ ペレストロイカ';
           builderLockOverlay.classList.add('hidden');
         } else {
+          bottomControlPanel.className = 'retro-panel p-2 sm:p-2.5 shrink-0 relative';
           revolutionPanel.classList.add('hidden');
           revolutionPanel.classList.remove('flex');
           builderPanel.classList.remove('hidden');
@@ -2735,7 +2990,7 @@
         state.turnSide = 'sabotage';
         state.devilCount = 1;
         state.revCount = 1;
-        state.defuseCount = 0;
+        state.defuseCount = 1;
         state.bombCount = 1;
         state.linesTowardBomb = 0;
         state.totalCpuLines = 0;
@@ -2761,32 +3016,86 @@
         startStage(1, 'sabotage');
       }
 
+      // Resolve next Karma piece starting from `fromIndex`.
+      // On 2nd+ loop (idx >= recordedTurns.length), skip any special-skill turns (Bolshoi / Perestroika)!
+      function resolveKarmaStep(fromIndex) {
+        const len = state.recordedTurns.length;
+        if (len === 0) return null;
+
+        let idx = fromIndex;
+        if (idx >= len) {
+          // 2nd+ lap: skip turns where special skills were used
+          let found = false;
+          for (let tries = 0; tries < len; tries++) {
+            const candidate = state.recordedTurns[idx % len];
+            if (!candidate.wasDevil && !candidate.wasRev) {
+              found = true;
+              break;
+            }
+            idx++;
+          }
+          if (!found) {
+            // Safety fallback if EVERY recorded turn used a special skill: drop without re-triggering skills
+            const rec = state.recordedTurns[fromIndex % len];
+            return {
+              piece: {
+                matrix: cloneMatrix(rec.matrix),
+                color: getColorForMatrix(rec.matrix, false),
+                wasDevil: false,
+                wasRev: false,
+                turnNum: (fromIndex % len) + 1
+              },
+              nextIndex: fromIndex + 1
+            };
+          }
+          const rec = state.recordedTurns[idx % len];
+          return {
+            piece: {
+              matrix: cloneMatrix(rec.matrix),
+              color: rec.color,
+              wasDevil: false,
+              wasRev: false,
+              turnNum: (idx % len) + 1
+            },
+            nextIndex: idx + 1
+          };
+        }
+
+        // 1st lap: replay recorded turns faithfully including special skills
+        const rec = state.recordedTurns[idx];
+        return {
+          piece: {
+            matrix: cloneMatrix(rec.matrix),
+            color: rec.color,
+            wasDevil: !!rec.wasDevil,
+            wasRev: !!rec.wasRev,
+            turnNum: idx + 1
+          },
+          nextIndex: idx + 1
+        };
+      }
+
       function pullNextKarmaPiece() {
-        if (state.recordedTurns.length === 0) {
+        const resolved = resolveKarmaStep(state.karmaIndex);
+        if (!resolved) {
           const fallback = createRandomClassicPiece();
           return { matrix: fallback.matrix, color: fallback.color, wasDevil: false, wasRev: false };
         }
-        const rec = state.recordedTurns[state.karmaIndex % state.recordedTurns.length];
-        state.karmaIndex++;
-        return {
-          matrix: cloneMatrix(rec.matrix),
-          color: rec.color,
-          wasDevil: !!rec.wasDevil,
-          wasRev: !!rec.wasRev
-        };
+        state.karmaIndex = resolved.nextIndex;
+        return resolved.piece;
       }
 
       function peekKarmaPiece(offset) {
         if (state.recordedTurns.length === 0) return null;
-        const idx = (state.karmaIndex + offset) % state.recordedTurns.length;
-        const rec = state.recordedTurns[idx];
-        return {
-          matrix: rec.matrix,
-          color: rec.color,
-          wasDevil: !!rec.wasDevil,
-          wasRev: !!rec.wasRev,
-          turnNum: idx + 1
-        };
+        let cursor = state.karmaIndex;
+        let lastPiece = null;
+        for (let step = 0; step <= offset; step++) {
+          const resolved = resolveKarmaStep(cursor);
+          if (!resolved) return null;
+          lastPiece = resolved.piece;
+          cursor = resolved.nextIndex;
+        }
+        return lastPiece;
       }
 
       function renderKarmaQueue() {
@@ -2932,7 +3241,7 @@
           }
           state.nextPiece = pullNextKarmaPiece();
           spawnStandbyPiece(firstKarma);
-          showBoardBanner(`🔥 STAGE ${state.stage}【因果応報】10段・テトリス・またはCPU(${state.cpuLinesThisStage}段)超えで勝利！`, 2000);
+          showBoardBanner(`🔥 STAGE ${state.stage}【因果応報】10段・テ◯リス・またはCPU(${state.cpuLinesThisStage}段)超えで勝利！`, 2000);
           beginKarmaDropPhase(firstKarma);
           return;
         }
@@ -3284,9 +3593,18 @@
         state.cpuRevActiveNow = false;
         state.softDropHeld = false;
         state.scoreRegistered = false;
+        audio.stopBGM();
         audio.playGameOver();
         triggerShake();
         updateHUD();
+
+        // Switch Game Over artwork: Karma player-clearing turn -> gameover2.gif, otherwise gameover1.jpg
+        const goImg = document.getElementById('gameOverImg');
+        if (goImg) {
+          delete goImg.dataset.fallback;
+          const isKarmaPlayerTurn = state.gameMode === 'karma' && state.turnSide === 'karma';
+          goImg.src = isKarmaPlayerTurn ? './gameover2.gif' : './gameover1.jpg';
+        }
 
         document.getElementById('gameOverReason').textContent = reasonText;
         document.getElementById('goStage').textContent =
@@ -3312,6 +3630,9 @@
 
         setTimeout(() => {
           gameOverModal.classList.remove('hidden');
+          if (state.phase === 'GAME_OVER') {
+            audio.startBGM('troika');
+          }
         }, 420);
       }
 
@@ -3664,12 +3985,12 @@
           titleRuleBox.innerHTML = `
             <p>🧠 <strong class="text-cyan-300">天才CPU</strong>が最上部から落ちるブロックを完璧に捌く！</p>
             <p>😈 <strong class="text-rose-400">2×4マス</strong>で辺を繋げて意地悪なブロックを作り、CPUを<strong class="text-amber-300">赤い点線（上限）超え</strong>に追い込め！</p>
-            <p>⚠️ CPUが<strong class="text-rose-400">10ライン消去</strong>または<strong class="text-rose-400">テトリス(4段同時消し)</strong>でCPUの勝利！4段消すたびに爆弾も増加！</p>
+            <p>⚠️ CPUが<strong class="text-rose-400">10ライン消去</strong>または<strong class="text-rose-400">テ◯リス(4段同時消し)</strong>でCPUの勝利！4段消すたびに爆弾も増加！</p>
           `;
         } else {
           titleRuleBox.innerHTML = `
             <p>😈 <strong class="text-cyan-300">阻止るフェーズ</strong>：意地悪ブロックを作ってCPUを撃破！作ったブロックと必殺技は全て記録される！</p>
-            <p>🔥 <strong class="text-rose-400">因果応報フェーズ</strong>：自分が作ったブロックを操作し、<strong class="text-amber-300">10段消去・テトリス</strong>、または<strong class="text-amber-300">上限超え時にCPUより多く消去</strong>で突破！</p>
+            <p>🔥 <strong class="text-rose-400">因果応報フェーズ</strong>：自分が作ったブロックを操作し、<strong class="text-amber-300">10段消去・テ◯リス</strong>、または<strong class="text-amber-300">上限超え時にCPUより多く消去</strong>で突破！</p>
             <p>✊ 阻止るフェーズでペレストロイカを使うと、因果応報ではCPUが妨害操作してくる！応報フェーズの得点は<strong class="text-emerald-300">2ライン同時消し以上</strong>で加算！</p>
           `;
         }
@@ -3814,7 +4135,7 @@
         const isMuted = audio.toggleMute();
         document.getElementById('btnMute').textContent = isMuted ? '🔇' : '🔊';
         if (!isMuted && state.phase !== 'TITLE') {
-          audio.startBGM();
+          audio.startBGM(state.phase === 'GAME_OVER' ? 'troika' : 'main');
         }
       });
 
@@ -3858,6 +4179,7 @@
         state.lastStageScore = 0;
         state.totalCpuLines = 0;
         state.totalPlayerLines = 0;
+        audio.startBGM('main');
         startStage(state.stage, state.turnSide);
       });
 
@@ -4198,7 +4520,7 @@
           ctx.fillRect(Math.floor(fx), Math.floor(fy), (i % 3 === 0) ? 3 : 2, (i % 3 === 0) ? 3 : 2);
         }
 
-        // 3. LEFT SIDE SCENERY: Kremlin Fortress Wall + Red/Gold & Cyan Onion Domes + SOSHIRUSU Plaque
+        // 3. LEFT SIDE SCENERY: Kremlin Fortress Wall + Red/Gold & Cyan Onion Domes + SOSHIRUS Plaque
         if (leftEdge > 22) {
           const lw = leftEdge;
           const wallTopY = Math.floor(h * 0.56);
@@ -4280,7 +4602,7 @@
             ctx.strokeRect(sx, sqY, sqSize, sqSize);
           }
 
-          // Classic Famicom-style Stone Nameplate ("SOSHIRUSU") at Bottom-Left
+          // Classic Famicom-style Stone Nameplate ("SOSHIRUS") at Bottom-Left
           if (lw >= 56 && h - wallTopY > 64) {
             const plateW = Math.min(lw - 12, 112);
             const plateH = 26;
@@ -4295,7 +4617,7 @@
             ctx.font = `bold ${plateW < 76 ? 8 : 10}px "Press Start 2P", monospace`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText(plateW < 76 ? 'ソシルス' : 'SOSHIRUSU', plateX + plateW / 2, plateY + plateH / 2 + 1);
+            ctx.fillText(plateW < 76 ? 'ソシルス' : 'SOSHIRUS', plateX + plateW / 2, plateY + plateH / 2 + 1);
           }
         }
 
@@ -4833,5 +5155,60 @@
       };
     })();
   </script>
-</body>
-</html>
+
+<script id="vb-svg-edits-runtime">(()=>{const attributes=new Set(["x","y","width","height","rx","ry","cx","cy","r","x1","x2","y1","y2","fill","stroke","stroke-width","opacity","font-size","transform","d","points"]);const apply=function apply(node,operations,preserveStyles=false){
+    const at=path=>path.reduce((parent,index)=>parent?.children[index],node);
+    const undo=[];
+    try{
+    for(const operation of operations){const identified=operation.targetId?[node,...node.querySelectorAll('*')].filter(part=>part.id===operation.targetId):[],target=identified.length===1?identified[0]:at(operation.path);if(!target||target.namespaceURI!=='http://www.w3.org/2000/svg'||operation.targetTag&&target.localName!==operation.targetTag)throw new Error('SVGの構造が変わりました。開き直してください。');
+      const parent=target.parentNode,next=target.nextSibling,children=[...target.childNodes],attribute=operation.kind==='gradient'?(operation.target||'fill'):operation.name,previous=attribute?target.getAttribute(attribute):null,style=target.getAttribute('style');
+      if(['attribute','gradient'].includes(operation.kind)){const property=target.style.getPropertyValue(attribute),priority=target.style.getPropertyPriority(attribute),origin=target.style.getPropertyValue('transform-origin'),originPriority=target.style.getPropertyPriority('transform-origin');undo.push(()=>{if(previous===null)target.removeAttribute(attribute);else target.setAttribute(attribute,previous);if(preserveStyles){if(attribute==='transform'){if(origin)target.style.setProperty('transform-origin',origin,originPriority);else target.style.removeProperty('transform-origin');}if(property)target.style.setProperty(attribute,property,priority);else target.style.removeProperty(attribute);if(style===null&&!target.style.length)target.removeAttribute('style');}else if(style===null)target.removeAttribute('style');else target.setAttribute('style',style);});}
+      if(operation.kind==='text')undo.push(()=>target.replaceChildren(...children));
+      if(['remove','move'].includes(operation.kind))undo.push(()=>parent.insertBefore(target,next?.parentNode===parent?next:null));
+      if(operation.kind==='attribute'){if(!attributes.has(operation.name)||/[<>]|url\(\s*["']?(?!#)/i.test(operation.value))throw new Error('この属性値は利用できません。');target.setAttribute(operation.name,operation.value);target.style.removeProperty(operation.name);if(operation.name==='transform'){target.style.setProperty('transform',operation.value,'important');target.style.setProperty('transform-origin','0 0','important');}if(['fill','stroke','stroke-width','opacity','font-size'].includes(operation.name)&&operation.value){const value=['stroke-width','font-size'].includes(operation.name)&&/^-?[\d.]+$/.test(operation.value)?operation.value+'px':operation.value;target.style.setProperty(operation.name,value,'important');}}
+      else if(operation.kind==='text'){if(!['text','tspan'].includes(target.localName)||target.children.length)throw new Error('子要素を持つ文字は子を選択してください。');target.textContent=operation.value;}
+      else if(operation.kind==='remove'){if(target===node)throw new Error('SVG全体は削除できません。');target.remove();}
+      else if(operation.kind==='move'){const before=operation.before===null?null:at(operation.before);if(target===node||before&&before.parentElement!==target.parentElement)throw new Error('重なり順は同じグループ内で変更してください。');if(before!==target)target.parentElement.insertBefore(target,before);}
+      else if(operation.kind==='append'){if(!['rect','circle','ellipse','line','text'].includes(operation.tag))throw new Error('追加できない要素です。');const child=node.ownerDocument.createElementNS('http://www.w3.org/2000/svg',operation.tag);for(const [key,value] of Object.entries(operation.attributes)){if(!attributes.has(key)||/[<>]|url\(/i.test(value))throw new Error('追加属性を確認してください。');child.setAttribute(key,value);}if(operation.tag==='text')child.textContent=operation.text||'文字';target.append(child);}
+      else if(operation.kind==='gradient'){
+        if(!['fill','stroke'].includes(attribute)||!['linear','radial'].includes(operation.type)||!/^vb-svg-gradient-[\w-]+$/.test(operation.id)||!Array.isArray(operation.colors)||operation.colors.length!==2||operation.colors.some(value=>!/^#[\da-f]{6}$/i.test(value))||!Number.isFinite(operation.angle)||!Array.isArray(operation.stops)||operation.stops.length!==2||operation.stops.some(value=>!Number.isFinite(value)||value<0||value>100))throw new Error('グラデーションの設定を確認してください。');
+        for(const [key,value] of Object.entries(operation.geometry||{}))if(!['cx','cy','r','fx','fy','x1','y1','x2','y2','gradientUnits','gradientTransform'].includes(key)||typeof value!=='string'||/[<>]|url\(/i.test(value))throw new Error('グラデーションの位置を確認してください。');
+        const doc=node.ownerDocument;let defs=[...node.children].find(child=>child.localName==='defs'),created=false;if(!defs){defs=doc.createElementNS('http://www.w3.org/2000/svg','defs');node.append(defs);created=true;}
+        const gradient=doc.createElementNS('http://www.w3.org/2000/svg',operation.type==='linear'?'linearGradient':'radialGradient');gradient.id=operation.id;
+        if(operation.type==='linear'){const angle=operation.angle*Math.PI/180;for(const [key,value] of Object.entries({x1:50-Math.cos(angle)*50,y1:50-Math.sin(angle)*50,x2:50+Math.cos(angle)*50,y2:50+Math.sin(angle)*50}))gradient.setAttribute(key,value+'%');}
+        for(const [key,value] of Object.entries(operation.geometry||{})){if(!['cx','cy','r','fx','fy','x1','y1','x2','y2','gradientUnits','gradientTransform'].includes(key)||typeof value!=='string'||/[<>]|url\(/i.test(value))throw new Error('グラデーションの位置を確認してください。');gradient.setAttribute(key,value);}
+        for(let index=0;index<2;index++){const stop=doc.createElementNS('http://www.w3.org/2000/svg','stop');stop.setAttribute('offset',operation.stops[index]+'%');stop.setAttribute('stop-color',operation.colors[index]);gradient.append(stop);}const previousGradient=[...defs.children].find(child=>child.id===operation.id);if(previousGradient)previousGradient.replaceWith(gradient);else defs.append(gradient);undo.push(()=>{if(previousGradient)gradient.replaceWith(previousGradient);else gradient.remove();if(created&&!defs.children.length)defs.remove();});target.setAttribute(attribute,'url(#'+operation.id+')');target.style.setProperty(attribute,'url("#'+operation.id+'")','important');
+      }
+      else throw new Error('編集内容を確認してください。');
+      if(operation.kind==='append'){const added=[...target.childNodes].filter(child=>!children.includes(child));undo.push(()=>added.forEach(child=>child.remove()));}
+    }
+    }catch(error){for(const restore of undo.reverse())restore();throw error;}
+    return ()=>{for(const restore of [...undo].reverse())restore();};
+  };const fingerprint=function fingerprint(node){const copy=node.cloneNode(true);for(const child of [copy,...copy.querySelectorAll('*')])for(const attribute of [...child.attributes])if(/^data-vb-/.test(attribute.name))child.removeAttribute(attribute.name);return copy.innerHTML;};const controller=(function runtimeController(doc,apply,fingerprint){
+    const records=new Map();let entries=[],revision='',running=false,observer;
+    const outline=node=>[node.localName,node.getAttribute('viewBox')||'',[...node.children].filter(child=>!['title','desc','defs'].includes(child.localName)).map(outline)];
+    const stamp=node=>{const copy=node.cloneNode(true);for(const part of [copy,...copy.querySelectorAll('*')])for(const attribute of [...part.attributes])if(attribute.name.startsWith('data-vb-'))part.removeAttribute(attribute.name);return copy.outerHTML;};
+    function run(){
+      if(running)return;running=true;
+      try{
+        const refs=new Set(entries.map(entry=>entry.ref));
+        for(const [node,record] of records){if(!node.isConnected){records.delete(node);continue;}const changed=record.generator?stamp(node)!==record.stamp:fingerprint(node)!==record.after;if(changed){if(record.generator&&record.children.every(child=>child.parentNode===node))for(const restore of [...record.undo].reverse())restore();records.delete(node);continue;}if(record.revision!==revision||!refs.has(record.ref)){for(const restore of [...record.undo].reverse())restore();records.delete(node);}}
+        const visited=new Set();for(const entry of entries){let nodes;try{nodes=doc.querySelectorAll(entry.generator?'svg':entry.ref);}catch{continue;}for(const node of nodes){if(node.localName!=='svg'||node.closest('[data-vb-editor]'))continue;const record=records.get(node);if(record?.revision===revision&&!visited.has(node))continue;
+          if(entry.generator){if(!node.children.length)continue;const marked=node.getAttribute('data-vb-svg-generator')===entry.generator,unmarked=!node.hasAttribute('data-vb-svg-generator')&&entry.fallback&&node.matches(entry.fallback)&&JSON.stringify(outline(node))===JSON.stringify(entry.structure);if(!marked&&!unmarked)continue;}else if(fingerprint(node)!==entry.before)continue;
+          const undo=record?.undo||[];try{undo.push(apply(node,entry.operations,!!entry.generator));}catch(error){if(entry.generator){doc.defaultView.console?.warn('SVG編集を適用できない構造です：'+entry.generator,error.message);continue;}throw error;}records.set(node,{ref:entry.ref,revision,undo,after:fingerprint(node),generator:!!entry.generator,children:[...node.childNodes],stamp:entry.generator?stamp(node):null});visited.add(node);}
+        }
+      }finally{observer?.takeRecords();running=false;}
+    }
+    const win=doc.defaultView;
+    if(win?.Element){
+      const hookSetter=(proto,prop)=>{const d=proto&&Object.getOwnPropertyDescriptor(proto,prop);if(!d?.set||d.set.__vbSvgHook)return;const set=function(v){d.set.call(this,v);if(this.isConnected&&typeof v==='string'&&/<svg\b/i.test(v))try{win.__vbSvgEdits?.refresh?.();}catch{}};set.__vbSvgHook=true;try{Object.defineProperty(proto,prop,{...d,set});}catch{}};
+      hookSetter(win.Element.prototype,'innerHTML');hookSetter(win.Element.prototype,'outerHTML');hookSetter(win.ShadowRoot?.prototype,'innerHTML');
+      const hookMethod=(proto,name,check)=>{const fn=proto?.[name];if(typeof fn!=='function'||fn.__vbSvgHook)return;const wrapped=function(...args){const res=fn.apply(this,args);if((this.isConnected||this===doc||this===doc.body||this===doc.documentElement)&&check(args))try{win.__vbSvgEdits?.refresh?.();}catch{}return res;};wrapped.__vbSvgHook=true;try{proto[name]=wrapped;}catch{}};
+      const hasSvg=args=>args.some(a=>a&&(a.localName==='svg'||a.nodeType===11&&a.querySelector?.('svg')||a.nodeType===1&&a.querySelector?.('svg')));
+      hookMethod(win.Element.prototype,'insertAdjacentHTML',args=>typeof args[1]==='string'&&/<svg\b/i.test(args[1]));
+      for(const m of ['appendChild','insertBefore','replaceChild'])hookMethod(win.Node.prototype,m,hasSvg);
+      for(const m of ['append','prepend','replaceChildren','before','after','replaceWith'])hookMethod(win.Element.prototype,m,hasSvg);
+    }
+    const api={version:402,sync:true,set(next){const previous=entries,oldRevision=revision;entries=next;revision=JSON.stringify(next);try{run();}catch(error){entries=previous;revision=oldRevision;run();throw error;}},refresh:run,disconnect(){observer?.disconnect();}};
+    observer=new doc.defaultView.MutationObserver(mutations=>{if(mutations.every(m=>m.type==='attributes'&&m.attributeName?.startsWith('data-vb-')&&m.attributeName!=='data-vb-svg-generator'))return;run();});observer.observe(doc.documentElement,{childList:true,subtree:true,attributes:true,characterData:true});return api;
+  })(document,apply,fingerprint);window.__vbSvgEdits=controller;controller.set(JSON.parse(document.getElementById("vb-svg-edits")?.textContent||"[]"));})();</script></body></html>
