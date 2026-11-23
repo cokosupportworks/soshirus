@@ -529,35 +529,63 @@
           </div>
         </div>
 
-        <!-- SPECIAL SKILLS (Sabotage Phase) -->
-        <div id="skillsPanel" class="retro-panel p-1.5 flex flex-col gap-1 flex-1 justify-center">
-          <div class="text-[9px] text-center text-slate-400 tracking-widest leading-none">必殺技</div>
+        <!-- SPECIAL SKILLS (Available in BOTH Sabotage & Karma phases!) -->
+        <div id="skillsPanel" class="retro-panel p-1 flex flex-col gap-1 flex-1 min-h-0 justify-center overflow-y-auto">
+          <div class="text-[8px] text-center text-slate-400 tracking-widest leading-none shrink-0">必殺技</div>
 
-          <!-- ボリショイ (3x4 Grid, 0 Bombs, Time Freeze) -->
-          <button id="btnDevil" class="arcade-btn w-full py-1 px-1 rounded-lg bg-gradient-to-b from-fuchsia-600 to-purple-800 border border-fuchsia-400 text-white flex flex-col items-center justify-center">
-            <div class="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold leading-none">
-              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M1 3h2v4H1zm4-2h2v6H5zm4 2h2v4H9z"></path><path fill="#f59e0b" d="M1 7h10v3H1z"></path><path fill="#ef4444" d="M5 8h2v1H5z"></path></svg><span>ボリショイ</span>
+          <!-- 1. ボリショイ -->
+          <button id="btnDevil" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-fuchsia-600 to-purple-800 border border-fuchsia-400 text-white flex flex-col items-center justify-center shrink-0">
+            <div class="w-full flex items-center justify-between gap-0.5 text-[9.5px] sm:text-[10.5px] font-bold leading-none">
+              <span class="flex items-center gap-0.5 truncate">
+                <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M1 3h2v4H1zm4-2h2v6H5zm4 2h2v4H9z"></path><path fill="#f59e0b" d="M1 7h10v3H1z"></path><path fill="#ef4444" d="M5 8h2v1H5z"></path></svg><span>ボリショイ</span>
+              </span>
+              <span class="text-[8px] text-amber-300 shrink-0">×<span id="countDevil">1</span></span>
             </div>
-            <div class="text-[8px] sm:text-[9px] text-fuchsia-100 mt-0.5 leading-tight">3×4拡大・時間停止</div>
-            <div class="text-[8px] text-fuchsia-200 leading-none">(残<span id="countDevil" class="text-amber-300 font-bold">1</span>)</div>
+            <div id="descDevil" class="text-[7.5px] sm:text-[8.5px] text-fuchsia-100 mt-0.5 leading-none truncate w-full text-center">3×4拡大・時間停止</div>
           </button>
 
-          <!-- ペレストロイカ (Manual Control Takeover) -->
-          <button id="btnRevolution" class="arcade-btn w-full py-1 px-1 rounded-lg bg-gradient-to-b from-red-600 to-rose-900 border border-amber-400 text-white flex flex-col items-center justify-center">
-            <div class="flex items-center gap-1 text-[9.5px] sm:text-[10.5px] font-bold leading-none tracking-tighter">
-              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M3 2h2v3H3zm2 0h2v3H5zm2 0h2v3H7z"></path><path fill="#f59e0b" d="M2 4h8v5H2z"></path><path fill="#fef08a" d="M2 5h3v2H2z"></path><path fill="#b45309" d="M3 9h6v2H3z"></path></svg><span>ペレストロイカ</span>
+          <!-- 2. ペレストロイカ -->
+          <button id="btnRevolution" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-red-600 to-rose-900 border border-amber-400 text-white flex flex-col items-center justify-center shrink-0">
+            <div class="w-full flex items-center justify-between gap-0.5 text-[8.5px] sm:text-[9.5px] font-bold leading-none tracking-tighter">
+              <span class="flex items-center gap-0.5 truncate">
+                <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><path fill="#fde047" d="M3 2h2v3H3zm2 0h2v3H5zm2 0h2v3H7z"></path><path fill="#f59e0b" d="M2 4h8v5H2z"></path><path fill="#fef08a" d="M2 5h3v2H2z"></path><path fill="#b45309" d="M3 9h6v2H3z"></path></svg><span>ペレストロイカ</span>
+              </span>
+              <span class="text-[8px] text-amber-300 shrink-0">×<span id="countRev">1</span></span>
             </div>
-            <div class="text-[8px] sm:text-[9px] text-amber-100 mt-0.5 leading-tight">CPUから手動奪取</div>
-            <div class="text-[8px] text-amber-200 leading-none">(残<span id="countRev" class="text-amber-300 font-bold">1</span>)</div>
+            <div id="descRev" class="text-[7.5px] sm:text-[8.5px] text-amber-100 mt-0.5 leading-none truncate w-full text-center">CPUから手動奪取</div>
           </button>
 
-          <!-- スペツナズ (Special Forces Bomb Defusal) -->
-          <button id="btnDefuse" class="arcade-btn w-full py-1 px-1 rounded-lg bg-gradient-to-b from-sky-600 to-blue-900 border border-cyan-300 text-white flex flex-col items-center justify-center">
-            <div class="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold leading-none">
-              <svg class="pixel-svg w-3.5 h-3.5 shrink-0" viewBox="0 0 12 12"><path fill="#334155" d="M2 2h8v7H2z"></path><path fill="#0f172a" d="M3 4h6v3H3z"></path><path fill="#22d3ee" d="M3 5h2v1H3zm4 0h2v1H7z"></path><path fill="#ef4444" d="M5 1h2v1H5z"></path></svg><span>スペツナズ</span>
+          <!-- 3. スペツナズ -->
+          <button id="btnDefuse" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-sky-600 to-blue-900 border border-cyan-300 text-white flex flex-col items-center justify-center shrink-0">
+            <div class="w-full flex items-center justify-between gap-0.5 text-[9.5px] sm:text-[10.5px] font-bold leading-none">
+              <span class="flex items-center gap-0.5 truncate">
+                <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><path fill="#334155" d="M2 2h8v7H2z"></path><path fill="#0f172a" d="M3 4h6v3H3z"></path><path fill="#22d3ee" d="M3 5h2v1H3zm4 0h2v1H7z"></path><path fill="#ef4444" d="M5 1h2v1H5z"></path></svg><span>スペツナズ</span>
+              </span>
+              <span class="text-[8px] text-amber-300 shrink-0">×<span id="countDefuse">1</span></span>
             </div>
-            <div class="text-[8px] sm:text-[9px] text-cyan-100 mt-0.5 leading-tight">爆弾を1個へ除去</div>
-            <div class="text-[8px] text-cyan-200 leading-none">(残<span id="countDefuse" class="text-amber-300 font-bold">1</span>)</div>
+            <div id="descDefuse" class="text-[7.5px] sm:text-[8.5px] text-cyan-100 mt-0.5 leading-none truncate w-full text-center">爆弾を1個へ除去</div>
+          </button>
+
+          <!-- 4. パーミャトニク (Indestructible Silver 1x1 Monument Block) -->
+          <button id="btnMonument" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-slate-300 via-slate-400 to-slate-600 border border-white text-slate-950 flex flex-col items-center justify-center shrink-0">
+            <div class="w-full flex items-center justify-between gap-0.5 text-[8.5px] sm:text-[9.5px] font-bold leading-none tracking-tighter">
+              <span class="flex items-center gap-0.5 truncate">
+                <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" fill="#e2e8f0" stroke="#334155" stroke-width="1"/><rect x="3" y="3" width="3" height="2" fill="#ffffff"/><rect x="7" y="7" width="2" height="2" fill="#64748b"/></svg><span>パーミャトニク</span>
+              </span>
+              <span class="text-[8px] text-slate-900 font-extrabold shrink-0">×<span id="countMonument">1</span></span>
+            </div>
+            <div class="text-[7.5px] sm:text-[8.5px] text-slate-900 font-bold mt-0.5 leading-none truncate w-full text-center">不滅の銀1マス設置</div>
+          </button>
+
+          <!-- 5. スネスチー (Demolish all Monument blocks) -->
+          <button id="btnDemolish" class="arcade-btn w-full py-0.5 px-1 rounded-md bg-gradient-to-b from-amber-500 to-orange-800 border border-amber-200 text-white flex flex-col items-center justify-center shrink-0">
+            <div class="w-full flex items-center justify-between gap-0.5 text-[9.5px] sm:text-[10.5px] font-bold leading-none">
+              <span class="flex items-center gap-0.5 truncate">
+                <svg class="pixel-svg w-3 h-3 shrink-0" viewBox="0 0 12 12"><path fill="#fef08a" d="M2 2h8v3H2z"/><path fill="#78350f" d="M5 5h2v6H5z"/><path fill="#ef4444" d="M1 3h2v2H1zm8 0h2v2H9z"/></svg><span>スネスチー</span>
+              </span>
+              <span class="text-[8px] text-amber-200 shrink-0">×<span id="countDemolish">0</span></span>
+            </div>
+            <div class="text-[7.5px] sm:text-[8.5px] text-amber-100 mt-0.5 leading-none truncate w-full text-center">記念碑を全て撤去</div>
           </button>
         </div>
 
@@ -646,19 +674,19 @@
             </div>
           </div>
 
-          <!-- Right: DS Diamond A/B Buttons -->
-          <div class="relative w-[114px] h-[116px] sm:w-32 sm:h-[128px] shrink-0">
-            <div class="absolute top-1 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-slate-300/60 border border-slate-400/70 flex items-center justify-center text-[10px] font-bold text-slate-400 pointer-events-none">X</div>
-            <div class="absolute left-0.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-300/60 border border-slate-400/70 flex items-center justify-center text-[10px] font-bold text-slate-400 pointer-events-none">Y</div>
+          <!-- Right: DS Diamond A/B Buttons (Clearly separated so they never overlap on iPhone/iPad!) -->
+          <div class="relative w-[124px] h-[120px] sm:w-[140px] sm:h-[132px] shrink-0">
+            <div class="absolute top-0.5 left-[44%] -translate-x-1/2 w-7 h-7 rounded-full bg-slate-300/55 border border-slate-400/70 flex items-center justify-center text-[9px] font-bold text-slate-400 pointer-events-none">X</div>
+            <div class="absolute left-0.5 top-[42%] -translate-y-1/2 w-7 h-7 rounded-full bg-slate-300/55 border border-slate-400/70 flex items-center justify-center text-[9px] font-bold text-slate-400 pointer-events-none">Y</div>
 
-            <!-- A Button (Right Rotate / CW) -->
-            <button id="revBtnA" class="ds-ab-btn absolute right-0 top-1/2 -translate-y-1/2 w-[52px] h-[52px] sm:w-14 sm:h-14 rounded-full flex flex-col items-center justify-center leading-none" title="右回転 (Z / Space)">
+            <!-- A Button (Right Rotate / CW) - Upper-Right -->
+            <button id="revBtnA" class="ds-ab-btn absolute right-0 top-[20%] w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full flex flex-col items-center justify-center leading-none" title="右回転 (Z / Space)">
               <span class="text-base font-extrabold text-rose-700">A</span>
               <span class="text-[9px] font-bold text-slate-700">右↻</span>
             </button>
 
-            <!-- B Button (Left Rotate / CCW) -->
-            <button id="revBtnB" class="ds-ab-btn absolute bottom-0 left-1/2 -translate-x-1/2 w-[52px] h-[52px] sm:w-14 sm:h-14 rounded-full flex flex-col items-center justify-center leading-none" title="左回転 (X)">
+            <!-- B Button (Left Rotate / CCW) - Lower-Left -->
+            <button id="revBtnB" class="ds-ab-btn absolute bottom-0 left-[12%] w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full flex flex-col items-center justify-center leading-none" title="左回転 (X)">
               <span class="text-base font-extrabold text-amber-700">B</span>
               <span class="text-[9px] font-bold text-slate-700">左↺</span>
             </button>
@@ -683,15 +711,19 @@
   <div id="titleModal" class="fixed inset-0 z-50 bg-slate-950/92 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="retro-panel w-full max-w-md p-4 sm:p-6 flex flex-col items-center text-center gap-3.5 max-h-[94dvh] overflow-y-auto">
       <div class="flex flex-col items-center w-full">
-        <!-- Animated Title Banner GIF (Infinite Loop) -->
+        <!-- Seamless Infinite-Loop Title Video (title.mp4) -->
         <div id="titleBannerWrap" class="w-full rounded-xl overflow-hidden border-2 border-amber-400/80 bg-slate-950 shadow-[0_6px_18px_rgba(0,0,0,0.65)] mb-1">
-          <img
-            id="titleGifImg"
-            src="./title.gif"
-            alt="ソシルス SOSHIRUS"
-            class="w-full h-auto block object-cover"
-            onerror="this.parentElement.classList.add('hidden'); document.getElementById('titleFallbackSvg').classList.remove('hidden');"
-          />
+          <video
+            id="titleVideo"
+            src="./title.mp4"
+            poster="./title.gif"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            class="w-full h-auto block object-cover pointer-events-none"
+          ></video>
         </div>
         <div class="text-[11px] font-pixel text-rose-400 tracking-widest mt-0.5">Block the Block!!!</div>
 
@@ -844,12 +876,24 @@
             </button>
             <button id="rewardRev" class="arcade-btn py-2 px-1 rounded-lg bg-gradient-to-b from-red-600 to-rose-900 border border-amber-300 text-white text-[11px] font-bold flex flex-col items-center">
               <span>ペレストロイカ</span>
-              <span class="text-[9px] text-amber-100 font-normal">CPUから手動奪取</span>
+              <span class="text-[9px] text-amber-100 font-normal">手動奪取/自作</span>
               <span class="text-[10px] text-amber-300">+1</span>
             </button>
             <button id="rewardDefuse" class="arcade-btn py-2 px-1 rounded-lg bg-gradient-to-b from-sky-600 to-blue-900 border border-cyan-300 text-white text-xs font-bold flex flex-col items-center">
               <span>スペツナズ</span>
               <span class="text-[9px] text-cyan-100 font-normal">爆弾を1個へ除去</span>
+              <span class="text-[10px] text-amber-300">+1</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-2 gap-1.5">
+            <button id="rewardMonument" class="arcade-btn py-2 px-1 rounded-lg bg-gradient-to-b from-slate-300 via-slate-400 to-slate-600 border border-white text-slate-950 text-xs font-bold flex flex-col items-center">
+              <span>パーミャトニク</span>
+              <span class="text-[9px] text-slate-900 font-normal">不滅の銀1マス設置</span>
+              <span class="text-[10px] text-amber-900 font-extrabold">+1</span>
+            </button>
+            <button id="rewardDemolish" class="arcade-btn py-2 px-1 rounded-lg bg-gradient-to-b from-amber-500 to-orange-800 border border-amber-200 text-white text-xs font-bold flex flex-col items-center">
+              <span>スネスチー</span>
+              <span class="text-[9px] text-amber-100 font-normal">記念碑を全て撤去</span>
               <span class="text-[10px] text-amber-300">+1</span>
             </button>
           </div>
@@ -881,15 +925,23 @@
   <!-- 5. GAME OVER MODAL -->
   <div id="gameOverModal" class="hidden fixed inset-0 z-50 bg-slate-950/92 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="retro-panel w-full max-w-sm p-0 overflow-hidden flex flex-col items-center text-center max-h-[92dvh]" style="border-color:#ef4444; box-shadow: 0 0 24px rgba(239,68,68,0.4);">
-      <!-- Full-bleed edge-to-edge Game Over artwork -->
+      <!-- Full-bleed edge-to-edge Game Over artwork (gameover1.jpg or non-looping gameover2.mp4) -->
       <div class="w-full shrink-0 bg-slate-950">
         <img
           id="gameOverImg"
           src="./gameover1.jpg"
           alt="GAME OVER"
           class="w-full h-auto block object-cover"
-          onerror="if(!this.dataset.fallback){this.dataset.fallback='1'; this.src='./gameover1.jpg';}"
         />
+        <video
+          id="gameOverVideo"
+          src="./gameover2.mp4"
+          poster="./gameover1.jpg"
+          muted
+          playsinline
+          preload="auto"
+          class="hidden w-full h-auto block object-cover pointer-events-none"
+        ></video>
       </div>
       <!-- Scrollable body below full-bleed banner -->
       <div class="w-full flex-1 overflow-y-auto p-4 sm:p-5 flex flex-col items-center text-center gap-3">
@@ -1029,6 +1081,8 @@
         ]
       };
 
+      const MONUMENT_COLOR_INDEX = 98;
+      const MONUMENT_CELL_VAL = 99;
       const RAINBOW_COLOR_INDEX = 99;
 
       const BLOCK_PALETTE = [
@@ -1335,6 +1389,8 @@
           this.bgmTimer = null;
           this.bgmRunning = false;
           this.bgmTrack = 'main'; // 'main' (Korobeiniki) | 'troika' (Game Over)
+          this._tickFn = null;
+          this.needsHardAudioReset = false;
           this.currentStep = 0;
           this.normalStepMs = 100; // 150 BPM at 16th-note resolution
           this.urgentStepMs = 78;  // ~192 BPM climax / pinch tempo!
@@ -1383,19 +1439,24 @@
           return this.ctx;
         }
 
-        // Synchronous iOS Safari / iframe unlock & background-interruption recovery
+        // Synchronous iOS / iPadOS Safari unlock & rock-solid background recovery
         unlock(forceRecover = false) {
           const AudioCtx = window.AudioContext || window.webkitAudioContext;
           if (!AudioCtx) return null;
 
-          // iOS Safari can leave AudioContext in 'interrupted' or 'closed' after switching apps
-          if (!this.ctx || this.ctx.state === 'closed' || (forceRecover && this.ctx.state === 'interrupted')) {
+          // On iPadOS/iOS Safari, returning from background can leave AudioContext in a silent zombie/interrupted state.
+          // Recreating the AudioContext on the first user gesture after backgrounding guarantees audio resumes cleanly!
+          const mustRecreate = !this.ctx
+            || this.ctx.state === 'closed'
+            || (forceRecover && (this.needsHardAudioReset || this.ctx.state === 'interrupted'));
+
+          if (mustRecreate) {
             this._createContext();
+            this.needsHardAudioReset = false;
           }
 
           if (this.ctx && this.ctx.state !== 'running') {
             this.ctx.resume().catch(() => {
-              // If resume fails after iOS interruption, recreate context on next user gesture
               if (forceRecover) {
                 this._createContext();
                 if (this.ctx && this.ctx.state !== 'running') {
@@ -1415,18 +1476,24 @@
               this.unlocked = true;
             } catch (e) {}
           }
+
+          // Kick BGM sequencer timer if it was throttled/stopped by iPadOS while in background
+          if (this.bgmRunning && this._tickFn) {
+            if (this.bgmTimer) clearTimeout(this.bgmTimer);
+            this.bgmTimer = setTimeout(this._tickFn, 20);
+          }
           return this.ctx;
         }
 
         recoverFromBackground() {
-          this.needsBackgroundRecovery = true;
-          if (!this.ctx) return;
-          if (this.ctx.state === 'closed') {
-            this._createContext();
-          } else if (this.ctx.state !== 'running') {
-            this.ctx.resume().then(() => {
-              this.needsBackgroundRecovery = false;
-            }).catch(() => {});
+          // Keep needsHardAudioReset = true until an actual user gesture re-initializes iPad Safari audio cleanly
+          this.needsHardAudioReset = true;
+          if (this.ctx && this.ctx.state !== 'closed' && this.ctx.state !== 'running') {
+            this.ctx.resume().catch(() => {});
+          }
+          if (this.bgmRunning && this._tickFn) {
+            if (this.bgmTimer) clearTimeout(this.bgmTimer);
+            this.bgmTimer = setTimeout(this._tickFn, this.stepMs);
           }
         }
 
@@ -1590,11 +1657,13 @@
             this.bgmTimer = setTimeout(tickStep, this.stepMs);
           };
 
+          this._tickFn = tickStep;
           tickStep();
         }
 
         stopBGM() {
           this.bgmRunning = false;
+          this._tickFn = null;
           this.setUrgent(false);
           if (this.bgmTimer) {
             clearTimeout(this.bgmTimer);
@@ -1804,6 +1873,22 @@
             } catch (e) {}
             this.playNoise(t + 0.48, 0.18, 0.22, 900, 'lowpass');
             this.playTone(110, 'triangle', t + 0.48, 0.22, 0.24);
+          } else if (type === 'pamyatnik') {
+            // Monumental Silver Bell Chime + Metallic Gleam
+            this.playNoise(t, 0.14, 0.16, 1800, 'bandpass');
+            this.playTone(110, 'triangle', t, 0.45, 0.24);
+            [[440, 0], [659.25, 0.06], [880, 0.14], [1318.51, 0.22], [1760, 0.32]].forEach(([f, dt]) => {
+              this.playTone(f, 'triangle', t + dt, 0.38, 0.14);
+              this.playTone(f * 2, 'sine', t + dt + 0.02, 0.25, 0.07);
+            });
+          } else if (type === 'snesti') {
+            // Heavy Demolition Blast + Crashing Debris + Relief Fanfare
+            this.playNoise(t, 0.35, 0.28, 1200, 'lowpass');
+            this.playTone(92.5, 'sawtooth', t, 0.3, 0.22);
+            this.playNoise(t + 0.18, 0.28, 0.24, 2400, 'bandpass');
+            [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+              this.playTone(f, 'square', t + 0.32 + i * 0.06, 0.14, 0.12);
+            });
           }
         }
 
@@ -1819,13 +1904,10 @@
 
       const audio = new RetroAudioEngine();
 
-      // Unlock Web Audio synchronously on ANY user gesture + recover after iOS Safari app switch!
+      // Unlock Web Audio synchronously on ANY user gesture + hard-recover after iPadOS/iOS Safari backgrounding!
       const globalAudioUnlock = () => {
-        const force = !!audio.needsBackgroundRecovery || (audio.ctx && audio.ctx.state !== 'running');
+        const force = !!audio.needsHardAudioReset || (audio.ctx && audio.ctx.state !== 'running');
         audio.unlock(force);
-        if (audio.ctx && audio.ctx.state === 'running') {
-          audio.needsBackgroundRecovery = false;
-        }
       };
       document.addEventListener('pointerdown', globalAudioUnlock, { passive: true });
       document.addEventListener('touchstart', globalAudioUnlock, { passive: true });
@@ -1836,11 +1918,12 @@
         if (document.visibilityState === 'visible') {
           audio.recoverFromBackground();
         } else {
-          audio.needsBackgroundRecovery = true;
+          audio.needsHardAudioReset = true;
         }
       });
       window.addEventListener('pageshow', () => audio.recoverFromBackground());
       window.addEventListener('focus', () => audio.recoverFromBackground());
+      window.addEventListener('pagehide', () => { audio.needsHardAudioReset = true; });
 
       /* =========================================================
        * 4. MATRIX & BLOCK HELPERS (Connected-Edge Penalty Included)
@@ -1996,7 +2079,7 @@
         }
         let cleared = 0;
         for (let r = totalRows - 1; r >= 0; r--) {
-          if (sim[r].every(cell => cell !== 0)) {
+          if (sim[r].every(cell => cell !== 0) && !sim[r].includes(MONUMENT_CELL_VAL)) {
             sim.splice(r, 1);
             sim.unshift(Array(COLS).fill(0));
             cleared++;
@@ -2178,7 +2261,10 @@
           linesTowardBomb: 0,
           devilCount: 1,
           revCount: 1,
-          defuseCount: 1
+          defuseCount: 1,
+          monumentCount: 1,
+          demolishCount: 0,
+          monuments: []
         },
         score: 0,
         lastStageScore: 0,
@@ -2191,6 +2277,12 @@
         devilCount: 1,
         revCount: 1,
         defuseCount: 1,
+        monumentCount: 1,
+        demolishCount: 0,
+        monuments: [], // Persistent indestructible silver 1x1 blocks: [{ col, rowFromBottom }]
+        monumentDropActive: false,
+        interruptedBeforeMonument: null,
+        karmaBuilderMode: null, // null | 'bolshoi' | 'perestroika'
         devilActiveThisTurn: false,
         revArmedForDrop: false,
         revActiveNow: false,
@@ -2356,10 +2448,19 @@
       const btnDevil = document.getElementById('btnDevil');
       const btnRevolution = document.getElementById('btnRevolution');
       const btnDefuse = document.getElementById('btnDefuse');
+      const btnMonument = document.getElementById('btnMonument');
+      const btnDemolish = document.getElementById('btnDemolish');
+      const descDevil = document.getElementById('descDevil');
+      const descRev = document.getElementById('descRev');
       const countDevil = document.getElementById('countDevil');
       const countRev = document.getElementById('countRev');
       const countDefuse = document.getElementById('countDefuse');
+      const countMonument = document.getElementById('countMonument');
+      const countDemolish = document.getElementById('countDemolish');
       const hudBombCount = document.getElementById('hudBombCount');
+      const titleVideo = document.getElementById('titleVideo');
+      const gameOverImg = document.getElementById('gameOverImg');
+      const gameOverVideo = document.getElementById('gameOverVideo');
 
       const bottomControlPanel = document.getElementById('bottomControlPanel');
       const builderPanel = document.getElementById('builderPanel');
@@ -2510,6 +2611,38 @@
           <rect x="7" y="17" width="10" height="2" fill="#0f172a"/>
           <!-- Wire-Cutter Spark -->
           <rect x="19" y="17" width="3" height="2" fill="#fde047"/>
+        </svg>`,
+        pamyatnik: `<svg class="pixel-svg w-full h-full" viewBox="0 0 24 24">
+          <!-- Radiant Silver Monument Block -->
+          <rect x="4" y="4" width="16" height="16" fill="#94a3b8"/>
+          <rect x="5" y="5" width="14" height="14" fill="#e2e8f0"/>
+          <rect x="5" y="5" width="14" height="3" fill="#ffffff"/>
+          <rect x="5" y="5" width="3" height="14" fill="#ffffff"/>
+          <rect x="5" y="16" width="14" height="3" fill="#475569"/>
+          <rect x="16" y="5" width="3" height="14" fill="#475569"/>
+          <!-- Engraved Star Crest -->
+          <rect x="11" y="9" width="2" height="6" fill="#64748b"/>
+          <rect x="9" y="11" width="6" height="2" fill="#64748b"/>
+          <!-- Gleaming Sparkles -->
+          <rect x="1" y="2" width="3" height="1" fill="#ffffff"/>
+          <rect x="2" y="1" width="1" height="3" fill="#ffffff"/>
+          <rect x="20" y="19" width="3" height="1" fill="#fde047"/>
+          <rect x="21" y="18" width="1" height="3" fill="#fde047"/>
+        </svg>`,
+        snesti: `<svg class="pixel-svg w-full h-full" viewBox="0 0 24 24">
+          <!-- Shattering Silver Fragments -->
+          <rect x="2" y="4" width="4" height="4" fill="#cbd5e1"/>
+          <rect x="18" y="3" width="4" height="4" fill="#e2e8f0"/>
+          <rect x="3" y="17" width="4" height="4" fill="#94a3b8"/>
+          <rect x="17" y="16" width="4" height="4" fill="#cbd5e1"/>
+          <!-- Golden Demolition Hammer -->
+          <rect x="6" y="5" width="12" height="6" fill="#f59e0b"/>
+          <rect x="6" y="5" width="12" height="2" fill="#fef08a"/>
+          <rect x="10" y="11" width="4" height="11" fill="#78350f"/>
+          <!-- Impact Flash -->
+          <rect x="11" y="2" width="2" height="2" fill="#ef4444"/>
+          <rect x="19" y="10" width="3" height="2" fill="#fde047"/>
+          <rect x="2" y="11" width="3" height="2" fill="#fde047"/>
         </svg>`
       };
 
@@ -2522,7 +2655,9 @@
             subCls: 'text-fuchsia-100',
             en: 'BOLSHOI!!',
             ja: 'ボリショイ発動！！',
-            sub: '3×4巨大化・爆弾0・時間一時停止！'
+            sub: state.turnSide === 'karma'
+              ? '3×4自作ブロックをNEXTへ強制割り込み！'
+              : '3×4巨大化・爆弾0・時間一時停止！'
           },
           perestroika: {
             boxCls: 'bg-gradient-to-r from-red-950/95 via-rose-700/95 to-red-950/95 border-amber-400',
@@ -2530,7 +2665,9 @@
             subCls: 'text-amber-100',
             en: 'PERESTROIKA!!',
             ja: 'ペレストロイカ！！',
-            sub: 'CPUから操作権を奪取！手動で落とせ！'
+            sub: state.turnSide === 'karma'
+              ? '作成ターン強奪！好みのブロックをNEXTへ！'
+              : 'CPUから操作権を奪取！手動で落とせ！'
           },
           counter_perestroika: {
             boxCls: 'bg-gradient-to-r from-purple-950/95 via-rose-900/95 to-purple-950/95 border-rose-400',
@@ -2547,6 +2684,22 @@
             en: 'SPETSNAZ!!',
             ja: 'スペツナズ突入！！',
             sub: '特殊部隊が爆弾を一掃除去する…！'
+          },
+          pamyatnik: {
+            boxCls: 'bg-gradient-to-r from-slate-900/95 via-slate-600/95 to-slate-900/95 border-white',
+            enCls: 'text-slate-200',
+            subCls: 'text-white',
+            en: 'PAMYATNIK!!',
+            ja: 'パーミャトニク！！',
+            sub: '不滅の銀色記念碑を好きな位置に落とせ！'
+          },
+          snesti: {
+            boxCls: 'bg-gradient-to-r from-amber-950/95 via-orange-700/95 to-amber-950/95 border-amber-300',
+            enCls: 'text-amber-200',
+            subCls: 'text-amber-100',
+            en: 'SNESTI!!',
+            ja: 'スネスチー発動！！',
+            sub: '盤面のパーミャトニクを全て撤去する！'
           }
         };
         const cfg = configs[type] || configs.perestroika;
@@ -2634,6 +2787,7 @@
 
       function isPlayerManualControl() {
         if (state.phase !== 'DROPPING') return false;
+        if (state.monumentDropActive) return true;
         if (state.turnSide === 'karma') return !state.cpuRevActiveNow;
         return state.revActiveNow;
       }
@@ -2677,15 +2831,49 @@
         countDevil.textContent = state.devilCount;
         countRev.textContent = state.revCount;
         countDefuse.textContent = state.defuseCount;
-        hudBombCount.textContent = state.devilActiveThisTurn ? '💣×0' : `💣×${state.bombCount}`;
+        countMonument.textContent = state.monumentCount;
+        countDemolish.textContent = state.demolishCount;
+        hudBombCount.textContent = (state.devilActiveThisTurn || state.karmaBuilderMode) ? '💣×0' : `💣×${state.bombCount}`;
 
         const isSabotage = state.turnSide === 'sabotage';
-        btnDevil.disabled = !(isSabotage && state.phase === 'BUILDING' && state.devilCount > 0 && !state.devilActiveThisTurn);
-        btnRevolution.disabled = !(isSabotage && (state.phase === 'BUILDING' || state.phase === 'DROPPING') && state.revCount > 0 && !state.revArmedForDrop && !state.revActiveNow);
-        btnDefuse.disabled = !(isSabotage && state.phase === 'BUILDING' && state.defuseCount > 0 && state.bombCount > 1 && !state.devilActiveThisTurn);
+        const isKarma = state.turnSide === 'karma';
+        const busySpecial = state.monumentDropActive || !!state.karmaBuilderMode || state.cutinFreezeTimer > 0;
+
+        descDevil.textContent = isKarma ? '3×4自作→NEXT割込' : '3×4拡大・時間停止';
+        descRev.textContent = isKarma ? '2×4自作→NEXT割込' : 'CPUから手動奪取';
+
+        // Enable skills in BOTH Sabotage & Karma phases (except Spetsnaz which is Sabotage-only)
+        btnDevil.disabled = busySpecial || state.devilCount <= 0 || !(
+          (isSabotage && state.phase === 'BUILDING' && !state.devilActiveThisTurn) ||
+          (isKarma && state.phase === 'DROPPING' && !state.cpuRevActiveNow)
+        );
+        btnRevolution.disabled = busySpecial || state.revCount <= 0 || !(
+          (isSabotage && (state.phase === 'BUILDING' || state.phase === 'DROPPING') && !state.revArmedForDrop && !state.revActiveNow) ||
+          (isKarma && state.phase === 'DROPPING' && !state.cpuRevActiveNow)
+        );
+        btnDefuse.disabled = busySpecial || !(isSabotage && state.phase === 'BUILDING' && state.defuseCount > 0 && state.bombCount > 1 && !state.devilActiveThisTurn);
+        btnMonument.disabled = busySpecial || state.monumentCount <= 0 || !(
+          (state.phase === 'BUILDING' || state.phase === 'DROPPING') && !state.cpuRevActiveNow
+        );
+        btnDemolish.disabled = busySpecial || state.demolishCount <= 0 || state.monuments.length === 0 || !(
+          state.phase === 'BUILDING' || state.phase === 'DROPPING'
+        );
 
         // Toggle between Builder Mode and Nintendo DS Controller Mode
-        if (state.turnSide === 'karma') {
+        if (state.monumentDropActive && state.phase === 'DROPPING') {
+          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative';
+          builderPanel.classList.add('hidden');
+          revolutionPanel.classList.remove('hidden');
+          revolutionPanel.classList.add('flex');
+          dsModeTitle.textContent = '🗿 パーミャトニク';
+          builderLockOverlay.classList.add('hidden');
+        } else if (state.karmaBuilderMode && state.phase === 'BUILDING') {
+          bottomControlPanel.className = 'retro-panel p-2 sm:p-2.5 shrink-0 relative';
+          revolutionPanel.classList.add('hidden');
+          revolutionPanel.classList.remove('flex');
+          builderPanel.classList.remove('hidden');
+          builderLockOverlay.classList.add('hidden');
+        } else if (isKarma) {
           bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative';
           builderPanel.classList.add('hidden');
           revolutionPanel.classList.remove('hidden');
@@ -2724,37 +2912,31 @@
           nextEmptyLabel.classList.remove('hidden');
         }
 
-        // Show Karma Queue directly below NEXT in Karma mode; show Special Skills in Sabotage phase
-        if (state.turnSide === 'karma') {
-          skillsPanel.classList.add('hidden');
-          skillsPanel.classList.remove('flex');
-          karmaQueuePanel.classList.remove('hidden');
-          karmaQueuePanel.classList.add('flex', 'flex-1');
-          karmaQueuePanel.classList.remove('shrink-0');
+        // Always keep Special Skills visible in BOTH phases; show Karma Queue below NEXT in Karma mode
+        skillsPanel.classList.remove('hidden');
+        skillsPanel.classList.add('flex');
 
-          if (state.nextPiece && state.nextPiece.wasRev) {
-            nextKarmaTag.textContent = '✊CPU妨害';
-            nextKarmaTag.className = 'text-[9px] px-1 py-0.5 rounded bg-red-900 border border-amber-400 text-amber-200 font-bold leading-none animate-pulse';
-          } else if (state.nextPiece && state.nextPiece.wasDevil) {
-            nextKarmaTag.textContent = '👑ボリショイ';
-            nextKarmaTag.className = 'text-[9px] px-1 py-0.5 rounded bg-fuchsia-900 border border-fuchsia-400 text-fuchsia-200 font-bold leading-none';
+        if (state.gameMode === 'karma') {
+          karmaQueuePanel.classList.remove('hidden', 'flex-1');
+          karmaQueuePanel.classList.add('flex', 'shrink-0');
+          if (isKarma) {
+            if (state.nextPiece && state.nextPiece.wasRev) {
+              nextKarmaTag.textContent = '✊CPU妨害';
+              nextKarmaTag.className = 'text-[9px] px-1 py-0.5 rounded bg-red-900 border border-amber-400 text-amber-200 font-bold leading-none animate-pulse';
+            } else if (state.nextPiece && state.nextPiece.wasDevil) {
+              nextKarmaTag.textContent = '👑ボリショイ';
+              nextKarmaTag.className = 'text-[9px] px-1 py-0.5 rounded bg-fuchsia-900 border border-fuchsia-400 text-fuchsia-200 font-bold leading-none';
+            } else {
+              nextKarmaTag.className = 'hidden';
+            }
           } else {
             nextKarmaTag.className = 'hidden';
           }
           renderKarmaQueue();
         } else {
-          skillsPanel.classList.remove('hidden');
-          skillsPanel.classList.add('flex');
+          karmaQueuePanel.classList.add('hidden');
+          karmaQueuePanel.classList.remove('flex', 'flex-1');
           nextKarmaTag.className = 'hidden';
-
-          if (state.gameMode === 'karma') {
-            karmaQueuePanel.classList.remove('hidden', 'flex-1');
-            karmaQueuePanel.classList.add('flex', 'shrink-0');
-            renderKarmaQueue();
-          } else {
-            karmaQueuePanel.classList.add('hidden');
-            karmaQueuePanel.classList.remove('flex', 'flex-1');
-          }
         }
 
         updateCPUExpression();
@@ -2825,6 +3007,9 @@
         if (isDisconnected) {
           builderTitle.textContent = '⚠ 離れてる！黄色の最小パーツのみ送信';
           builderTitle.className = 'text-xs sm:text-sm font-bold text-rose-400 truncate';
+        } else if (state.karmaBuilderMode === 'perestroika') {
+          builderTitle.textContent = '✊ ペレストロイカ！自作ブロックをNEXTへ';
+          builderTitle.className = 'text-xs sm:text-sm font-bold text-amber-300 truncate';
         } else if (state.devilActiveThisTurn) {
           builderTitle.textContent = '👑 ボリショイ発動中！3×4＆時間停止';
           builderTitle.className = 'text-xs sm:text-sm font-bold text-fuchsia-300 truncate';
@@ -2991,6 +3176,12 @@
         state.devilCount = 1;
         state.revCount = 1;
         state.defuseCount = 1;
+        state.monumentCount = 1;
+        state.demolishCount = 0;
+        state.monuments = [];
+        state.monumentDropActive = false;
+        state.interruptedBeforeMonument = null;
+        state.karmaBuilderMode = null;
         state.bombCount = 1;
         state.linesTowardBomb = 0;
         state.totalCpuLines = 0;
@@ -3130,7 +3321,8 @@
         } else {
           const currentNo = ((Math.max(0, state.karmaIndex - 2)) % total) + 1;
           karmaProgressText.textContent = `${currentNo}/${total}`;
-          for (let i = 0; i < 3; i++) {
+          // Show next 2 upcoming pieces so the 5 special skill buttons also fit cleanly below
+          for (let i = 0; i < 2; i++) {
             const item = peekKarmaPiece(i);
             if (!item) continue;
             itemsToShow.push({
@@ -3201,6 +3393,16 @@
         }
       }
 
+      function applyMonumentsToBoard() {
+        // Place persistent indestructible silver monuments at their exact fixed coordinates!
+        for (const m of state.monuments) {
+          const r = state.totalRows - 1 - m.rowFromBottom;
+          if (r >= 0 && r < state.totalRows && m.col >= 0 && m.col < COLS) {
+            state.board[r][m.col] = MONUMENT_CELL_VAL;
+          }
+        }
+      }
+
       function startStage(stageNum, turnSide = 'sabotage') {
         state.stage = stageNum;
         state.turnSide = turnSide;
@@ -3209,6 +3411,8 @@
         state.totalRows = state.playRows + SPAWN_ROWS;
         state.limitRow = state.totalRows - state.stageHeight;
         state.board = Array.from({ length: state.totalRows }, () => Array(COLS).fill(0));
+        // Restore persistent Pamyatnik monuments across stages & phases!
+        applyMonumentsToBoard();
         positionCpuAvatarPanel();
         state.turnsThisStage = 0;
         if (turnSide === 'sabotage') {
@@ -3220,7 +3424,10 @@
             linesTowardBomb: state.linesTowardBomb,
             devilCount: state.devilCount,
             revCount: state.revCount,
-            defuseCount: state.defuseCount
+            defuseCount: state.defuseCount,
+            monumentCount: state.monumentCount,
+            demolishCount: state.demolishCount,
+            monuments: state.monuments.map(m => ({ ...m }))
           };
         } else {
           state.playerLinesThisStage = 0;
@@ -3231,6 +3438,9 @@
         state.revArmedForDrop = false;
         state.revActiveNow = false;
         state.cpuRevActiveNow = false;
+        state.monumentDropActive = false;
+        state.interruptedBeforeMonument = null;
+        state.karmaBuilderMode = null;
         state.softDropHeld = false;
 
         if (turnSide === 'karma') {
@@ -3352,6 +3562,29 @@
       }
 
       function submitBuiltBlock(matrix, isTimeoutPenalty) {
+        // Special Case: Karma Phase (Player clearing) Bolshoi / Perestroika NEXT-injection!
+        if (state.karmaBuilderMode) {
+          const isBolshoi = state.karmaBuilderMode === 'bolshoi';
+          const color = getColorForMatrix(matrix, isBolshoi);
+          // Push previous NEXT back by 1 step so the custom block forcefully cuts in front!
+          if (state.recordedTurns.length > 0 && state.karmaIndex > 0) {
+            state.karmaIndex--;
+          }
+          state.nextPiece = { matrix: cloneMatrix(matrix), color, wasDevil: false, wasRev: false };
+          state.karmaBuilderMode = null;
+          state.devilActiveThisTurn = false;
+          state.timerPausedForSkill = false;
+          state.phase = 'DROPPING';
+
+          audio.playSend();
+          nextPreviewBox.classList.remove('next-pop-anim');
+          void nextPreviewBox.offsetWidth;
+          nextPreviewBox.classList.add('next-pop-anim');
+          showBoardBanner('✨ 自作ブロックをNEXTへ強制割り込み！', 1200);
+          updateHUD();
+          return;
+        }
+
         const isBolshoi = !isTimeoutPenalty && state.devilActiveThisTurn;
         const color = getColorForMatrix(matrix, isBolshoi);
         state.nextPiece = { matrix, color };
@@ -3419,6 +3652,38 @@
 
       function lockActivePiece() {
         const p = state.activePiece;
+
+        // Special Case: Pamyatnik (Indestructible 1x1 Silver Monument) landing!
+        if (state.monumentDropActive) {
+          const bx = p.x;
+          const by = p.y;
+          if (by >= 0 && by < state.totalRows && bx >= 0 && bx < COLS) {
+            state.board[by][bx] = MONUMENT_CELL_VAL;
+            const rowFromBottom = state.totalRows - 1 - by;
+            if (!state.monuments.some(m => m.col === bx && m.rowFromBottom === rowFromBottom)) {
+              state.monuments.push({ col: bx, rowFromBottom });
+            }
+          }
+          audio.playLand();
+          triggerShake();
+          state.monumentDropActive = false;
+          state.softDropHeld = false;
+
+          // Restore interrupted phase & piece seamlessly!
+          const saved = state.interruptedBeforeMonument;
+          state.interruptedBeforeMonument = null;
+          if (saved) {
+            state.activePiece = saved.activePiece;
+            state.phase = saved.phase;
+            state.timerPausedForSkill = saved.timerPausedForSkill;
+          } else {
+            state.phase = state.turnSide === 'karma' ? 'DROPPING' : 'BUILDING';
+          }
+          showBoardBanner('🗿 パーミャトニク設置完了！（永久に残留）', 1300);
+          updateHUD();
+          return;
+        }
+
         for (let r = 0; r < p.matrix.length; r++) {
           for (let c = 0; c < p.matrix[0].length; c++) {
             if (p.matrix[r][c]) {
@@ -3443,7 +3708,8 @@
 
         const fullRows = [];
         for (let r = 0; r < state.totalRows; r++) {
-          if (state.board[r].every(cell => cell !== 0)) {
+          // Rows containing an indestructible Pamyatnik monument can NEVER be cleared!
+          if (state.board[r].every(cell => cell !== 0) && !state.board[r].includes(MONUMENT_CELL_VAL)) {
             fullRows.push(r);
           }
         }
@@ -3468,10 +3734,10 @@
       }
 
       function finishTurnAfterLock() {
-        // Check if any locked block remains ABOVE the red dashed ceiling line (r < limitRow)
+        // Check if any normal locked block remains ABOVE the red dashed ceiling line (r < limitRow)
         let overflowed = false;
         for (let r = 0; r < state.limitRow; r++) {
-          if (state.board[r].some(cell => cell !== 0)) {
+          if (state.board[r].some(cell => cell !== 0 && cell !== MONUMENT_CELL_VAL)) {
             overflowed = true;
             break;
           }
@@ -3598,12 +3864,25 @@
         triggerShake();
         updateHUD();
 
-        // Switch Game Over artwork: Karma player-clearing turn -> gameover2.gif, otherwise gameover1.jpg
-        const goImg = document.getElementById('gameOverImg');
-        if (goImg) {
-          delete goImg.dataset.fallback;
-          const isKarmaPlayerTurn = state.gameMode === 'karma' && state.turnSide === 'karma';
-          goImg.src = isKarmaPlayerTurn ? './gameover2.gif' : './gameover1.jpg';
+        // Switch Game Over artwork: Karma player-clearing turn -> non-looping gameover2.mp4, otherwise gameover1.jpg
+        const isKarmaPlayerTurn = state.gameMode === 'karma' && state.turnSide === 'karma';
+        if (isKarmaPlayerTurn && gameOverVideo) {
+          if (gameOverImg) gameOverImg.classList.add('hidden');
+          gameOverVideo.classList.remove('hidden');
+          gameOverVideo.loop = false;
+          try {
+            gameOverVideo.currentTime = 0;
+            gameOverVideo.play().catch(() => {});
+          } catch (e) {}
+        } else {
+          if (gameOverVideo) {
+            gameOverVideo.pause();
+            gameOverVideo.classList.add('hidden');
+          }
+          if (gameOverImg) {
+            gameOverImg.src = './gameover1.jpg';
+            gameOverImg.classList.remove('hidden');
+          }
         }
 
         document.getElementById('gameOverReason').textContent = reasonText;
@@ -3637,10 +3916,34 @@
       }
 
       /* =========================================================
-       * 9. SPECIAL SKILLS (ボリショイ & ペレストロイカ & スペツナズ)
+       * 9. SPECIAL SKILLS (ボリショイ / ペレストロイカ / スペツナズ / パーミャトニク / スネスチー)
        * ========================================================= */
       btnDevil.addEventListener('click', () => {
-        if (state.phase !== 'BUILDING' || state.devilCount <= 0 || state.devilActiveThisTurn) return;
+        if (state.devilCount <= 0 || state.monumentDropActive || state.karmaBuilderMode) return;
+
+        // Karma Phase (Player clearing): temporarily switch to 3x4 Builder and force-inject into NEXT!
+        if (state.turnSide === 'karma') {
+          if (state.phase !== 'DROPPING' || state.cpuRevActiveNow) return;
+          state.devilCount--;
+          state.karmaBuilderMode = 'bolshoi';
+          state.devilActiveThisTurn = true;
+          state.timerPausedForSkill = true;
+          state.phase = 'BUILDING';
+          state.softDropHeld = false;
+
+          state.bombPositions = [];
+          initBuilderGrid(3, 4, true);
+          updateTimerUI();
+          builderGridBox.classList.remove('devil-aura-flash');
+          void builderGridBox.offsetWidth;
+          builderGridBox.classList.add('devil-aura-flash');
+          showSkillCutin('bolshoi');
+          showBoardBanner('👑 ボリショイ！3×4ブロックを作ってNEXTへ割り込め！', 1500);
+          updateHUD();
+          return;
+        }
+
+        if (state.phase !== 'BUILDING' || state.devilActiveThisTurn) return;
         state.devilCount--;
         state.devilActiveThisTurn = true;
         // Pause countdown timer completely during Bolshoi turn!
@@ -3668,7 +3971,28 @@
       });
 
       btnRevolution.addEventListener('click', () => {
-        if (state.turnSide !== 'sabotage' || state.revCount <= 0 || state.revArmedForDrop || state.revActiveNow) return;
+        if (state.revCount <= 0 || state.monumentDropActive || state.karmaBuilderMode) return;
+
+        // Karma Phase (Player clearing): steal CPU's builder turn and inject custom 2x4 block into NEXT!
+        if (state.turnSide === 'karma') {
+          if (state.phase !== 'DROPPING' || state.cpuRevActiveNow) return;
+          state.revCount--;
+          state.karmaBuilderMode = 'perestroika';
+          state.devilActiveThisTurn = false;
+          state.timerPausedForSkill = true;
+          state.phase = 'BUILDING';
+          state.softDropHeld = false;
+
+          state.bombPositions = [];
+          initBuilderGrid(2, 4, true);
+          updateTimerUI();
+          showSkillCutin('perestroika');
+          showBoardBanner('✊ ペレストロイカ！好みのブロックを作ってNEXTへ割り込め！', 1500);
+          updateHUD();
+          return;
+        }
+
+        if (state.revArmedForDrop || state.revActiveNow) return;
         if (state.phase === 'BUILDING') {
           state.revCount--;
           state.revArmedForDrop = true;
@@ -3698,6 +4022,82 @@
           showBoardBanner('✊ ペレストロイカ発動！操作権を奪った！', 1200);
           updateHUD();
         }
+      });
+
+      // パーミャトニク (Drop an indestructible gleaming 1x1 silver monument block manually!)
+      btnMonument.addEventListener('click', () => {
+        if (state.monumentCount <= 0 || state.monumentDropActive || state.karmaBuilderMode) return;
+        if (state.phase !== 'BUILDING' && state.phase !== 'DROPPING') return;
+        if (state.cpuRevActiveNow) return;
+
+        state.monumentCount--;
+        state.interruptedBeforeMonument = {
+          phase: state.phase,
+          activePiece: state.activePiece ? {
+            ...state.activePiece,
+            matrix: cloneMatrix(state.activePiece.matrix)
+          } : null,
+          timerPausedForSkill: state.timerPausedForSkill
+        };
+        state.monumentDropActive = true;
+        state.phase = 'DROPPING';
+        state.softDropHeld = false;
+        state.dropAccumulator = 0;
+
+        spawnStandbyPiece({ matrix: [[1]], color: MONUMENT_COLOR_INDEX });
+        showSkillCutin('pamyatnik');
+        showBoardBanner('🗿 パーミャトニク！不滅の銀ブロックを好きな位置へ！', 1500);
+        updateHUD();
+      });
+
+      // スネスチー (Demolish ALL Pamyatnik monument blocks from the board!)
+      btnDemolish.addEventListener('click', () => {
+        if (state.demolishCount <= 0 || state.monuments.length === 0) return;
+        if (state.monumentDropActive || state.karmaBuilderMode) return;
+        if (state.phase !== 'BUILDING' && state.phase !== 'DROPPING') return;
+
+        state.demolishCount--;
+        updateHUD();
+
+        showSkillCutin('snesti', () => {
+          // Spawn silver/gold demolition particles at each monument position
+          const w = gameCanvas.clientWidth;
+          const h = gameCanvas.clientHeight;
+          const cell = Math.floor(Math.min((w - 22) / COLS, (h - 14) / state.totalRows));
+          const ox = Math.floor((w - COLS * cell) / 2);
+          const oy = Math.floor((h - state.totalRows * cell) / 2) - 2;
+
+          for (const m of state.monuments) {
+            const r = state.totalRows - 1 - m.rowFromBottom;
+            if (r >= 0 && r < state.totalRows && m.col >= 0 && m.col < COLS) {
+              if (state.board[r][m.col] === MONUMENT_CELL_VAL) {
+                state.board[r][m.col] = 0;
+              }
+              for (let k = 0; k < 10; k++) {
+                state.particles.push({
+                  x: ox + (m.col + 0.5) * cell,
+                  y: oy + (r + 0.5) * cell,
+                  vx: (Math.random() - 0.5) * 6.5,
+                  vy: (Math.random() - 0.9) * 6.5,
+                  size: Math.max(3, cell * 0.25),
+                  color: k % 2 === 0 ? '#f8fafc' : '#fde047',
+                  life: 1.0
+                });
+              }
+            }
+          }
+          // Ensure any stray monument cells are removed
+          for (let r = 0; r < state.totalRows; r++) {
+            for (let c = 0; c < COLS; c++) {
+              if (state.board[r][c] === MONUMENT_CELL_VAL) state.board[r][c] = 0;
+            }
+          }
+          state.monuments = [];
+          triggerShake();
+          audio.playExplosion();
+          showBoardBanner('🔨 スネスチー完了！すべての記念碑を撤去した！', 1500);
+          updateHUD();
+        });
       });
 
       // スペツナズ (Cut-in with time freeze -> 90% full defusal leaving 1 bomb, 10% flashy failure halving added bombs)
@@ -3959,6 +4359,20 @@
         startStage(state.stage + 1, 'sabotage');
       });
 
+      document.getElementById('rewardMonument').addEventListener('click', () => {
+        state.monumentCount++;
+        audio.playSend();
+        quizModal.classList.add('hidden');
+        startStage(state.stage + 1, 'sabotage');
+      });
+
+      document.getElementById('rewardDemolish').addEventListener('click', () => {
+        state.demolishCount++;
+        audio.playSend();
+        quizModal.classList.add('hidden');
+        startStage(state.stage + 1, 'sabotage');
+      });
+
       document.getElementById('quizContinueBtn').addEventListener('click', () => {
         quizModal.classList.add('hidden');
         startStage(state.stage + 1, 'sabotage');
@@ -4163,17 +4577,22 @@
         document.body.classList.remove('theme-karma');
         boardWrapper.classList.remove('board-alert-sabotage', 'board-alert-karma');
         titleModal.classList.remove('hidden');
+        if (titleVideo) titleVideo.play().catch(() => {});
       });
 
       document.getElementById('btnGoRetry').addEventListener('click', () => {
         gameOverModal.classList.add('hidden');
-        // Restore bomb count & special skill counts to the snapshot at the start of this stage
+        if (gameOverVideo) gameOverVideo.pause();
+        // Restore bomb count, special skill counts & monuments to the snapshot at the start of this stage
         const snap = state.stageStartSnapshot;
         state.bombCount = snap.bombCount;
         state.linesTowardBomb = snap.linesTowardBomb;
         state.devilCount = snap.devilCount;
         state.revCount = snap.revCount;
         state.defuseCount = snap.defuseCount;
+        state.monumentCount = snap.monumentCount ?? 1;
+        state.demolishCount = snap.demolishCount ?? 0;
+        state.monuments = Array.isArray(snap.monuments) ? snap.monuments.map(m => ({ ...m })) : [];
         // Reset score and total cleared lines to 0
         state.score = 0;
         state.lastStageScore = 0;
@@ -4185,11 +4604,13 @@
 
       document.getElementById('btnGoTitle').addEventListener('click', () => {
         gameOverModal.classList.add('hidden');
+        if (gameOverVideo) gameOverVideo.pause();
         audio.stopBGM();
         state.phase = 'TITLE';
         document.body.classList.remove('theme-karma');
         boardWrapper.classList.remove('board-alert-sabotage', 'board-alert-karma');
         titleModal.classList.remove('hidden');
+        if (titleVideo) titleVideo.play().catch(() => {});
       });
 
       /* =========================================================
@@ -4253,10 +4674,68 @@
         new ResizeObserver(resizeCanvases).observe(boardWrapper);
       }
 
-      function drawRetroBlock(ctx, x, y, size, colorIndex, alpha = 1) {
+      function drawRetroBlock(ctx, x, y, size, colorIndex, alpha = 1, nowMs = 0) {
         ctx.save();
         ctx.globalAlpha = alpha;
         const bevel = Math.max(2, Math.floor(size * 0.14));
+
+        if (colorIndex === MONUMENT_COLOR_INDEX) {
+          // Pamyatnik Indestructible Gleaming Silver Monument Block with Periodic Shimmer!
+          const grad = ctx.createLinearGradient(x, y, x + size, y + size);
+          grad.addColorStop(0.0, '#f8fafc');
+          grad.addColorStop(0.42, '#cbd5e1');
+          grad.addColorStop(0.75, '#94a3b8');
+          grad.addColorStop(1.0, '#64748b');
+          ctx.fillStyle = grad;
+          ctx.fillRect(x + 0.5, y + 0.5, size - 1, size - 1);
+
+          // Metallic high-contrast bevel
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(x + 0.5, y + 0.5, size - 1, bevel);
+          ctx.fillRect(x + 0.5, y + 0.5, bevel, size - 1);
+
+          ctx.fillStyle = '#334155';
+          ctx.fillRect(x + 0.5, y + size - bevel - 0.5, size - 1, bevel);
+          ctx.fillRect(x + size - bevel - 0.5, y + 0.5, bevel, size - 1);
+
+          // Inner metallic plate border
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.75)';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(x + bevel + 1, y + bevel + 1, size - bevel * 2 - 2, size - bevel * 2 - 2);
+
+          // Periodic diagonal gleam sweep (every 2.2 seconds)
+          const tMs = nowMs || performance.now();
+          const cycle = (tMs % 2200) / 2200; // 0..1
+          if (cycle < 0.34) {
+            const p = cycle / 0.34; // 0..1 sweep progress
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(x + 1, y + 1, size - 2, size - 2);
+            ctx.clip();
+            const sx = x - size * 0.6 + p * size * 2.2;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+            ctx.beginPath();
+            ctx.moveTo(sx, y);
+            ctx.lineTo(sx + size * 0.32, y);
+            ctx.lineTo(sx - size * 0.25, y + size);
+            ctx.lineTo(sx - size * 0.57, y + size);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+          }
+          // Twinkling star glint at top-left corner at peak gleam
+          if (cycle > 0.12 && cycle < 0.28) {
+            const glint = Math.sin(((cycle - 0.12) / 0.16) * Math.PI);
+            ctx.fillStyle = `rgba(255, 255, 255, ${glint.toFixed(2)})`;
+            const gx = x + bevel + 2;
+            const gy = y + bevel + 2;
+            ctx.fillRect(gx - 2, gy, 5, 1.5);
+            ctx.fillRect(gx, gy - 2, 1.5, 5);
+          }
+
+          ctx.restore();
+          return;
+        }
 
         if (colorIndex === RAINBOW_COLOR_INDEX) {
           // Bolshoi Special: Vivid Rainbow Gradient Block!
@@ -4808,15 +5287,15 @@
               gameCtx.fillStyle = flash ? '#ffffff' : '#fbbf24';
               gameCtx.fillRect(bx + 1, by + 1, cell - 2, cell - 2);
             } else {
-              drawRetroBlock(gameCtx, bx, by, cell, val - 1);
+              drawRetroBlock(gameCtx, bx, by, cell, val - 1, 1, nowMs);
             }
           }
         }
 
-        // Highlight Reach Rows (1 empty cell remaining) & Tetris Danger / Chance!
+        // Highlight Reach Rows (1 empty cell remaining, excluding rows locked by Pamyatnik monuments)
         const reachByCol = new Map(); // emptyCol -> array of row indices
         for (let r = SPAWN_ROWS; r < state.totalRows; r++) {
-          if (!state.board[r] || state.clearingRows.includes(r)) continue;
+          if (!state.board[r] || state.clearingRows.includes(r) || state.board[r].includes(MONUMENT_CELL_VAL)) continue;
           let emptyCol = -1;
           let emptyCount = 0;
           for (let c = 0; c < COLS; c++) {
@@ -4904,7 +5383,7 @@
               if (!p.matrix[r][c]) continue;
               const bx = ox + (p.x + c) * cell;
               const by = oy + (p.y + r) * cell;
-              drawRetroBlock(gameCtx, bx, by, cell, p.color);
+              drawRetroBlock(gameCtx, bx, by, cell, p.color, 1, nowMs);
             }
           }
         }
@@ -5001,9 +5480,10 @@
           const p = state.activePiece;
           if (!p) return;
 
-          const aiControlled =
+          const aiControlled = !state.monumentDropActive && (
             (state.turnSide === 'sabotage' && !state.revActiveNow) ||
-            (state.turnSide === 'karma' && state.cpuRevActiveNow);
+            (state.turnSide === 'karma' && state.cpuRevActiveNow)
+          );
 
           if (aiControlled) {
             state.aiStepAccumulator += dtMs;
@@ -5068,6 +5548,15 @@
             }
             for (let i = 0; i < clearedCount; i++) {
               state.board.unshift(Array(COLS).fill(0));
+            }
+            // Keep all Pamyatnik monuments locked in their exact original fixed coordinates!
+            if (state.monuments.length > 0) {
+              for (let r = 0; r < state.totalRows; r++) {
+                for (let c = 0; c < COLS; c++) {
+                  if (state.board[r][c] === MONUMENT_CELL_VAL) state.board[r][c] = 0;
+                }
+              }
+              applyMonumentsToBoard();
             }
             state.clearingRows = [];
 
@@ -5148,6 +5637,14 @@
       }
 
       window.onload = () => {
+        if (titleVideo) {
+          titleVideo.loop = true;
+          titleVideo.addEventListener('ended', () => {
+            titleVideo.currentTime = 0;
+            titleVideo.play().catch(() => {});
+          });
+          titleVideo.play().catch(() => {});
+        }
         initBuilderGrid(2, 4, false);
         resizeCanvases();
         updateHUD();
