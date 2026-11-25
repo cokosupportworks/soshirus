@@ -1502,12 +1502,39 @@
           return this.ctx;
         }
 
-        recoverFromBackground() {
+        pauseForBackground() {
           this.needsHardAudioReset = true;
-          if (this.ctx && this.ctx.state !== 'closed' && this.ctx.state !== 'running') {
-            this.ctx.resume().catch(() => {});
+          // Immediately kill the BGM scheduler timer so ZERO notes are scheduled in background / lock screen!
+          if (this.bgmTimer) {
+            clearInterval(this.bgmTimer);
+            this.bgmTimer = null;
+          }
+          // Silence & suspend AudioContext immediately
+          if (this.ctx && this.ctx.state !== 'closed') {
+            try {
+              if (this.masterGain) {
+                this.masterGain.gain.setValueAtTime(0, this.ctx.currentTime);
+              }
+              if (this.ctx.state === 'running') {
+                this.ctx.suspend().catch(() => {});
+              }
+            } catch (e) {}
+          }
+        }
+
+        recoverFromBackground() {
+          if (document.hidden || document.visibilityState !== 'visible') return;
+          this.needsHardAudioReset = true;
+          if (this.ctx && this.ctx.state !== 'closed') {
+            if (this.masterGain) {
+              this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.72, this.ctx.currentTime);
+            }
+            if (this.ctx.state !== 'running') {
+              this.ctx.resume().catch(() => {});
+            }
           }
           if (this.bgmRunning) {
+            if (this.ctx) this.nextNoteTime = this.ctx.currentTime + 0.06;
             this._ensureLookaheadLoop();
           }
         }
@@ -1615,6 +1642,11 @@
           const LOOKAHEAD_SEC = 0.12;
           this.bgmTimer = setInterval(() => {
             if (!this.bgmRunning || !this.ctx) return;
+            // Hard guard: NEVER schedule or resume audio while page is hidden / locked!
+            if (document.hidden || document.visibilityState !== 'visible') {
+              this.pauseForBackground();
+              return;
+            }
             if (this.ctx.state !== 'running') {
               this.ctx.resume().catch(() => {});
               return;
@@ -1915,12 +1947,17 @@
         if (document.visibilityState === 'visible') {
           audio.recoverFromBackground();
         } else {
-          audio.needsHardAudioReset = true;
+          audio.pauseForBackground();
         }
       });
       window.addEventListener('pageshow', () => audio.recoverFromBackground());
       window.addEventListener('focus', () => audio.recoverFromBackground());
-      window.addEventListener('pagehide', () => { audio.needsHardAudioReset = true; });
+      window.addEventListener('pagehide', () => audio.pauseForBackground());
+      window.addEventListener('blur', () => {
+        if (document.hidden || document.visibilityState !== 'visible') {
+          audio.pauseForBackground();
+        }
+      });
 
       /* =========================================================
        * 4. MATRIX & BLOCK HELPERS (Connected-Edge Penalty Included)
@@ -2179,22 +2216,35 @@
 
         const candidates = [];
         const seenPlacements = new Set();
-        const slideOffsets = [0, -1, 1, -2, 2];
 
+        // PASS 1: Evaluate ALL straight drops first!
+        // Any placement reachable by dropping straight down is registered here so we NEVER unnecessarily slide into it.
+        for (const rot of rots) {
+          const width = rot.matrix[0].length;
+          for (let x = 0; x <= COLS - width; x++) {
+            const res = simulateDrop(board, totalRows, rot.matrix, x);
+            if (!res) continue;
+            const pKey = `${rot.rotIndex}:${x}:${res.landY}`;
+            if (seenPlacements.has(pKey)) continue;
+            seenPlacements.add(pKey);
+            const s = evaluateBoardForGenius(res.board, totalRows, limitRow, res.cleared);
+            candidates.push({ x, slideX: x, rotIndex: rot.rotIndex, score: s, simBoard: res.board });
+          }
+        }
+
+        // PASS 2: Evaluate last-second horizontal slides ONLY for spots unreachable by a straight drop (under overhangs)!
+        const slideOffsets = [-1, 1, -2, 2];
         for (const rot of rots) {
           const width = rot.matrix[0].length;
           for (let x = 0; x <= COLS - width; x++) {
             for (const slideOff of slideOffsets) {
-              const res = slideOff === 0
-                ? simulateDrop(board, totalRows, rot.matrix, x)
-                : simulateSlideDrop(board, totalRows, rot.matrix, x, slideOff);
+              const res = simulateSlideDrop(board, totalRows, rot.matrix, x, slideOff);
               if (!res) continue;
-              const finalX = slideOff === 0 ? x : res.finalX;
-              const pKey = `${rot.rotIndex}:${finalX}:${res.landY}`;
+              const pKey = `${rot.rotIndex}:${res.finalX}:${res.landY}`;
               if (seenPlacements.has(pKey)) continue;
               seenPlacements.add(pKey);
               const s = evaluateBoardForGenius(res.board, totalRows, limitRow, res.cleared);
-              candidates.push({ x, slideX: finalX, rotIndex: rot.rotIndex, score: s, simBoard: res.board });
+              candidates.push({ x, slideX: res.finalX, rotIndex: rot.rotIndex, score: s, simBoard: res.board });
             }
           }
         }
@@ -2347,6 +2397,7 @@
         timerDuration: 5.0,
         timerPausedForSkill: false,
         cutinFreezeTimer: 0,
+        manualInputLockUntil: 0,
         lastTickSecond: -1,
 
         // Animations
@@ -2795,12 +2846,14 @@
 
         // Freeze game timer & falling for 2 seconds during cut-in!
         state.cutinFreezeTimer = 2000;
+        cancelManualInputsFor(2300);
 
         if (skillCutinTimeout) clearTimeout(skillCutinTimeout);
         skillCutinTimeout = setTimeout(() => {
           skillCutinOverlay.classList.add('hidden');
           skillCutinOverlay.classList.remove('cutin-bg-flash');
           state.cutinFreezeTimer = 0;
+          cancelManualInputsFor(320);
           if (typeof onComplete === 'function') onComplete();
         }, 2000);
       }
@@ -2858,8 +2911,17 @@
         }
       }
 
+      function cancelManualInputsFor(ms = 340) {
+        state.manualInputLockUntil = Math.max(state.manualInputLockUntil || 0, performance.now() + ms);
+        state.softDropHeld = false;
+        state.dropAccumulator = 0;
+        const downBtn = document.getElementById('revDown');
+        if (downBtn) downBtn.classList.remove('pressed');
+      }
+
       function isPlayerManualControl() {
         if (state.phase !== 'DROPPING') return false;
+        if (state.cutinFreezeTimer > 0 || performance.now() < state.manualInputLockUntil) return false;
         if (state.monumentDropActive) return true;
         if (state.turnSide === 'karma') return !state.cpuRevActiveNow;
         return state.revActiveNow;
@@ -3714,6 +3776,7 @@
           state.devilActiveThisTurn = false;
           state.timerPausedForSkill = false;
           state.phase = 'DROPPING';
+          cancelManualInputsFor(340);
 
           audio.playSend();
           nextPreviewBox.classList.remove('next-pop-anim');
@@ -3807,7 +3870,7 @@
           audio.playLand();
           triggerShake();
           state.monumentDropActive = false;
-          state.softDropHeld = false;
+          cancelManualInputsFor(360);
 
           // Restore interrupted phase & piece seamlessly!
           const saved = state.interruptedBeforeMonument;
@@ -3842,6 +3905,7 @@
         state.cpuRevActiveNow = false;
         state.softDropHeld = false;
         if (wasRev) {
+          cancelManualInputsFor(340);
           // Snap immediately back to the player's builder grid!
           updateHUD();
         }
