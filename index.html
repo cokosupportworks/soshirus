@@ -3,6 +3,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>ソシルス (Soshirus)</title>
+  <!-- App Icons & Favicon (iPhone / iPad / PC) -->
+  <link rel="icon" type="image/png" sizes="64x64" href="./favicon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ソシルス">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: DotGothic16 & Press Start 2P for Retro Home Console Tetris Homage -->
@@ -33,6 +40,7 @@
       -webkit-tap-highlight-color: transparent;
       user-select: none;
       -webkit-user-select: none;
+      touch-action: manipulation;
     }
 
     html, body {
@@ -458,7 +466,7 @@
             <span id="hudLinesBadge" class="inline-flex items-baseline gap-1 px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-400/80 shadow-sm">
               <span id="hudLinesLabel" class="text-[11px] sm:text-xs font-bold text-emerald-200">CPU消去</span>
               <strong id="hudCpuLines" class="text-emerald-300 text-sm sm:text-base font-extrabold font-pixel leading-none">0</strong>
-              <span class="text-[11px] text-slate-300 font-bold">/10</span>
+              <span id="hudTargetLines" class="text-[11px] text-slate-300 font-bold">/10</span>
             </span>
           </div>
         </div>
@@ -593,7 +601,7 @@
     </main>
 
     <!-- BOTTOM CONTROLLER: PLAYER BLOCK BUILDER OR NINTENDO DS CONTROLLER -->
-    <section id="bottomControlPanel" class="retro-panel p-2 sm:p-2.5 shrink-0 relative">
+    <section id="bottomControlPanel" class="retro-panel p-2 sm:p-2.5 shrink-0 relative overflow-visible z-30">
 
       <!-- MODE A: BLOCK BUILDER (2x4 or 3x4) -->
       <div id="builderPanel" class="flex flex-col gap-1.5">
@@ -634,26 +642,26 @@
       </div>
 
       <!-- MODE B: NINTENDO DS STYLE CONTROLLER (Revolution & Karma Phase) -->
-      <div id="revolutionPanel" class="hidden flex-col gap-0.5">
-        <div class="ds-shell rounded-xl px-2 py-1 sm:px-3 sm:py-1.5 flex items-center justify-between gap-1 sm:gap-2 touch-none">
-          <!-- Left: Enlarged Cross D-Pad (Large touch area while keeping compact panel height!) -->
-          <div class="relative w-36 h-[120px] sm:w-40 sm:h-[132px] shrink-0 flex items-center justify-center">
-            <div class="grid grid-cols-3 grid-rows-3 w-full h-full">
+      <div id="revolutionPanel" class="hidden flex-col gap-0.5 overflow-visible">
+        <div class="ds-shell rounded-xl px-2 py-1 sm:px-3 sm:py-1.5 flex items-center justify-between gap-1 sm:gap-2 touch-none overflow-visible">
+          <!-- Left: Oversized Floating Cross D-Pad (protrudes cleanly upward over board bottom without shrinking board!) -->
+          <div class="relative w-40 h-[118px] sm:w-44 sm:h-[130px] shrink-0 overflow-visible">
+            <div class="absolute bottom-0 left-0 w-[164px] h-[164px] sm:w-[182px] sm:h-[182px] z-30 grid grid-cols-3 grid-rows-3 drop-shadow-[0_4px_10px_rgba(0,0,0,0.75)]">
               <div></div>
-              <button id="revUp" class="ds-dpad-btn rounded-t-lg flex flex-col items-center justify-center text-sm font-bold leading-none" title="一気に落とす (↑)">
-                <span>▲</span><span class="text-[9px] text-amber-300 mt-0.5">即落</span>
+              <button id="revUp" class="ds-dpad-btn rounded-t-xl flex flex-col items-center justify-center text-base font-bold leading-none" title="一気に落とす (↑)">
+                <span>▲</span><span class="text-[10px] text-amber-300 mt-0.5">即落</span>
               </button>
               <div></div>
 
-              <button id="revLeft" class="ds-dpad-btn rounded-l-lg flex items-center justify-center text-xl font-bold" title="左移動 (←)">◀</button>
+              <button id="revLeft" class="ds-dpad-btn rounded-l-xl flex items-center justify-center text-2xl font-bold" title="左移動 (←)">◀</button>
               <div class="bg-[#1e293b] flex items-center justify-center">
-                <div class="w-4 h-4 rounded-full bg-slate-800 border border-slate-600"></div>
+                <div class="w-5 h-5 rounded-full bg-slate-800 border border-slate-600"></div>
               </div>
-              <button id="revRight" class="ds-dpad-btn rounded-r-lg flex items-center justify-center text-xl font-bold" title="右移動 (→)">▶</button>
+              <button id="revRight" class="ds-dpad-btn rounded-r-xl flex items-center justify-center text-2xl font-bold" title="右移動 (→)">▶</button>
 
               <div></div>
-              <button id="revDown" class="ds-dpad-btn rounded-b-lg flex flex-col items-center justify-center text-sm font-bold leading-none" title="長押しで加速 (↓)">
-                <span class="text-[9px] text-cyan-300 mb-0.5">加速</span><span>▼</span>
+              <button id="revDown" class="ds-dpad-btn rounded-b-xl flex flex-col items-center justify-center text-base font-bold leading-none" title="長押しで加速 (↓)">
+                <span class="text-[10px] text-cyan-300 mb-0.5">加速</span><span>▼</span>
               </button>
               <div></div>
             </div>
@@ -775,7 +783,7 @@
       <div id="titleRuleBox" class="bg-slate-900/80 border border-slate-700 rounded-lg p-2.5 text-left text-xs text-slate-200 space-y-1 leading-relaxed w-full">
         <p>🧠 <strong class="text-cyan-300">天才CPU</strong>が最上部から落ちるブロックを完璧に捌く！</p>
         <p>😈 <strong class="text-rose-400">2×4マス</strong>で辺を繋げて意地悪なブロックを作り、CPUを<strong class="text-amber-300">赤い点線（上限）超え</strong>に追い込め！</p>
-        <p>⚠️ CPUが<strong class="text-rose-400">10ライン消去</strong>または<strong class="text-rose-400">テ◯リス(4段同時消し)</strong>でCPUの勝利！4段消すたびに爆弾も増加！</p>
+        <p>⚠️ CPUが<strong class="text-rose-400">規定ライン消去(STG1は10段・以降+1)</strong>または<strong class="text-rose-400">テ◯リス(4段同時消し)</strong>でCPUの勝利！4段消すたびに爆弾も増加！</p>
       </div>
 
       <!-- Difficulty Selection -->
@@ -2421,6 +2429,7 @@
       const hudStage = document.getElementById('hudStage');
       const hudMaxLines = document.getElementById('hudMaxLines');
       const hudCpuLines = document.getElementById('hudCpuLines');
+      const hudTargetLines = document.getElementById('hudTargetLines');
       const hudLinesLabel = document.getElementById('hudLinesLabel');
       const hudLinesBadge = document.getElementById('hudLinesBadge');
       const hudPhaseBadge = document.getElementById('hudPhaseBadge');
@@ -2584,6 +2593,29 @@
       const defuseFailOverlay = document.getElementById('defuseFailOverlay');
       const rankingModal = document.getElementById('rankingModal');
       const appShell = document.getElementById('appShell');
+
+      // Stage target lines: Stage 1 = 10 lines, +1 for every subsequent stage (10, 11, 12...)
+      function getStageTargetLines(stage = state.stage) {
+        return 9 + Math.max(1, stage);
+      }
+
+      // Prevent ANY double-tap or pinch zoom anywhere on the game screen (iPhone / iPad Safari!)
+      document.addEventListener('dblclick', (e) => {
+        if (!e.target || e.target.tagName !== 'INPUT') e.preventDefault();
+      }, { passive: false });
+      ['gesturestart', 'gesturechange', 'gestureend'].forEach(evtName => {
+        document.addEventListener(evtName, (e) => e.preventDefault(), { passive: false });
+      });
+      let lastTouchEndAt = 0;
+      document.addEventListener('touchend', (e) => {
+        const now = performance.now();
+        if (now - lastTouchEndAt <= 320) {
+          if (!e.target || e.target.tagName !== 'INPUT') {
+            e.preventDefault();
+          }
+        }
+        lastTouchEndAt = now;
+      }, { passive: false });
 
       function getDiffMultiplier() {
         if (state.difficulty === '2.5') return 2.5;
@@ -2865,12 +2897,13 @@
         updateBoardAlertEffect(maxStack);
 
         // Dynamic BGM tempo boost during high-tension climax / pinch moments
+        const targetLines = getStageTargetLines();
         const isPlaying = state.phase === 'BUILDING' || state.phase === 'DROPPING' || state.phase === 'CLEARING';
         const isNearLimit = maxStack > 0 && (maxStack >= state.stageHeight - 1 || ratio >= 0.8);
         const isUrgent = isPlaying && (
           isNearLimit ||
-          (state.turnSide === 'sabotage' && state.cpuLinesThisStage >= 7) ||
-          (state.turnSide === 'karma' && state.playerLinesThisStage >= 8)
+          (state.turnSide === 'sabotage' && state.cpuLinesThisStage >= targetLines - 3) ||
+          (state.turnSide === 'karma' && state.playerLinesThisStage >= targetLines - 2)
         );
         audio.setUrgent(isUrgent);
 
@@ -2882,7 +2915,7 @@
           } else if (ratio >= 0.8) {
             cpuFace.innerHTML = PIXEL_ICONS.cpuSmug;
             cpuComment.textContent = '自分の罠に沈め！';
-          } else if (state.playerLinesThisStage >= 7) {
+          } else if (state.playerLinesThisStage >= targetLines - 3) {
             cpuFace.innerHTML = PIXEL_ICONS.cpuPanic;
             cpuComment.textContent = 'くっ、捌くのか！';
           } else {
@@ -2902,7 +2935,7 @@
         } else if (ratio >= 0.6) {
           cpuFace.innerHTML = PIXEL_ICONS.cpuThink;
           cpuComment.textContent = 'なかなかやるな…';
-        } else if (state.cpuLinesThisStage >= 7) {
+        } else if (state.cpuLinesThisStage >= targetLines - 3) {
           cpuFace.innerHTML = PIXEL_ICONS.cpuSmug;
           cpuComment.textContent = '勝利は目の前だ';
         } else {
@@ -2931,12 +2964,14 @@
         // Dynamic color theme switch between Sabotage (blue) and Karma (crimson)
         document.body.classList.toggle('theme-karma', state.phase !== 'TITLE' && state.turnSide === 'karma');
 
+        const targetLines = getStageTargetLines();
         hudStage.textContent = state.stage;
         hudMaxLines.textContent = state.stageHeight;
         hudLinesLabel.textContent = state.turnSide === 'karma' ? 'YOU消去' : 'CPU消去';
         const shownLines = state.turnSide === 'karma' ? state.playerLinesThisStage : state.cpuLinesThisStage;
         hudCpuLines.textContent = shownLines;
-        if (state.turnSide === 'sabotage' && shownLines >= 7) {
+        if (hudTargetLines) hudTargetLines.textContent = `/${targetLines}`;
+        if (state.turnSide === 'sabotage' && shownLines >= targetLines - 3) {
           hudLinesBadge.className = 'inline-flex items-baseline gap-1 px-2 py-0.5 rounded-md bg-rose-950/95 border border-rose-400 shadow-sm animate-pulse';
           hudLinesLabel.className = 'text-[11px] sm:text-xs font-bold text-rose-200';
           hudCpuLines.className = 'text-rose-300 text-sm sm:text-base font-extrabold font-pixel leading-none';
@@ -2996,20 +3031,20 @@
 
         // Toggle between Builder Mode and Nintendo DS Controller Mode
         if (state.monumentDropActive && state.phase === 'DROPPING') {
-          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative';
+          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative overflow-visible z-30';
           builderPanel.classList.add('hidden');
           revolutionPanel.classList.remove('hidden');
           revolutionPanel.classList.add('flex');
           dsModeTitle.textContent = '🗿 パーミャトニク';
           builderLockOverlay.classList.add('hidden');
         } else if (state.karmaBuilderMode && state.phase === 'BUILDING') {
-          bottomControlPanel.className = 'retro-panel p-2 sm:p-2.5 shrink-0 relative';
+          bottomControlPanel.className = 'retro-panel p-2 sm:p-2.5 shrink-0 relative overflow-visible z-30';
           revolutionPanel.classList.add('hidden');
           revolutionPanel.classList.remove('flex');
           builderPanel.classList.remove('hidden');
           builderLockOverlay.classList.add('hidden');
         } else if (isKarma) {
-          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative';
+          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative overflow-visible z-30';
           builderPanel.classList.add('hidden');
           revolutionPanel.classList.remove('hidden');
           revolutionPanel.classList.add('flex');
@@ -3021,14 +3056,14 @@
             builderLockOverlay.classList.add('hidden');
           }
         } else if (state.revActiveNow && state.phase === 'DROPPING') {
-          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative';
+          bottomControlPanel.className = 'retro-panel p-1 sm:p-1.5 shrink-0 relative overflow-visible z-30';
           builderPanel.classList.add('hidden');
           revolutionPanel.classList.remove('hidden');
           revolutionPanel.classList.add('flex');
           dsModeTitle.textContent = '✊ ペレストロイカ';
           builderLockOverlay.classList.add('hidden');
         } else {
-          bottomControlPanel.className = 'retro-panel p-2 sm:p-2.5 shrink-0 relative';
+          bottomControlPanel.className = 'retro-panel p-2 sm:p-2.5 shrink-0 relative overflow-visible z-30';
           revolutionPanel.classList.add('hidden');
           revolutionPanel.classList.remove('flex');
           builderPanel.classList.remove('hidden');
@@ -3633,7 +3668,7 @@
           }
           state.nextPiece = pullNextKarmaPiece();
           spawnStandbyPiece(firstKarma);
-          showBoardBanner(`🔥 STAGE ${state.stage}【因果応報】10段・テ◯リス・またはCPU(${state.cpuLinesThisStage}段)超えで勝利！`, 2000);
+          showBoardBanner(`🔥 STAGE ${state.stage}【因果応報】${getStageTargetLines()}段・テ◯リス・またはCPU(${state.cpuLinesThisStage}段)超えで勝利！`, 2000);
           beginKarmaDropPhase(firstKarma);
           return;
         }
@@ -3998,9 +4033,10 @@
         triggerShake();
 
         if (state.gameMode === 'karma' && state.turnSide === 'sabotage') {
+          const targetLines = getStageTargetLines();
           const baseScore = state.stage * 600;
           const speedBonus = Math.max(0, 25 - state.turnsThisStage) * 100;
-          const defenseBonus = Math.max(0, 10 - state.cpuLinesThisStage) * 120;
+          const defenseBonus = Math.max(0, targetLines - state.cpuLinesThisStage) * 120;
           const stageEarned = Math.round((baseScore + speedBonus + defenseBonus) * getDiffMultiplier());
           state.lastStageScore = stageEarned;
           addScore(stageEarned);
@@ -4012,7 +4048,7 @@
           document.getElementById('clearStageScore').textContent = `+${stageEarned.toLocaleString()}`;
           document.getElementById('clearTotalScore').textContent = state.score.toLocaleString();
           document.getElementById('clearSubtitle').textContent =
-            `次は【STAGE ${state.stage} 因果応報フェーズ】！10段消去・テトリス、または上限超え時にCPU(${state.cpuLinesThisStage}段)より多く消していれば突破！`;
+            `次は【STAGE ${state.stage} 因果応報フェーズ】！${targetLines}段消去・テ◯リス、または上限超え時にCPU(${state.cpuLinesThisStage}段)より多く消していれば突破！`;
           document.getElementById('btnNextStage').textContent = `🔥 STAGE ${state.stage} 因果応報へ ▶`;
 
           setTimeout(() => {
@@ -4027,7 +4063,7 @@
         } else {
           const baseScore = state.stage * 1000;
           const speedBonus = Math.max(0, 25 - state.turnsThisStage) * 120;
-          const defenseBonus = Math.max(0, 10 - state.cpuLinesThisStage) * 150;
+          const defenseBonus = Math.max(0, getStageTargetLines() - state.cpuLinesThisStage) * 150;
           stageEarned = Math.round((baseScore + speedBonus + defenseBonus) * getDiffMultiplier());
         }
         state.lastStageScore = stageEarned;
@@ -4614,12 +4650,12 @@
           titleRuleBox.innerHTML = `
             <p>🧠 <strong class="text-cyan-300">天才CPU</strong>が最上部から落ちるブロックを完璧に捌く！</p>
             <p>😈 <strong class="text-rose-400">2×4マス</strong>で辺を繋げて意地悪なブロックを作り、CPUを<strong class="text-amber-300">赤い点線（上限）超え</strong>に追い込め！</p>
-            <p>⚠️ CPUが<strong class="text-rose-400">10ライン消去</strong>または<strong class="text-rose-400">テ◯リス(4段同時消し)</strong>でCPUの勝利！4段消すたびに爆弾も増加！</p>
+            <p>⚠️ CPUが<strong class="text-rose-400">規定ライン消去(STG1は10段・以降+1)</strong>または<strong class="text-rose-400">テ◯リス(4段同時消し)</strong>でCPUの勝利！4段消すたびに爆弾も増加！</p>
           `;
         } else {
           titleRuleBox.innerHTML = `
             <p>😈 <strong class="text-cyan-300">阻止るフェーズ</strong>：意地悪ブロックを作ってCPUを撃破！作ったブロックと必殺技は全て記録される！</p>
-            <p>🔥 <strong class="text-rose-400">因果応報フェーズ</strong>：自分が作ったブロックを操作し、<strong class="text-amber-300">10段消去・テ◯リス</strong>、または<strong class="text-amber-300">上限超え時にCPUより多く消去</strong>で突破！</p>
+            <p>🔥 <strong class="text-rose-400">因果応報フェーズ</strong>：自分が作ったブロックを操作し、<strong class="text-amber-300">規定段消去(STG1は10段・以降+1)・テ◯リス</strong>、または<strong class="text-amber-300">上限超え時にCPUより多く消去</strong>で突破！</p>
             <p>✊ 阻止るフェーズでペレストロイカを使うと、因果応報ではCPUが妨害操作してくる！応報フェーズの得点は<strong class="text-emerald-300">2ライン同時消し以上</strong>で加算！</p>
           `;
         }
@@ -5902,11 +5938,12 @@
               updateHUD();
 
               if (clearedCount >= 4) {
-                triggerStageClear('テトリス（4ライン同時消し）達成で因果応報を完全突破！');
+                triggerStageClear('テ◯リス（4ライン同時消し）達成で因果応報を完全突破！');
                 return;
               }
-              if (state.playerLinesThisStage >= 10) {
-                triggerStageClear('10ライン消去を達成し、因果応報を突破した！');
+              const targetLines = getStageTargetLines();
+              if (state.playerLinesThisStage >= targetLines) {
+                triggerStageClear(`${targetLines}ライン消去を達成し、因果応報を突破した！`);
                 return;
               }
 
@@ -5934,11 +5971,12 @@
             updateHUD();
 
             if (clearedCount >= 4) {
-              triggerGameOver('CPUがテトリス（4ライン同時消し）を達成した！');
+              triggerGameOver('CPUがテ◯リス（4ライン同時消し）を達成した！');
               return;
             }
-            if (state.cpuLinesThisStage >= 10) {
-              triggerGameOver(`CPUがステージ${state.stage}で10ライン消去を達成した！`);
+            const cpuTargetLines = getStageTargetLines();
+            if (state.cpuLinesThisStage >= cpuTargetLines) {
+              triggerGameOver(`CPUがステージ${state.stage}で${cpuTargetLines}ライン消去を達成した！`);
               return;
             }
 
