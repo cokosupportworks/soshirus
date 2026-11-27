@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ソシルス 公式あそびかた説明書＆攻略ガイド</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="./favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=M+PLUS+Rounded+1c:wght@500;700;800&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #091024;
+      --panel-top: #1a2444;
+      --panel-bot: #10162c;
+      --gold: #fbbf24;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: var(--bg-deep);
+      color: #f8fafc;
+      font-family: 'M PLUS Rounded 1c', 'DotGothic16', sans-serif;
+      background-image:
+        radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.14), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(239, 68, 68, 0.12), transparent 45%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 3px);
+    }
+    .font-dot { font-family: 'DotGothic16', sans-serif; }
+    .font-pixel { font-family: 'Press Start 2P', 'DotGothic16', monospace; }
+    .pixel-svg { shape-rendering: crispEdges; image-rendering: pixelated; }
+
+    .book-card {
+      background: linear-gradient(180deg, var(--panel-top) 0%, var(--panel-bot) 100%);
+      border: 2px solid #475d94;
+      border-radius: 18px;
+      box-shadow: inset 0 2px 0 rgba(255,255,255,0.12), 0 8px 24px rgba(0,0,0,0.45);
+    }
+    .gold-card {
+      background: linear-gradient(180deg, #2d1a0b 0%, #170e07 100%);
+      border: 2px solid #f59e0b;
+      border-radius: 18px;
+      box-shadow: inset 0 2px 0 rgba(254, 240, 138, 0.2), 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .chapter-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-family: 'DotGothic16', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+    }
+    .pin-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: linear-gradient(180deg, #fde047 0%, #f59e0b 100%);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 12px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      flex-shrink: 0;
+    }
+    .demo-cell {
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+      border: 2px solid #334155;
+      transition: transform 0.08s ease, background 0.1s ease;
+      cursor: pointer;
+      user-select: none;
+      touch-action: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .demo-cell.on {
+      background: linear-gradient(145deg, #38bdf8 0%, #0284c7 60%, #0369a1 100%);
+      border-color: #bae6fd;
+      box-shadow: inset 0 2px 3px rgba(255,255,255,0.55), 0 0 8px rgba(56,189,248,0.5);
+      transform: scale(0.95);
+    }
+    .demo-cell.warn {
+      background: linear-gradient(145deg, #fbbf24 0%, #d97706 60%, #92400e 100%);
+      border-color: #fef08a;
+      transform: scale(0.95);
+    }
+    .demo-cell.cut {
+      background: repeating-linear-gradient(-45deg, rgba(239,68,68,0.4) 0 4px, rgba(30,41,59,0.75) 4px 8px);
+      border: 2px dashed #f87171;
+      color: #fca5a5;
+      font-weight: 800;
+    }
+    .demo-cell.bomb {
+      background: radial-gradient(circle at 50% 40%, #991b1b 0%, #450a0a 80%);
+      border-color: #f87171;
+    }
+    @keyframes silverShine {
+      0%, 65%, 100% { filter: brightness(1); }
+      78% { filter: brightness(1.45); }
+    }
+    .silver-gleam { animation: silverShine 2.2s infinite; }
+    ruby rt { font-size: 0.62em; color: #cbd5e1; font-weight: 500; }
+
+    /* Mini brick pattern for mock screen */
+    .mini-bricks {
+      background-color: #1e293b;
+      background-image:
+        linear-gradient(90deg, rgba(15,23,42,0.85) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(15,23,42,0.85) 1px, transparent 1px);
+      background-size: 14px 8px;
+    }
+    .block-tile {
+      border: 2px solid rgba(255,255,255,0.35);
+      border-right-color: rgba(0,0,0,0.4);
+      border-bottom-color: rgba(0,0,0,0.4);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-16">
+
+  <!-- TOP FLOATING NAV -->
+  <nav class="sticky top-0 z-40 bg-slate-950/92 backdrop-blur border-b border-slate-700/80">
+    <div class="max-w-4xl mx-auto px-3 py-2 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2 min-w-0">
+        <img src="./favicon.png" alt="ソシルス" class="w-7 h-7 rounded-md border border-amber-400 shrink-0" />
+        <span class="font-dot text-sm sm:text-base font-bold text-amber-300 truncate">ソシルス 公式あそびかた説明書</span>
+      </div>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <a href="#strategy" class="px-2.5 py-1 rounded-lg bg-amber-500/20 border border-amber-400 text-amber-200 text-xs font-bold hover:bg-amber-500/30">
+          🔥 攻略法へ
+        </a>
+        <a href="./index.html" class="px-3 py-1 rounded-lg bg-gradient-to-b from-amber-400 to-orange-600 border border-amber-200 text-slate-950 text-xs font-extrabold shadow hover:brightness-110">
+          ▶ ゲームをあそぶ
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-3 sm:px-5 pt-5 space-y-7">
+
+    <!-- ================= COVER / HERO ================= -->
+    <section class="book-card overflow-hidden">
+      <div class="relative bg-slate-950">
+        <video
+          src="./title.mp4"
+          poster="./title.gif"
+          autoplay
+          loop
+          muted
+          playsinline
+          class="w-full max-h-[300px] object-cover block"
+        ></video>
+        <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#10162c] to-transparent"></div>
+        <div class="absolute top-3 left-3 flex items-center gap-2 bg-slate-950/85 border border-amber-400/80 rounded-xl px-2.5 py-1.5 shadow-lg">
+          <img src="./apple-touch-icon.png" alt="アイコン" class="w-9 h-9 rounded-lg border border-amber-300" />
+          <div class="leading-tight">
+            <div class="text-[10px] font-pixel text-rose-400">OFFICIAL MANUAL</div>
+            <div class="text-xs sm:text-sm font-bold text-amber-200">取扱説明書 ＆ ひでん攻略ブック</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 sm:p-6 text-center space-y-3">
+        <h1 class="font-dot text-2xl sm:text-3xl font-bold text-amber-300">
+          ふつうのパズルとぜんぶ<ruby>逆<rt>ぎゃく</rt></ruby>！？<br class="sm:hidden" />
+          「<ruby>意地悪<rt>いじわる</rt></ruby>ブロック」で天才CPUを<ruby>阻止<rt>そし</rt></ruby>れ！
+        </h1>
+        <p class="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl mx-auto">
+          『ソシルス』は、ブロックを消すゲーム…ではなく、<strong>あなたが変なカタチのブロックを<ruby>作<rt>つく</rt></ruby>って<ruby>送<rt>おく</rt></ruby>りつけ、頭がよすぎる「天才CPU」にラインを消させないようにジャマ（<ruby>阻止<rt>そし</rt></ruby>）する</strong>あたらしいパズルバトルです！
+        </p>
+
+        <!-- Quick Table of Contents -->
+        <div class="flex flex-wrap justify-center gap-2 pt-2">
+          <a href="#modes" class="px-3 py-1.5 rounded-full bg-slate-800 border border-slate-600 text-xs font-bold text-cyan-200 hover:border-cyan-400">① 2つのモードとルール</a>
+          <a href="#screen" class="px-3 py-1.5 rounded-full bg-slate-800 border border-slate-600 text-xs font-bold text-cyan-200 hover:border-cyan-400">② がめんのみかた</a>
+          <a href="#builder" class="px-3 py-1.5 rounded-full bg-slate-800 border border-slate-600 text-xs font-bold text-cyan-200 hover:border-cyan-400">③ ブロックのつくりかた</a>
+          <a href="#controller" class="px-3 py-1.5 rounded-full bg-slate-800 border border-slate-600 text-xs font-bold text-cyan-200 hover:border-cyan-400">④ コントローラー操作</a>
+          <a href="#skills" class="px-3 py-1.5 rounded-full bg-slate-800 border border-slate-600 text-xs font-bold text-fuchsia-200 hover:border-fuchsia-400">⑤ 5つのひっさつわざ</a>
+          <a href="#quiz" class="px-3 py-1.5 rounded-full bg-slate-800 border border-slate-600 text-xs font-bold text-emerald-200 hover:border-emerald-400">⑥ ロシアクイズ</a>
+          <a href="#strategy" class="px-3 py-1.5 rounded-full bg-amber-900/70 border border-amber-400 text-xs font-bold text-amber-200 hover:bg-amber-800">★ おまけ：ひでん攻略法</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 1: MODES & WIN/LOSE ================= -->
+    <section id="modes" class="book-card p-4 sm:p-6 space-y-5">
+      <div>
+        <span class="chapter-badge bg-cyan-950 border border-cyan-400 text-cyan-200">CHAPTER 1</span>
+        <h2 class="font-dot text-xl sm:text-2xl font-bold text-white mt-2">2つのゲームモードと しょうぶのルール</h2>
+      </div>
+
+      <!-- 2 Modes -->
+      <div class="grid sm:grid-cols-2 gap-3.5">
+        <div class="rounded-xl bg-gradient-to-b from-cyan-950/90 to-slate-900 border-2 border-cyan-400/80 p-4 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">😈</span>
+            <h3 class="font-dot text-lg font-bold text-cyan-300">ひたすらソシる</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+            ずーっと<strong>ジャマする側</strong>になって遊ぶモード！意地悪なブロックを作って、天才CPUをどんどん追いこもう。はじめて遊ぶときはまずコレがおすすめ！
+          </p>
+        </div>
+
+        <div class="rounded-xl bg-gradient-to-b from-rose-950/90 to-slate-900 border-2 border-rose-400/80 p-4 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">⚔️</span>
+            <h3 class="font-dot text-lg font-bold text-rose-300">ソシりソシられ</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+            <strong>敵はCPUか、さっきの自分か!?</strong><br />
+            ①「<ruby>阻止<rt>そし</rt></ruby>るフェーズ」でCPUをたおすと、②「<ruby>因果応報<rt>いんがおうほう</rt></ruby>フェーズ」がスタート！<br />
+            さっき<strong>自分がCPUに送った意地悪ブロックが、こんどは自分に向かって降ってくる</strong>ぞ！
+          </p>
+        </div>
+      </div>
+
+      <!-- Win & Lose -->
+      <div class="grid sm:grid-cols-2 gap-3.5">
+        <div class="rounded-xl bg-emerald-950/50 border border-emerald-400/70 p-4 space-y-2">
+          <div class="font-dot text-base font-bold text-emerald-300">🏆 きみの勝ち（ステージクリア）</div>
+          <ul class="text-xs sm:text-sm text-slate-200 space-y-1.5 list-disc pl-4">
+            <li><strong>阻止るフェーズ：</strong>CPUのブロックを<strong class="text-amber-300">赤い点線（<ruby>上限<rt>じょうげん</rt></ruby>ライン）</strong>より上に<ruby>積<rt>つ</rt></ruby>み上げさせたら勝ち！</li>
+            <li><strong>因果応報フェーズ：</strong><strong class="text-amber-300"><ruby>規定<rt>きてい</rt></ruby>ライン消去</strong>・<strong class="text-amber-300">4段同時消し</strong>、または上限を超えたときに<strong>さっきのCPUより多く消していれば</strong>突破！</li>
+          </ul>
+        </div>
+
+        <div class="rounded-xl bg-rose-950/50 border border-rose-400/70 p-4 space-y-2">
+          <div class="font-dot text-base font-bold text-rose-300">💀 きみの負け（ゲームオーバー）</div>
+          <div class="flex gap-3 items-center">
+            <img src="./gameover1.jpg" alt="ゲームオーバー画面" class="w-24 sm:w-28 rounded-lg border border-rose-400/80 shrink-0 shadow" />
+            <ul class="text-xs sm:text-sm text-slate-200 space-y-1 list-disc pl-4">
+              <li>CPUに<strong><ruby>規定<rt>きてい</rt></ruby>ライン</strong>（STG1は<strong>10段</strong>、ステージが1上がるごとに<strong>+1段</strong>）消される</li>
+              <li>またはCPUに<strong>4段同時消し（テ◯リス）</strong>を決められる</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage Progression & Carry-over Rule -->
+      <div class="rounded-xl bg-slate-900/85 border border-indigo-400/60 p-4 space-y-2">
+        <div class="font-dot text-sm sm:text-base font-bold text-indigo-300">📈 ステージが上がるとどう変わるの？</div>
+        <div class="grid sm:grid-cols-3 gap-2.5 text-xs sm:text-sm text-slate-200">
+          <div class="bg-slate-950/70 rounded-lg p-2.5 border border-slate-700">
+            <div class="font-bold text-rose-300">① 上限ラインが+1段</div>
+            <p class="mt-1 text-xs text-slate-300">STG1は<strong>5段</strong>、STG2は<strong>6段</strong>…と少しずつ高くなるよ。</p>
+          </div>
+          <div class="bg-slate-950/70 rounded-lg p-2.5 border border-slate-700">
+            <div class="font-bold text-emerald-300">② CPUのノルマも+1段</div>
+            <p class="mt-1 text-xs text-slate-300">STG1は<strong>10段</strong>、STG2は<strong>11段</strong>、STG3は<strong>12段</strong>と増えるよ。</p>
+          </div>
+          <div class="bg-slate-950/70 rounded-lg p-2.5 border border-slate-700">
+            <div class="font-bold text-amber-300">③ 前のブロックが引きつがれる！</div>
+            <p class="mt-1 text-xs text-slate-300">前のステージ終了時の「上限ラインの <strong>(新STG−2)段下から上</strong>」にあるブロックが、新ステージの一番下から積まれた状態でスタート！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 2: SCREEN GUIDE ================= -->
+    <section id="screen" class="book-card p-4 sm:p-6 space-y-5">
+      <div>
+        <span class="chapter-badge bg-amber-950 border border-amber-400 text-amber-200">CHAPTER 2</span>
+        <h2 class="font-dot text-xl sm:text-2xl font-bold text-white mt-2">がめんのみかた（じっさいのプレイ画面）</h2>
+      </div>
+
+      <div class="grid md:grid-cols-[1.05fr_1fr] gap-5 items-start">
+        <!-- Realistic App Screen Diagram with Numbered Pins -->
+        <div class="rounded-2xl bg-[#0b0e1a] border-2 border-slate-500 p-2 shadow-2xl space-y-1.5 select-none">
+          <!-- Mock Header -->
+          <div class="relative rounded-lg bg-[#161e38] border border-[#475d94] px-2 py-1.5 flex items-center justify-between text-[10px]">
+            <div class="flex items-center gap-1.5">
+              <img src="./favicon.png" alt="logo" class="w-6 h-6 rounded border border-amber-400" />
+              <div>
+                <div class="flex items-center gap-1">
+                  <span class="font-dot font-bold text-amber-300 text-xs">ソシルス</span>
+                  <span class="px-1 rounded bg-cyan-950 border border-cyan-400 text-cyan-200 text-[9px]">😈阻止る</span>
+                  <span class="px-1 rounded bg-amber-950 border border-amber-500 text-amber-300 text-[9px] font-pixel">2,055</span>
+                </div>
+                <div class="text-[9px] text-slate-300 flex items-center gap-1 mt-0.5">
+                  <span>STG <strong class="text-amber-300">1</strong></span>
+                  <span>| 上限<strong class="text-rose-400">5段</strong></span>
+                  <span class="px-1 rounded bg-emerald-950 border border-emerald-400 text-emerald-300 font-bold">CPU消去 5/10</span>
+                </div>
+              </div>
+            </div>
+            <span class="pin-num absolute -top-2 -left-2">1</span>
+            <div class="flex gap-1 text-[10px]">
+              <span class="px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 font-bold">🏆</span>
+              <span class="px-1.5 py-0.5 rounded bg-slate-700">🔊</span>
+            </div>
+          </div>
+
+          <!-- Mock Arena -->
+          <div class="flex gap-1.5 h-[270px]">
+            <!-- Left + Center Board with Bricks -->
+            <div class="relative flex-1 rounded-lg border-2 border-amber-400 overflow-hidden bg-gradient-to-b from-[#00108a] to-[#1d4ed8] flex">
+              <!-- Left Brick Wall & CPU Face -->
+              <div class="w-[62px] h-full relative flex flex-col justify-end">
+                <div class="h-[52%] mini-bricks border-t-2 border-slate-200 relative flex items-center justify-center p-1">
+                  <div class="relative w-full rounded bg-[#050814] border border-slate-200 p-1 text-center">
+                    <span class="pin-num absolute -top-2.5 -left-2">4</span>
+                    <div class="text-base leading-none">🥵</div>
+                    <div class="text-[8px] text-cyan-300 font-bold">天才CPU</div>
+                    <div class="text-[7.5px] text-white leading-tight">ヤバい！</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Playfield -->
+              <div class="flex-1 bg-[#04060d] border-x-4 border-slate-400 relative flex flex-col justify-end p-0.5">
+                <!-- Overflow Zone -->
+                <div class="absolute inset-x-0 top-0 bottom-[82px]" style="background: repeating-linear-gradient(-45deg, rgba(239,68,68,0.16) 0 6px, transparent 6px 14px);">
+                  <div class="text-center text-[8px] font-pixel text-rose-400/50 mt-14">OVERFLOW</div>
+                </div>
+                <!-- Falling Piece -->
+                <div class="absolute top-6 right-3 grid grid-cols-3 gap-0.5 w-11">
+                  <div></div><div class="h-3.5 bg-emerald-500 block-tile"></div><div class="h-3.5 bg-emerald-500 block-tile"></div>
+                  <div class="h-3.5 bg-emerald-500 block-tile"></div><div class="h-3.5 bg-emerald-500 block-tile"></div><div></div>
+                </div>
+                <!-- Red Dashed Ceiling Line -->
+                <div class="relative w-full border-t-2 border-dashed border-amber-300 mb-1">
+                  <span class="pin-num absolute -top-3 left-1">2</span>
+                  <div class="text-[8px] text-amber-300 text-right font-bold -mt-3.5 pr-0.5">🔥 あと少しで撃破(5段)</div>
+                </div>
+                <!-- Stacked Blocks including Silver Monument -->
+                <div class="grid grid-cols-8 gap-0.5">
+                  <div></div><div></div><div class="h-3.5 bg-purple-500 block-tile"></div><div></div><div></div><div class="h-3.5 bg-pink-500 block-tile"></div><div></div><div></div>
+                  <div class="h-3.5 bg-orange-500 block-tile"></div><div class="h-3.5 bg-orange-500 block-tile"></div><div class="h-3.5 bg-purple-500 block-tile"></div><div class="h-3.5 bg-purple-500 block-tile"></div><div class="h-3.5 bg-cyan-500 block-tile"></div><div class="h-3.5 bg-pink-500 block-tile"></div><div></div><div class="h-3.5 bg-blue-500 block-tile"></div>
+                  <div class="h-3.5 bg-pink-500 block-tile"></div><div class="h-3.5 bg-orange-500 block-tile"></div><div class="h-3.5 bg-blue-500 block-tile"></div><div class="h-3.5 bg-slate-200 block-tile silver-gleam"></div><div class="h-3.5 bg-orange-500 block-tile"></div><div class="h-3.5 bg-pink-500 block-tile"></div><div class="h-3.5 border border-dashed border-amber-400"></div><div class="h-3.5 bg-blue-500 block-tile"></div>
+                </div>
+              </div>
+              <!-- Right Brick Wall -->
+              <div class="w-[24px] h-full flex flex-col justify-end">
+                <div class="h-[46%] mini-bricks border-t-2 border-slate-200"></div>
+              </div>
+            </div>
+
+            <!-- Right Sidebar Mock -->
+            <div class="w-[88px] flex flex-col gap-1">
+              <div class="relative rounded-lg bg-[#161e38] border border-[#475d94] p-1 text-center">
+                <span class="pin-num absolute -top-2 -right-1.5">3</span>
+                <div class="text-[8px] font-pixel text-cyan-300">NEXT</div>
+                <div class="mt-0.5 h-8 bg-slate-950 rounded flex items-center justify-center gap-0.5 px-1">
+                  <div class="w-3 h-3 bg-pink-500 block-tile"></div>
+                  <div class="w-3 h-3 bg-pink-500 block-tile"></div>
+                  <div class="w-3 h-3 bg-pink-500 block-tile"></div>
+                  <div class="w-3 h-3 bg-pink-500 block-tile"></div>
+                </div>
+              </div>
+              <div class="relative flex-1 rounded-lg bg-[#161e38] border border-[#475d94] p-1 flex flex-col gap-1 justify-center">
+                <span class="pin-num absolute -top-2 -right-1.5">5</span>
+                <div class="text-[7px] text-center text-slate-400">必殺技</div>
+                <div class="rounded bg-fuchsia-700 px-1 py-0.5 text-[7.5px] font-bold flex justify-between"><span>ボリショイ</span><span class="text-amber-300">1</span></div>
+                <div class="rounded bg-rose-700 px-1 py-0.5 text-[7.5px] font-bold flex justify-between"><span>ペレストロイカ</span><span class="text-amber-300">1</span></div>
+                <div class="rounded bg-sky-700 px-1 py-0.5 text-[7.5px] font-bold flex justify-between"><span>スペツナズ</span><span class="text-amber-300">3</span></div>
+                <div class="rounded bg-slate-300 text-slate-950 px-1 py-0.5 text-[7.5px] font-bold flex justify-between"><span>パーミャトニク</span><span>1</span></div>
+                <div class="rounded bg-amber-600 px-1 py-0.5 text-[7.5px] font-bold flex justify-between"><span>スネスチー</span><span>0</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mock Bottom Builder -->
+          <div class="relative rounded-lg bg-[#161e38] border border-[#475d94] p-1.5">
+            <span class="pin-num absolute -top-2.5 left-2">6</span>
+            <div class="flex justify-between text-[9px] mb-1">
+              <span class="text-amber-200 font-bold">ブロックを作成 💣×1</span>
+              <span class="font-pixel text-cyan-300">4.2s</span>
+            </div>
+            <div class="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden mb-1.5">
+              <div class="h-full w-4/5 bg-gradient-to-r from-emerald-400 to-cyan-400"></div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <div class="flex-1 flex justify-center bg-slate-950 rounded p-1">
+                <div class="grid grid-cols-4 gap-1">
+                  <div class="w-6 h-6 rounded bg-sky-500 border border-sky-200"></div>
+                  <div class="w-6 h-6 rounded bg-sky-500 border border-sky-200"></div>
+                  <div class="w-6 h-6 rounded bg-slate-800 border border-slate-600"></div>
+                  <div class="w-6 h-6 rounded bg-red-950 border border-red-400 flex items-center justify-center text-[10px]">💣</div>
+                  <div class="w-6 h-6 rounded bg-slate-800 border border-slate-600"></div>
+                  <div class="w-6 h-6 rounded bg-sky-500 border border-sky-200"></div>
+                  <div class="w-6 h-6 rounded bg-sky-500 border border-sky-200"></div>
+                  <div class="w-6 h-6 rounded bg-slate-800 border border-slate-600"></div>
+                </div>
+              </div>
+              <div class="w-16 flex flex-col gap-1">
+                <div class="relative rounded bg-gradient-to-b from-amber-400 to-orange-600 text-slate-950 font-bold text-[10px] py-2 text-center">
+                  決定！
+                  <span class="pin-num absolute -top-2 -right-2">7</span>
+                </div>
+                <div class="rounded bg-slate-700 text-[9px] py-0.5 text-center">クリア</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pin Explanations -->
+        <ol class="space-y-2.5 text-xs sm:text-sm">
+          <li class="flex items-start gap-2.5 bg-slate-900/70 rounded-xl p-2.5 border border-slate-700/80">
+            <span class="pin-num mt-0.5">1</span>
+            <div><strong class="text-amber-300">ステータスバー：</strong>今のステージ・上限の段数・CPUが何段消したか・スコアが見られるよ。右のボタンでランキング🏆・音ON/OFF🔊・メニューが開けるよ。</div>
+          </li>
+          <li class="flex items-start gap-2.5 bg-slate-900/70 rounded-xl p-2.5 border border-slate-700/80">
+            <span class="pin-num mt-0.5">2</span>
+            <div><strong class="text-rose-400">赤い点線（上限ライン）：</strong>ここより上にブロックがはみ出したら勝負あり！あと1〜2段までせまるとピカピカ光って教えてくれるよ。</div>
+          </li>
+          <li class="flex items-start gap-2.5 bg-slate-900/70 rounded-xl p-2.5 border border-slate-700/80">
+            <span class="pin-num mt-0.5">3</span>
+            <div><strong class="text-cyan-300">NEXT（つぎのブロック）：</strong>きみが作って送ったブロックがここに入るよ。「ソシりソシられ」では、この下に<strong>因果キュー</strong>も表示されるよ。</div>
+          </li>
+          <li class="flex items-start gap-2.5 bg-slate-900/70 rounded-xl p-2.5 border border-slate-700/80">
+            <span class="pin-num mt-0.5">4</span>
+            <div><strong class="text-sky-300">天才CPUのかお：</strong>余裕のときはサングラス😎、ピンチになると大汗🥵！表情を見ながら攻めよう！</div>
+          </li>
+          <li class="flex items-start gap-2.5 bg-slate-900/70 rounded-xl p-2.5 border border-slate-700/80">
+            <span class="pin-num mt-0.5">5</span>
+            <div><strong class="text-fuchsia-300">5つのひっさつわざ：</strong>右の大きな数字が「のこり回数」。ピンチや大チャンスのときにタップして使おう！</div>
+          </li>
+          <li class="flex items-start gap-2.5 bg-slate-900/70 rounded-xl p-2.5 border border-slate-700/80">
+            <span class="pin-num mt-0.5">6</span>
+            <div><strong class="text-amber-200">ブロック作成マス（ビルダー）：</strong>2×4の正方形マスを指でタップ＆なぞって、CPUに送るブロックを作る場所だよ。上のバーは制限時間！</div>
+          </li>
+          <li class="flex items-start gap-2.5 bg-slate-900/70 rounded-xl p-2.5 border border-slate-700/80">
+            <span class="pin-num mt-0.5">7</span>
+            <div><strong class="text-orange-300">決定！ボタン：</strong>ブロックができたらおしてNEXTへ送ろう！（PCならEnterキーでもOK）</div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 3: BLOCK BUILDING + INTERACTIVE DEMO ================= -->
+    <section id="builder" class="book-card p-4 sm:p-6 space-y-5">
+      <div>
+        <span class="chapter-badge bg-emerald-950 border border-emerald-400 text-emerald-200">CHAPTER 3</span>
+        <h2 class="font-dot text-xl sm:text-2xl font-bold text-white mt-2">ブロックのつくりかた ＆ 3つのちゅうい点</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 items-center">
+        <div class="space-y-3 text-xs sm:text-sm text-slate-200">
+          <div class="rounded-xl bg-slate-900/80 border border-sky-400/50 p-3">
+            <div class="font-bold text-sky-300">① タテ・ヨコ（<ruby>辺<rt>へん</rt></ruby>）でつなげよう！</div>
+            <p class="mt-1 leading-relaxed">
+              ブロックは上下左右の辺でつながっていないとダメ！もし<strong>バラバラ（ななめだけ）</strong>になっていると、<span class="text-amber-300 font-bold">黄色くなった小さいパーツ</span>しか送られず、<span class="text-rose-400 font-bold">×のパーツは消えてしまう</span>よ。
+            </p>
+          </div>
+          <div class="rounded-xl bg-slate-900/80 border border-rose-400/50 p-3">
+            <div class="font-bold text-rose-300">② 💣 ばくだんにさわるとドカン！</div>
+            <p class="mt-1 leading-relaxed">
+              マスの中にある爆弾にさわると、作っていたブロックがぜんぶ消えて<strong>-100点</strong>！CPUが4段消すたびに爆弾が1個ふえるよ（最大4個）。
+            </p>
+          </div>
+          <div class="rounded-xl bg-slate-900/80 border border-amber-400/50 p-3">
+            <div class="font-bold text-amber-300">③ ⏰ じかんぎれは大ピンチ！</div>
+            <p class="mt-1 leading-relaxed">
+              時間切れになると<strong>-200点</strong>になり、さらにCPUが一番よろこぶ<strong>「1×4のピンクのぼう」</strong>をプレゼントしてしまうよ！
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Mini Builder Sandbox -->
+        <div class="rounded-2xl bg-slate-950/90 border-2 border-cyan-400/70 p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-dot text-sm font-bold text-cyan-300">👆 ここでためしてみよう！</span>
+            <button id="demoReset" class="px-2.5 py-1 rounded-lg bg-slate-700 border border-slate-500 text-xs font-bold text-white hover:bg-slate-600">リセット</button>
+          </div>
+          <div id="demoStatus" class="text-xs font-bold text-amber-200 bg-slate-900 rounded-lg px-2.5 py-1.5 border border-slate-700">
+            マスをタップ／なぞってブロックを作ってみよう！
+          </div>
+          <div id="demoGrid" class="grid grid-cols-4 gap-2 max-w-[240px] mx-auto"></div>
+          <p class="text-[11px] text-slate-400 text-center">
+            ※ わざと離して塗ったり、💣にさわって動きをたしかめてみよう！
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 4: CONTROLLER ================= -->
+    <section id="controller" class="book-card p-4 sm:p-6 space-y-4">
+      <div>
+        <span class="chapter-badge bg-indigo-950 border border-indigo-400 text-indigo-200">CHAPTER 4</span>
+        <h2 class="font-dot text-xl sm:text-2xl font-bold text-white mt-2">自分でうごかすときのコントローラー操作</h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1">
+          「因果応報フェーズ」や、必殺技「ペレストロイカ」「パーミャトニク」を使うと、画面の下がコントローラーに変わるよ！
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 items-center">
+        <!-- DS Controller Visual Diagram -->
+        <div class="rounded-xl p-3 bg-gradient-to-b from-slate-200 via-slate-300 to-slate-400 border-2 border-white shadow-xl flex items-center justify-between gap-2 text-slate-900">
+          <!-- D-Pad -->
+          <div class="grid grid-cols-3 grid-rows-3 w-32 h-32 shrink-0">
+            <div></div>
+            <div class="rounded-t-lg bg-slate-700 text-white flex flex-col items-center justify-center text-[10px] font-bold border border-slate-900">▲<span class="text-[8px] text-amber-300">即落</span></div>
+            <div></div>
+            <div class="rounded-l-lg bg-slate-700 text-white flex items-center justify-center text-base font-bold border border-slate-900">◀</div>
+            <div class="bg-slate-800"></div>
+            <div class="rounded-r-lg bg-slate-700 text-white flex items-center justify-center text-base font-bold border border-slate-900">▶</div>
+            <div></div>
+            <div class="rounded-b-lg bg-slate-700 text-white flex flex-col items-center justify-center text-[10px] font-bold border border-slate-900"><span class="text-[8px] text-cyan-300">加速</span>▼</div>
+            <div></div>
+          </div>
+          <div class="text-center">
+            <div class="px-2 py-0.5 rounded bg-slate-800 text-amber-300 font-pixel text-[8px]">SOSHIRUS</div>
+            <div class="text-[10px] font-bold mt-1">特大十字キーで<br />押しやすい！</div>
+          </div>
+          <!-- A / B -->
+          <div class="relative w-28 h-28 shrink-0">
+            <div class="absolute right-0 top-[16%] w-12 h-12 rounded-full bg-slate-100 border-2 border-slate-600 shadow flex flex-col items-center justify-center leading-none">
+              <span class="text-sm font-extrabold text-rose-700">A</span>
+              <span class="text-[8px] font-bold">右↻</span>
+            </div>
+            <div class="absolute bottom-0 left-[10%] w-12 h-12 rounded-full bg-slate-100 border-2 border-slate-600 shadow flex flex-col items-center justify-center leading-none">
+              <span class="text-sm font-extrabold text-amber-700">B</span>
+              <span class="text-[8px] font-bold">左↺</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Table -->
+        <div class="bg-slate-900/85 border border-slate-700 rounded-xl p-3 text-xs sm:text-sm space-y-2">
+          <div class="flex justify-between border-b border-slate-800 pb-1.5">
+            <span class="font-bold text-cyan-300">◀ / ▶（← / →）</span>
+            <span>ブロックを左右にうごかす</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-1.5">
+            <span class="font-bold text-amber-300">▲ 即落（↑）</span>
+            <span>一気に一番下まで落とす</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-1.5">
+            <span class="font-bold text-sky-300">▼ 加速（↓長押し）</span>
+            <span>おしている間スピードアップ</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-1.5">
+            <span class="font-bold text-rose-300">A 右回転（Z / Space）</span>
+            <span>時計まわりにくるっと回転</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-bold text-amber-300">B 左回転（X）</span>
+            <span>反時計まわりに回転</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 5: 5 SPECIAL SKILLS ================= -->
+    <section id="skills" class="book-card p-4 sm:p-6 space-y-4">
+      <div>
+        <span class="chapter-badge bg-fuchsia-950 border border-fuchsia-400 text-fuchsia-200">CHAPTER 5</span>
+        <h2 class="font-dot text-xl sm:text-2xl font-bold text-white mt-2">ロシアの名がつく！5つのひっさつわざ<ruby>大図鑑<rt>だいずかん</rt></ruby></h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1">
+          必殺技は<strong>阻止るフェーズ</strong>でも<strong>因果応報フェーズ</strong>でも使えるよ！（※スペツナズだけ阻止る専用）
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-3.5">
+        <!-- 1. Bolshoi -->
+        <div class="rounded-xl bg-gradient-to-br from-fuchsia-950/90 to-slate-950 border-2 border-fuchsia-400/80 p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <svg class="pixel-svg w-7 h-7" viewBox="0 0 12 12"><path fill="#fde047" d="M1 3h2v4H1zm4-2h2v6H5zm4 2h2v4H9z"/><path fill="#f59e0b" d="M1 7h10v3H1z"/><path fill="#ef4444" d="M5 8h2v1H5z"/></svg>
+              <div>
+                <h3 class="font-dot text-base font-bold text-fuchsia-200">ボリショイ</h3>
+                <div class="text-[10px] text-fuchsia-300">ロシア語で「大きい」</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-950 border border-amber-300 text-amber-300 font-pixel text-xs">初期×1</span>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed">
+            <strong class="text-cyan-300">阻止る時：</strong>マスが<strong>3×4に巨大化</strong>＋爆弾0＋<strong>時間一時停止</strong>！できたブロックはきれいな<strong><ruby>虹色<rt>にじいろ</rt></ruby></strong>になるよ！<br />
+            <strong class="text-rose-300">因果応報時：</strong>3×4で自分好みのブロックを作って、<strong>NEXTに強制わりこみ</strong>できる！
+          </p>
+        </div>
+
+        <!-- 2. Perestroika -->
+        <div class="rounded-xl bg-gradient-to-br from-rose-950/90 to-slate-950 border-2 border-amber-400/80 p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <svg class="pixel-svg w-7 h-7" viewBox="0 0 12 12"><path fill="#fde047" d="M3 2h2v3H3zm2 0h2v3H5zm2 0h2v3H7z"/><path fill="#f59e0b" d="M2 4h8v5H2z"/><path fill="#fef08a" d="M2 5h3v2H2z"/><path fill="#b45309" d="M3 9h6v2H3z"/></svg>
+              <div>
+                <h3 class="font-dot text-base font-bold text-amber-200">ペレストロイカ</h3>
+                <div class="text-[10px] text-amber-300">ロシア語で「立て直し・改革」</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-950 border border-amber-300 text-amber-300 font-pixel text-xs">初期×1</span>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed">
+            <strong class="text-cyan-300">阻止る時：</strong>おした瞬間に<strong>CPUから操作権をうばい</strong>、今あるブロックを自分でジャマな場所へ落とせる！<br />
+            <strong class="text-rose-300">因果応報時：</strong>2×4で自分好みのブロックを作って、<strong>NEXTに強制わりこみ</strong>！
+          </p>
+        </div>
+
+        <!-- 3. Spetsnaz -->
+        <div class="rounded-xl bg-gradient-to-br from-sky-950/90 to-slate-950 border-2 border-cyan-400/80 p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <svg class="pixel-svg w-7 h-7" viewBox="0 0 12 12"><path fill="#334155" d="M2 2h8v7H2z"/><path fill="#0f172a" d="M3 4h6v3H3z"/><path fill="#22d3ee" d="M3 5h2v1H3zm4 0h2v1H7z"/><path fill="#ef4444" d="M5 1h2v1H5z"/></svg>
+              <div>
+                <h3 class="font-dot text-base font-bold text-cyan-200">スペツナズ</h3>
+                <div class="text-[10px] text-cyan-300">ロシアの特殊部隊</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-950 border border-amber-300 text-amber-300 font-pixel text-xs">初期×3</span>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed">
+            増えすぎた爆弾（2個以上のとき）を<strong>90%の確率で1個まで<ruby>除去<rt>じょきょ</rt></ruby></strong>してくれる！ただし<strong>10%の確率でド派手に失敗</strong>して半減だけになることも…！（※阻止るフェーズ専用）
+          </p>
+        </div>
+
+        <!-- 4. Pamyatnik -->
+        <div class="rounded-xl bg-gradient-to-br from-slate-700/80 to-slate-950 border-2 border-slate-200 p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <svg class="pixel-svg w-7 h-7 silver-gleam" viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" fill="#e2e8f0" stroke="#334155" stroke-width="1"/><rect x="3" y="3" width="3" height="2" fill="#ffffff"/><rect x="7" y="7" width="2" height="2" fill="#64748b"/></svg>
+              <div>
+                <h3 class="font-dot text-base font-bold text-white">パーミャトニク</h3>
+                <div class="text-[10px] text-slate-300">ロシア語で「記念碑（きねんひ）」</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-950 border border-white text-white font-pixel text-xs">初期×1</span>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed">
+            <strong>ぜったいに消せない輝く銀色1マスブロック</strong>を好きな位置に落とせる！ステージが進んでも同じ場所に残り続けるが、<strong>4ステージ目の開始時に<ruby>盗賊<rt>とうぞく</rt></ruby>がぬすみに来る</strong>ぞ！
+          </p>
+        </div>
+
+        <!-- 5. Snesti -->
+        <div class="sm:col-span-2 rounded-xl bg-gradient-to-br from-amber-950/90 to-slate-950 border-2 border-amber-300/80 p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <svg class="pixel-svg w-7 h-7" viewBox="0 0 12 12"><path fill="#fef08a" d="M2 2h8v3H2z"/><path fill="#78350f" d="M5 5h2v6H5z"/><path fill="#ef4444" d="M1 3h2v2H1zm8 0h2v2H9z"/></svg>
+              <div>
+                <h3 class="font-dot text-base font-bold text-amber-200">スネスチー</h3>
+                <div class="text-[10px] text-amber-300">ロシア語で「撤去（てっきょ）する」</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-950 border border-amber-300 text-amber-300 font-pixel text-xs">初期×0</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+            盤面にある「パーミャトニク」を<strong>すべてまとめて消し去る</strong>ワザ！因果応報フェーズで自分の記念碑がジャマになったときなどに大活躍！ロシアクイズに正解してゲットしよう！
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 6: RUSSIA QUIZ ================= -->
+    <section id="quiz" class="book-card p-4 sm:p-6 space-y-3">
+      <div class="flex items-center gap-2">
+        <span class="chapter-badge bg-indigo-950 border border-indigo-400 text-indigo-200">CHAPTER 6</span>
+        <span class="text-xl">🇷🇺</span>
+      </div>
+      <h2 class="font-dot text-xl sm:text-2xl font-bold text-white">毎ステージクリア後のおたのしみ「ロシアクイズ」</h2>
+      <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+        ステージをクリアするたびに、ロシアの<ruby>歴史<rt>れきし</rt></ruby>・<ruby>宇宙<rt>うちゅう</rt></ruby>・<ruby>音楽<rt>おんがく</rt></ruby>・グルメなどの3択クイズが出題されるよ！
+        見事せいかいすると…
+      </p>
+      <div class="flex flex-wrap gap-2 text-xs sm:text-sm font-bold">
+        <span class="px-3 py-1.5 rounded-lg bg-emerald-950 border border-emerald-400 text-emerald-300">🎉 ボーナス +1,500点！</span>
+        <span class="px-3 py-1.5 rounded-lg bg-amber-950 border border-amber-400 text-amber-300">★ 5つの必殺技から好きなものを +1回ゲット！</span>
+      </div>
+    </section>
+
+    <!-- ================= BONUS: STRATEGY GUIDE ================= -->
+    <section id="strategy" class="gold-card p-4 sm:p-6 space-y-5">
+      <div class="text-center space-y-1">
+        <span class="chapter-badge bg-amber-500 text-slate-950">★ おまけ・ひでん攻略ブック ★</span>
+        <h2 class="font-dot text-2xl sm:text-3xl font-bold text-amber-300">
+          天才CPUに勝つための「ソシルス」6つのヒミツ！
+        </h2>
+        <p class="text-xs sm:text-sm text-amber-100/90">
+          これを覚えれば、きみもランキング上位をねらえるマスターだ！
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-3.5 text-xs sm:text-sm">
+        <div class="rounded-xl bg-slate-950/80 border border-amber-500/60 p-4 space-y-1.5">
+          <div class="font-dot text-base font-bold text-amber-300">秘伝①：「あな」と「でこぼこ」を作らせろ！</div>
+          <p class="text-slate-200 leading-relaxed">
+            天才CPUが一番ニガテなのは、ブロックの下にできる<strong>「すきま（あな）」</strong>と<strong>「ガタガタの高さ」</strong>！
+            四角やまっすぐな棒ばかり送るとカンタンに消されてしまうので、<strong>階段型（S/Z）やコの字、T字、6〜7マスの大きな変なカタチ</strong>をまぜて送ろう！
+          </p>
+        </div>
+
+        <div class="rounded-xl bg-slate-950/80 border border-amber-500/60 p-4 space-y-1.5">
+          <div class="font-dot text-base font-bold text-rose-300">秘伝②：「⚠ 4段警戒」を見たら時間切れに絶対するな！</div>
+          <p class="text-slate-200 leading-relaxed">
+            CPUが4段同時消しをねらっているとき、<strong>時間切れで「1×4のピンクのぼう」を送ってしまうと一発で負け</strong>になってしまう！
+            あせったときほど、小さくてもいいから時間内に「決定！」をおして棒を送らないようにしよう。
+          </p>
+        </div>
+
+        <div class="rounded-xl bg-slate-950/80 border border-amber-500/60 p-4 space-y-1.5">
+          <div class="font-dot text-base font-bold text-slate-100">秘伝③：パーミャトニクは「下から1〜2段目のまんなか」が最強！</div>
+          <p class="text-slate-200 leading-relaxed">
+            銀色の記念碑がある行は<strong>ぜったいに消えない</strong>！だから一番下（1段目）に1個おくだけで、CPUが使える高さがずっと1段ぶんせまくなる超強力なワザだぞ！
+            ただし4ステージ目の盗賊と、因果応報で自分のジャマにもなる点には気をつけよう。
+          </p>
+        </div>
+
+        <div class="rounded-xl bg-slate-950/80 border border-amber-500/60 p-4 space-y-1.5">
+          <div class="font-dot text-base font-bold text-cyan-300">秘伝④：ペレストロイカで「すきまにフタ」をしろ！</div>
+          <p class="text-slate-200 leading-relaxed">
+            せっかくあいた穴をCPUがうまく埋めそうな瞬間に<strong>ペレストロイカを発動</strong>！
+            あえて横向きにして<strong>穴の真上にフタをするようにドスンと落とす</strong>と、天才CPUでも一気に積み上がってしまうぞ！
+          </p>
+        </div>
+
+        <div class="rounded-xl bg-slate-950/80 border border-amber-500/60 p-4 space-y-1.5">
+          <div class="font-dot text-base font-bold text-fuchsia-300">秘伝⑤：因果応報のピンチは「自作わりこみ」で一発逆転！</div>
+          <p class="text-slate-200 leading-relaxed">
+            「ソシりソシられ」で自分が消す側になったとき、どうにもならないピンチが来たら<strong>ボリショイ</strong>か<strong>ペレストロイカ</strong>を使おう！
+            すきまにピッタリの<strong>「1×4の棒」や「1×1の1マス」</strong>を自分で作ってNEXTにわりこませれば、一気に大逆転できるぞ！
+          </p>
+        </div>
+
+        <div class="rounded-xl bg-slate-950/80 border border-amber-500/60 p-4 space-y-1.5">
+          <div class="font-dot text-base font-bold text-emerald-300">秘伝⑥：ハイスコアは「5秒／2.5秒」＋「はやうち」がカギ！</div>
+          <p class="text-slate-200 leading-relaxed">
+            制限時間ありモードは<strong>得点倍率が ×1.5〜×2.5</strong>になるうえ、残り時間が多く残るほど毎回クイックボーナスがもらえるよ！
+            さらに少ない手数でCPUをたおすほど速攻ボーナスもアップ！
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center pt-2">
+        <a href="./index.html" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-gradient-to-b from-amber-300 via-amber-400 to-orange-600 border-2 border-amber-100 text-slate-950 font-dot font-extrabold text-base sm:text-lg shadow-xl hover:brightness-110 active:translate-y-0.5 transition">
+          <span>🎮</span><span>さあ、ソシルスであそぼう！</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Interactive Mini Builder Demo in Chapter 3
+    (() => {
+      const ROWS = 2, COLS = 4;
+      const BOMB = { r: 0, c: 3 };
+      const gridEl = document.getElementById('demoGrid');
+      const statusEl = document.getElementById('demoStatus');
+      const resetBtn = document.getElementById('demoReset');
+      let cells = [[1, 1, 0, 0], [0, 1, 1, 0]];
+      let painting = false;
+      let paintVal = 1;
+
+      function analyze() {
+        const visited = Array.from({ length: ROWS }, () => Array(COLS).fill(false));
+        const comps = [];
+        const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+        for (let r = 0; r < ROWS; r++) {
+          for (let c = 0; c < COLS; c++) {
+            if (cells[r][c] && !visited[r][c]) {
+              const list = [];
+              const q = [[r, c]];
+              visited[r][c] = true;
+              while (q.length) {
+                const [cr, cc] = q.shift();
+                list.push([cr, cc]);
+                for (const [dr, dc] of dirs) {
+                  const nr = cr + dr, nc = cc + dc;
+                  if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS && cells[nr][nc] && !visited[nr][nc]) {
+                    visited[nr][nc] = true;
+                    q.push([nr, nc]);
+                  }
+                }
+              }
+              const set = new Set(list.map(([rr, cc]) => `${rr},${cc}`));
+              let edges = 0;
+              for (const [cr, cc] of list) {
+                if (set.has(`${cr},${cc+1}`)) edges++;
+                if (set.has(`${cr+1},${cc}`)) edges++;
+              }
+              comps.push({ list, edges });
+            }
+          }
+        }
+        if (comps.length <= 1) return { disconnected: false, kept: null };
+        comps.sort((a, b) => a.edges - b.edges || a.list.length - b.list.length);
+        const keptSet = new Set(comps[0].list.map(([r, c]) => `${r},${c}`));
+        return { disconnected: true, kept: keptSet };
+      }
+
+      function render() {
+        const info = analyze();
+        gridEl.innerHTML = '';
+        for (let r = 0; r < ROWS; r++) {
+          for (let c = 0; c < COLS; c++) {
+            const div = document.createElement('div');
+            div.className = 'demo-cell';
+            div.dataset.r = r;
+            div.dataset.c = c;
+            if (r === BOMB.r && c === BOMB.c) {
+              div.classList.add('bomb');
+              div.textContent = '💣';
+            } else if (cells[r][c]) {
+              if (info.disconnected) {
+                if (info.kept.has(`${r},${c}`)) {
+                  div.classList.add('warn');
+                } else {
+                  div.classList.add('cut');
+                  div.textContent = '×';
+                }
+              } else {
+                div.classList.add('on');
+              }
+            }
+            gridEl.appendChild(div);
+          }
+        }
+        if (info.disconnected) {
+          statusEl.textContent = '⚠ 辺がはなれているよ！黄色い最小パーツだけ送られるぞ！';
+          statusEl.className = 'text-xs font-bold text-rose-300 bg-rose-950/60 rounded-lg px-2.5 py-1.5 border border-rose-500';
+        } else {
+          const count = cells.flat().filter(Boolean).length;
+          statusEl.textContent = count > 0
+            ? `✨ バッチリつながっているよ！（${count}マス）このままCPUへ送れるぞ！`
+            : 'マスをタップ／なぞってブロックを作ってみよう！';
+          statusEl.className = 'text-xs font-bold text-emerald-200 bg-slate-900 rounded-lg px-2.5 py-1.5 border border-slate-700';
+        }
+      }
+
+      function toggle(r, c, val) {
+        if (r === BOMB.r && c === BOMB.c) {
+          cells = [[0,0,0,0],[0,0,0,0]];
+          painting = false;
+          render();
+          statusEl.textContent = '💥 ドカン！爆弾にさわるとぜんぶ消えて -100点になるよ！';
+          statusEl.className = 'text-xs font-bold text-amber-300 bg-red-950/80 rounded-lg px-2.5 py-1.5 border border-red-400';
+          return;
+        }
+        cells[r][c] = val;
+        render();
+      }
+
+      gridEl.addEventListener('pointerdown', (e) => {
+        const cell = e.target.closest('.demo-cell');
+        if (!cell) return;
+        e.preventDefault();
+        const r = +cell.dataset.r, c = +cell.dataset.c;
+        painting = true;
+        paintVal = cells[r][c] ? 0 : 1;
+        toggle(r, c, paintVal);
+      });
+      window.addEventListener('pointermove', (e) => {
+        if (!painting) return;
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const cell = el && el.closest ? el.closest('.demo-cell') : null;
+        if (!cell) return;
+        toggle(+cell.dataset.r, +cell.dataset.c, paintVal);
+      });
+      window.addEventListener('pointerup', () => { painting = false; });
+
+      resetBtn.addEventListener('click', () => {
+        cells = [[1, 1, 0, 0], [0, 1, 1, 0]];
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -803,9 +803,14 @@
             <span class="text-[10px] text-rose-100 mt-0.5">得点倍率 ×2.5</span>
           </button>
         </div>
-        <button id="btnTitleRanking" class="arcade-btn w-full py-2 rounded-xl bg-slate-800 border border-amber-400/70 text-amber-300 text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5">
-          <span>🏆</span><span>ハイスコアランキングを見る</span>
-        </button>
+        <div class="grid grid-cols-2 gap-2">
+          <button id="btnTitleRanking" class="arcade-btn w-full py-2 rounded-xl bg-slate-800 border border-amber-400/70 text-amber-300 text-xs sm:text-sm font-bold flex items-center justify-center gap-1">
+            <span>🏆</span><span>ランキング</span>
+          </button>
+          <a href="./manual.html" target="_blank" rel="noopener" class="arcade-btn w-full py-2 rounded-xl bg-slate-800 border border-cyan-400/70 text-cyan-200 text-xs sm:text-sm font-bold flex items-center justify-center gap-1 no-underline">
+            <span>📖</span><span>あそびかた</span>
+          </a>
+        </div>
       </div>
 
       <div class="text-[10px] text-slate-400">
@@ -924,6 +929,9 @@
       <button id="btnRetryStage" class="arcade-btn py-2.5 rounded-lg bg-amber-600 text-white font-bold border border-amber-400">
         このステージをやり直す
       </button>
+      <a href="./manual.html" target="_blank" rel="noopener" class="arcade-btn py-2.5 rounded-lg bg-cyan-700 text-white font-bold border border-cyan-400 no-underline">
+        📖 あそびかた（説明書）
+      </a>
       <button id="btnBackToTitle" class="arcade-btn py-2.5 rounded-lg bg-rose-700 text-white font-bold border border-rose-400">
         タイトルに戻る
       </button>
@@ -2599,23 +2607,14 @@
         return 9 + Math.max(1, stage);
       }
 
-      // Prevent ANY double-tap or pinch zoom anywhere on the game screen (iPhone / iPad Safari!)
+      // Prevent double-tap / pinch zoom WITHOUT blocking rapid taps on buttons!
+      // (CSS `touch-action: manipulation` prevents iOS double-tap zoom while preserving instant click/tap response)
       document.addEventListener('dblclick', (e) => {
         if (!e.target || e.target.tagName !== 'INPUT') e.preventDefault();
       }, { passive: false });
       ['gesturestart', 'gesturechange', 'gestureend'].forEach(evtName => {
         document.addEventListener(evtName, (e) => e.preventDefault(), { passive: false });
       });
-      let lastTouchEndAt = 0;
-      document.addEventListener('touchend', (e) => {
-        const now = performance.now();
-        if (now - lastTouchEndAt <= 320) {
-          if (!e.target || e.target.tagName !== 'INPUT') {
-            e.preventDefault();
-          }
-        }
-        lastTouchEndAt = now;
-      }, { passive: false });
 
       function getDiffMultiplier() {
         if (state.difficulty === '2.5') return 2.5;
@@ -3477,9 +3476,9 @@
         let itemsToShow = [];
         if (isSabotage) {
           karmaProgressText.textContent = `計${total}手`;
-          // Show latest 2 recorded pieces during sabotage phase so skills panel still fits comfortably
+          // Show latest 2 recorded pieces in chronological order: top = older (closer to NEXT), bottom = newly added!
           const start = Math.max(0, total - 2);
-          for (let idx = total - 1; idx >= start; idx--) {
+          for (let idx = start; idx < total; idx++) {
             const rec = state.recordedTurns[idx];
             itemsToShow.push({
               label: `#${idx + 1}`,
